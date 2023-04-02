@@ -135,6 +135,7 @@
   height: 35px;
   width: 100%;
 }
+
 .reg_grid select {
   width: 90px;
   font-size: 16px;
@@ -205,7 +206,6 @@
 }
 .footer_square i {
   transform: scale(0.8);
-  -webkit-filter: invert(40%);
 }
 .footer_splitter {
   width: 100%;
