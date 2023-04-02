@@ -1,5 +1,4 @@
-import { Schema, Document, Types } from 'mongoose';
-import mongoose from 'mongoose';
+import mongoose, { Schema, Document, Types, model } from 'mongoose';
 
 interface IUser extends Document {
   first_name: string;
@@ -41,7 +40,6 @@ interface IUser extends Document {
   createdAt: Date;
   updatedAt: Date;
 }
-
 const userSchema = new Schema<IUser>(
   {
     first_name: {
@@ -195,4 +193,4 @@ const userSchema = new Schema<IUser>(
   }
 );
 
-module.exports = mongoose.model('User', userSchema);
+export default model<IUser>('User', userSchema);
