@@ -67,7 +67,8 @@ async function register(req: Request, res: Response) {
       message: 'Register Success ! please activate your email to start'
     });
   } catch (error) {
-    console.log(error);
+    const errorMessage: string = (error as Error).message;
+    res.status(500).json({ message: errorMessage });
   }
 }
 export default register;
