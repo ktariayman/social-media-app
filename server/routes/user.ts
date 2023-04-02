@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
+import { register } from '../controllers/auth';
 const router: Router = express.Router();
-router.get('/user', (req: Request, res: Response) => {
-  res.send('welcome');
-});
+router.post('/register', register);
+
 module.exports = router;
