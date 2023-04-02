@@ -4,28 +4,27 @@ import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import './style.css';
 import { InputLogin } from '../../components';
-interface LoginFormValues {
-  email: string;
-  password: string;
-}
+import { LoginFormValues } from '../../interface/user';
+import Footer from '../../components/login/Footer';
 
 const loginInfos: LoginFormValues = {
   email: '',
   password: ''
-};
-const onSubmit = (values: LoginFormValues) => {
-  console.log(values);
-  // call your loginSubmit function here
 };
 
 function Login() {
   const [login, setLogin] = useState(loginInfos);
   const { email, password } = login;
   const handleLoginChange = (e: any) => {
-    const { name, ...value } = e.target;
-    setLogin({ ...login, [name]: value });
-  };
+    const { name, value } = e.target;
+    console.log('login', [name], value);
 
+    setLogin({ ...login, [name]: value.toString() });
+  };
+  const loginValidation = Yup.object({
+    password: Yup.string().required('Password is required'),
+    email: Yup.string().required('email is required').email()
+  });
   return (
     <div className='login'>
       <div className='login_wraper'>
@@ -42,24 +41,23 @@ function Login() {
                   email,
                   password
                 }}
+                validationSchema={loginValidation}
                 onSubmit={() => {}}
-                // onSubmit={() => {
-                //   loginSubmit();
-                // }}
               >
                 {(formik: any) => (
                   <Form>
                     <InputLogin
                       type='text'
-                      name='text'
+                      name='email'
                       placeholder='Email address or phone number'
-                      onChange={handleLoginChange}
+                      onInput={handleLoginChange}
                     />
                     <InputLogin
                       type='password'
                       name='password'
                       placeholder='Password'
-                      onChange={handleLoginChange}
+                      onInput={handleLoginChange}
+                      bottom
                     />
                     <button type='submit' className='blue_btn'>
                       Log In
@@ -70,19 +68,10 @@ function Login() {
               <Link to='/reset' className='forgot_password'>
                 Forgotten password?
               </Link>
-              {/* <DotLoader color='#1876f2' loading={loading} size={30} /> */}
-
-              {/* {error && <div className='error_text'>{error}</div>} */}
-              {/* <div className='sign_splitter'></div>
-          <button className='blue_btn open_signup' onClick={() => setVisible(true)}>
-            Create Account
-          </button> */}
             </div>
-            {/* <Link to='/' className='sign_extra'>
-          <b>Create a Page</b> for a celebrity, brand or business.
-        </Link> */}
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   );
