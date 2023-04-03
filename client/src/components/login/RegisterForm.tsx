@@ -5,46 +5,26 @@ import { useNavigate } from 'react-router-dom';
 import InputRegister from '../input/inputRegister/InputRegister';
 import DateOfBirthSelect from './DateOfBirthSelect';
 import GenderSelect from './GenderSelect';
+import { registerValidation } from '../../helper/validator';
+import { useDispatch } from 'react-redux';
+import { RegisterFormData } from '../../helper/formData';
+import Cookies from 'js-cookie';
+import axios from 'axios';
+import DotLoader from 'react-spinners/DotLoader';
+
 function RegisterForm({ setVisible }: any) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [user, setUser] = useState(RegisterFormData);
+
+  // state
+
   const [dateError, setDateError] = useState('');
   const [genderError, setGenderError] = useState('');
-
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const userInfos = {
-    first_name: '',
-    last_name: '',
-    email: '',
-    password: '',
-    bYear: new Date().getFullYear(),
-    bMonth: new Date().getMonth() + 1,
-    bDay: new Date().getDate(),
-    gender: ''
-  };
-  const registerValidation = Yup.object({
-    first_name: Yup.string()
-      .required("What's your First name ?")
-      .min(2, 'Fisrt name must be between 2 and 16 characters.')
-      .max(16, 'Fisrt name must be between 2 and 16 characters.')
-      .matches(/^[aA-zZ]+$/, 'Numbers and special characters are not allowed.'),
-    last_name: Yup.string()
-      .required("What's your Last name ?")
-      .min(2, 'Last name must be between 2 and 16 characters.')
-      .max(16, 'Last name must be between 2 and 16 characters.')
-      .matches(/^[aA-zZ]+$/, 'Numbers and special characters are not allowed.'),
-    email: Yup.string()
-      .required("You'll need this when you log in and if you ever need to reset your password.")
-      .email('Enter a valid email address.'),
-    password: Yup.string()
-      .required(
-        'Enter a combination of at least six numbers,letters and punctuation marks(such as ! and &).'
-      )
-      .min(6, 'Password must be atleast 6 characters.')
-      .max(36, "Password can't be more than 36 characters")
-  });
-  const [user, setUser] = useState(userInfos);
+
   const { first_name, last_name, email, password, bYear, bMonth, bDay, gender } = user;
   const yearTemp = new Date().getFullYear();
   const handleRegisterChange = (e: any) => {
@@ -57,7 +37,32 @@ function RegisterForm({ setVisible }: any) {
     return new Date(bYear, bMonth, 0).getDate();
   };
   const days = Array.from(new Array(getDays()), (val, index) => 1 + index);
-
+  const registerSubmit = async () => {
+    try {
+      const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, {
+        first_name,
+        last_name,
+        email,
+        password,
+        bYear,
+        bMonth,
+        bDay,
+        gender
+      });
+      setError('');
+      setSuccess(data.message);
+      const { message, ...rest } = data;
+      setTimeout(() => {
+        dispatch({ type: 'LOGIN', payload: rest });
+        Cookies.set('user', JSON.stringify(rest));
+        navigate('/');
+      }, 2000);
+    } catch (error: any) {
+      setLoading(false);
+      setSuccess('');
+      setError(error.response.data.message);
+    }
+  };
   return (
     <div className='blur'>
       <div className='register'>
@@ -99,7 +104,7 @@ function RegisterForm({ setVisible }: any) {
             } else {
               setDateError('');
               setGenderError('');
-              // registerSubmit();
+              registerSubmit();
             }
           }}
         >
@@ -168,9 +173,9 @@ function RegisterForm({ setVisible }: any) {
               <div className='reg_btn_wrapper'>
                 <button className='blue_btn open_signup'>Sign Up</button>
               </div>
-              {/* <DotLoader color='#1876f2' loading={loading} size={30} />
+              <DotLoader color='#1876f2' loading={loading} size={30} />
               {error && <div className='error_text'>{error}</div>}
-              {success && <div className='success_text'>{success}</div>} */}
+              {success && <div className='success_text'>{success}</div>}
             </Form>
           )}
         </Formik>

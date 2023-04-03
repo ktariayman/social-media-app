@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 
-export default function DateOfBirthSelect({
+function DateOfBirthSelect({
   bDay,
   bMonth,
   bYear,
@@ -51,3 +51,5 @@ export default function DateOfBirthSelect({
     </div>
   );
 }
+
+export default DateOfBirthSelect;

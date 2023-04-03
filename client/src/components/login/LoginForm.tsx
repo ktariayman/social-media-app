@@ -1,26 +1,40 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Form, Formik } from 'formik';
-import * as Yup from 'yup';
 import { InputLogin } from '../../components';
-import { LoginFormValues } from '../../interface/user';
-const loginInfos: LoginFormValues = {
-  email: '',
-  password: ''
-};
+import { loginValidation } from '../../helper/validator';
+import { loginFormData } from '../../helper/formData';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import Cookies from 'js-cookie';
+import DotLoader from 'react-spinners/DotLoader';
+
 function LoginForm({ setVisible }: any) {
-  const [login, setLogin] = useState(loginInfos);
+  const [login, setLogin] = useState(loginFormData);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [error, setError] = useState('');
   const { email, password } = login;
   const handleLoginChange = (e: any) => {
     const { name, value } = e.target;
     setLogin({ ...login, [name]: value.toString() });
   };
-  const loginValidation = Yup.object({
-    password: Yup.string().required('Password is required'),
-    email: Yup.string().required('email is required').email()
-  });
+  const loginSubmit = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
+        email,
+        password
+      });
+      dispatch({ type: 'LOGIN', payload: data });
+      Cookies.set('user', JSON.stringify(data));
+      navigate('/');
+    } catch (error: any) {
+      setLoading(false);
+      setError(error.response.data.message);
+    }
+  };
   return (
     <div className='login_wrap'>
       <div className='login_1'>
@@ -36,7 +50,9 @@ function LoginForm({ setVisible }: any) {
               password
             }}
             validationSchema={loginValidation}
-            onSubmit={() => {}}
+            onSubmit={() => {
+              loginSubmit();
+            }}
           >
             {(formik: any) => (
               <Form>
@@ -62,7 +78,7 @@ function LoginForm({ setVisible }: any) {
           <Link to='/reset' className='forgot_password'>
             Forgotten password?
           </Link>
-          {/* <DotLoader color='#1876f2' loading={loading} size={30} /> */}
+          <DotLoader color='#1876f2' loading={loading} size={30} />
 
           {error && <div className='error_text'>{error}</div>}
           <div className='sign_splitter'></div>
