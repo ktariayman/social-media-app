@@ -8,14 +8,16 @@ import { BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-// const store = createStore(rootReducer, composeWithDevTools());
+import rootReducer from './reducers';
+const store = createStore(rootReducer, composeWithDevTools());
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    {/* <Provider store={store}> */}
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-    {/* </Provider> */},
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+    ,
   </React.StrictMode>
 );
