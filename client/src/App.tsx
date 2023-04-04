@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import Profile from './pages/profile';
-import Login from './pages/login';
+import { Profile, Home, Login } from './pages';
 
 function App() {
   return (
@@ -8,6 +7,7 @@ function App() {
       <Routes>
         <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/' element={<Home />} />
       </Routes>
     </div>
   );
