@@ -1,6 +1,7 @@
-import express, { Request, Response, Router } from 'express';
+import express, { Router } from 'express';
+import { register, activateAccount, login } from '../controllers/auth';
 const router: Router = express.Router();
-router.get('/user', (req: Request, res: Response) => {
-  res.send('welcome');
-});
+router.post('/register', register);
+router.post('/activateAccount', activateAccount);
+router.post('/login', login);
 module.exports = router;
