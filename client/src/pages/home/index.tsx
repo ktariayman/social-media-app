@@ -4,8 +4,10 @@ import SideBar from '../../components/home/sidebar';
 import { useSelector } from 'react-redux';
 import RightHome from '../../components/home/right';
 import Stories from '../../components/home/stories';
+import CreatePost from '../../components/createPost';
+
 import './style.css';
-function Home() {
+function Home({ setVisible }: any) {
   const middle = useRef(null);
   const { user } = useSelector((state: any) => ({ ...state }));
   return (
@@ -15,6 +17,7 @@ function Home() {
       <RightHome user={user} />
       <div className='home_middle' ref={middle}>
         <Stories />
+        <CreatePost user={user} setVisible={setVisible} />
       </div>
     </div>
   );
