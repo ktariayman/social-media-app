@@ -5,16 +5,19 @@ import useClickOutside from '../../hooks/useClickOutside';
 import Picker, { EmojiClickData } from 'emoji-picker-react';
 function PostPopup({ setVisible, user, visible }: any) {
   const popup = useRef(null);
-  const textRef = useRef(null);
+  const textRef = useRef<HTMLTextAreaElement>(null);
+  const [textValue, setTextValue] = useState('');
   const [text, setText] = useState('');
   const [picker, setPicker] = useState(false);
-  const [cursorPosition, setCursorPosition] = useState<number | null>(null);
-
+  const [cursorPosition, setCursorPosition] = useState<number | null>(0);
   useEffect(() => {
-    if (textRef.current && cursorPosition !== null) {
+    if (textRef.current && cursorPosition) {
       textRef.current.selectionEnd = cursorPosition;
     }
   }, [cursorPosition]);
+  const handleTextAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setText(event.target.value);
+  };
   const handleEmoji = ({ emoji }: EmojiClickData) => {
     const ref: any = textRef.current;
     ref.focus();
@@ -61,7 +64,7 @@ function PostPopup({ setVisible, user, visible }: any) {
               ref={textRef}
               value={text}
               placeholder='think twice and write once '
-              onChange={(e) => setText(e.target.value)}
+              onChange={handleTextAreaChange}
               className='post_input'
             ></textarea>
           </div>
