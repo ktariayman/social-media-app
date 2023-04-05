@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 function AppRoutes() {
   const { user } = useSelector((state: any) => ({ ...state }));
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const router = createBrowserRouter([
     {
       path: '/',
@@ -29,7 +29,7 @@ function AppRoutes() {
       element: <NotLoggedInRoutes />,
       children: [
         {
-          path: '/',
+          path: '/login',
           element: <Login />
         }
       ]
@@ -37,7 +37,7 @@ function AppRoutes() {
   ]);
   return (
     <>
-      {visible && <PostPopup setVisible={setVisible} user={user} />}
+      {visible && <PostPopup setVisible={setVisible} user={user} visible={visible} />}
 
       <RouterProvider router={router} />
     </>

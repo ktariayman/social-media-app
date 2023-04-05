@@ -6,7 +6,6 @@ import RightHome from '../../components/home/right';
 import Stories from '../../components/home/stories';
 import CreatePost from '../../components/createPost';
 import PostPopup from '../../components/postPopup';
-
 import './style.css';
 function Home({ setVisible, visible }: any) {
   const middle = useRef(null);
