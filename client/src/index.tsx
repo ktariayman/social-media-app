@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './styles/icons/icons.css';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import { persistor, store } from './reducers';
@@ -13,9 +12,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <App />
       </PersistGate>
     </Provider>
   </React.StrictMode>
