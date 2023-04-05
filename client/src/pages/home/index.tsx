@@ -5,9 +5,10 @@ import { useSelector } from 'react-redux';
 import RightHome from '../../components/home/right';
 import Stories from '../../components/home/stories';
 import CreatePost from '../../components/createPost';
+import PostPopup from '../../components/postPopup';
 
 import './style.css';
-function Home({ setVisible }: any) {
+function Home({ setVisible, visible }: any) {
   const middle = useRef(null);
   const { user } = useSelector((state: any) => ({ ...state }));
   return (

@@ -3,9 +3,12 @@ import NotLoggedInRoutes from './NotLoggedInRoutes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Home, Login, Profile } from '../pages';
 import { useState } from 'react';
+import PostPopup from '../components/postPopup';
+import { useSelector } from 'react-redux';
 
 function AppRoutes() {
-  const [visible, setVisible] = useState(false);
+  const { user } = useSelector((state: any) => ({ ...state }));
+  const [visible, setVisible] = useState(true);
   const router = createBrowserRouter([
     {
       path: '/',
@@ -34,6 +37,8 @@ function AppRoutes() {
   ]);
   return (
     <>
+      {visible && <PostPopup setVisible={setVisible} user={user} />}
+
       <RouterProvider router={router} />
     </>
   );
