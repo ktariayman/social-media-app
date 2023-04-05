@@ -7,8 +7,9 @@ function userReducer(
     case 'LOGIN':
       return action.payload;
     case 'REGISTER':
-        return action.payload;
-  
+      return action.payload;
+    case 'LOGOUT':
+      return null;
     default:
       return state;
   }

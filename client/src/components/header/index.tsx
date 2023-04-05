@@ -1,11 +1,9 @@
 import React, { useRef, useState } from 'react';
 import './style.css';
 import {
-  ArrowDown,
   ArrowDown1,
   Friends,
   FriendsActive,
-  Gaming,
   Home,
   HomeActive,
   Logo,
@@ -20,7 +18,8 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useClickOutside from '../../hooks/useClickOutside';
 import SearchMenu from './SearchMenu';
-function Header() {
+import UserMenu from '../userMenu';
+function Header({ page }: any) {
   const color = '#65676b';
   const { user } = useSelector((user: any) => ({ ...user }));
   const [showSearchMenu, setShowSearchMenu] = useState(false);
@@ -60,16 +59,16 @@ function Header() {
         <SearchMenu color={color} setShowSearchMenu={setShowSearchMenu} />
       )}
       <div className='header_middle'>
-        {/* <Link
+        <Link
           to='/'
           className={`middle_icon ${page === 'home' ? 'active' : 'hover1'}`}
-          onClick={() => getAllPosts()}
+          // onClick={() => getAllPosts()}
         >
           {page === 'home' ? <HomeActive /> : <Home color={color} />}
-        </Link> */}
-        {/* <Link to='/friends' className={`middle_icon ${page === 'friends' ? 'active' : 'hover1'}`}>
+        </Link>
+        <Link to='/friends' className={`middle_icon ${page === 'friends' ? 'active' : 'hover1'}`}>
           {page === 'friends' ? <FriendsActive /> : <Friends color={color} />}
-        </Link> */}
+        </Link>{' '}
         <Link to='/' className='middle_icon hover1'>
           <HomeActive />
         </Link>
@@ -83,42 +82,18 @@ function Header() {
         <Link to='/' className='middle_icon hover1'>
           <Market color={color} />
         </Link>
-        <Link to='/' className='middle_icon hover1 '>
-          <Gaming color={color} />
-        </Link>
       </div>
       <div className='header_right'>
         <Link
           to='/profile'
-          // className={`profile_link hover1 ${page === 'profile' ? 'active_link' : ''}`}
+          className={`profile_link hover1 ${page === 'profile' ? 'active_link' : ''}`}
         >
           <img src={user?.picture} alt='' />
           <span>{user?.first_name}</span>
         </Link>
-        <Link
-          to='/profile'
-          // className={`profile_link hover1 ${page === 'profile' ? 'active_link' : ''}`}
-          className='profile_link hover1 '
-        >
-          <img src={user?.picture} alt='' />
-          <span>{user?.first_name}</span>
-        </Link>
-        {/* <div className={`circle_icon hover1 ${showAllMenu && 'active_header'}`} ref={allmenu}>
-          <div
-            onClick={() => {
-              setShowAllMenu((prev) => !prev);
-            }}
-          >
-            <div style={{ transform: 'translateY(2px)' }}>
-              <Menu />
-            </div>
-          </div>
-
-          {showAllMenu && <AllMenu />}
-        </div> */}
         <div className='circle_icon hover1'>
           <Menu />
-        </div>{' '}
+        </div>
         <div className='circle_icon hover1'>
           <Messenger />
         </div>
@@ -126,19 +101,21 @@ function Header() {
           <Notifications />
           <div className='right_notification'>5</div>
         </div>
-        {/* <div className={`circle_icon hover1 ${showUserMenu && 'active_header'}`} ref={usermenu}>
-          <div
-            onClick={() => {
-              setShowUserMenu((prev) => !prev);
-            }}
-          >
+        <div
+          className={`circle_icon hover1 ${showUserMenu && 'active_header'}`}
+          ref={usermenu}
+          onClick={() => {
+            setShowUserMenu((prev) => !prev);
+          }}
+        >
+          <div>
             <div style={{ transform: 'translateY(2px)' }}>
               <ArrowDown1 />
             </div>
           </div>
 
           {showUserMenu && <UserMenu user={user} />}
-        </div> */}
+        </div>
       </div>
     </header>
   );
