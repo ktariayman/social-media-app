@@ -69,7 +69,6 @@ function Header({ page }: any) {
         <Link to='/friends' className={`middle_icon ${page === 'friends' ? 'active' : 'hover1'}`}>
           {page === 'friends' ? <FriendsActive /> : <Friends color={color} />}
         </Link>{' '}
-        *
         <Link to='/' className='middle_icon hover1'>
           <HomeActive />
         </Link>
@@ -94,7 +93,7 @@ function Header({ page }: any) {
         </Link>
         <div className='circle_icon hover1'>
           <Menu />
-        </div>{' '}
+        </div>
         <div className='circle_icon hover1'>
           <Messenger />
         </div>
@@ -102,12 +101,14 @@ function Header({ page }: any) {
           <Notifications />
           <div className='right_notification'>5</div>
         </div>
-        <div className={`circle_icon hover1 ${showUserMenu && 'active_header'}`} ref={usermenu}>
-          <div
-            onClick={() => {
-              setShowUserMenu((prev) => !prev);
-            }}
-          >
+        <div
+          className={`circle_icon hover1 ${showUserMenu && 'active_header'}`}
+          ref={usermenu}
+          onClick={() => {
+            setShowUserMenu((prev) => !prev);
+          }}
+        >
+          <div>
             <div style={{ transform: 'translateY(2px)' }}>
               <ArrowDown1 />
             </div>
