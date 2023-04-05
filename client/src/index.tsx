@@ -5,19 +5,18 @@ import './styles/icons/icons.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './reducers';
-const store = createStore(rootReducer, composeWithDevTools());
+import { persistor, store } from './reducers';
+import { PersistGate } from 'reduxjs-toolkit-persist/integration/react';
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
-    ,
   </React.StrictMode>
 );
