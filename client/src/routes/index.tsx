@@ -1,7 +1,7 @@
 import LoggedInRoutes from './LoggedInRoutes';
 import NotLoggedInRoutes from './NotLoggedInRoutes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Home, Login, Profile } from '../pages';
+import { Home, Login, Profile, Activate } from '../pages';
 import { useState } from 'react';
 import PostPopup from '../components/postPopup';
 import { useSelector } from 'react-redux';
@@ -17,6 +17,10 @@ function AppRoutes() {
         {
           path: '/',
           element: <Home setVisible={setVisible} />
+        },
+        {
+          path: '/activate/:token',
+          element: <Activate setVisible={setVisible} />
         },
         {
           path: '/profile',
