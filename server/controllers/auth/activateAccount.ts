@@ -12,7 +12,7 @@ async function activateAccount(req: AuthenticatedRequest, res: Response) {
     const { token } = req.body;
     const user = jwt.verify(token, TOKEN_SECRET) as JwtPayload;
     const userExist = await User.findById(user.id);
-    if (validUser !== user) {
+    if (validUser !== user.id) {
       return res
         .status(400)
         .json({ message: "You don't have  the authorization to complete this operation " });
