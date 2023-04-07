@@ -4,7 +4,8 @@ import {
   activateAccount,
   login,
   sendVerification,
-  findUserByEmail
+  findUserByEmail,
+  sendResetPasswordCode
 } from '../controllers/auth';
 import isLogin from '../middlewares/isLogin';
 const router: Router = express.Router();
@@ -13,4 +14,5 @@ router.post('/activateAccount', isLogin, activateAccount);
 router.post('/sendVerification', isLogin, sendVerification);
 router.post('/login', login);
 router.post('/findUserByEmail', findUserByEmail);
+router.post('/sendResetPasswordCode', sendResetPasswordCode);
 module.exports = router;
