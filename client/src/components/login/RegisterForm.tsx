@@ -173,6 +173,11 @@ function RegisterForm({ setVisible }: any) {
               <div className='reg_btn_wrapper'>
                 <button className='blue_btn open_signup'>Sign Up</button>
               </div>
+              <div className='reg_btn_wrapper'>
+                <button className='blue_btn haveAccount' onClick={() => setVisible(false)}>
+                  Already have an account ?
+                </button>
+              </div>
               <DotLoader color='#1876f2' loading={loading} size={30} />
               {error && <div className='error_text'>{error}</div>}
               {success && <div className='success_text'>{success}</div>}

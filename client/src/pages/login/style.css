@@ -59,6 +59,12 @@
   font-size: 17px !important;
   margin-top: 1rem;
 }
+.haveAccount {
+  width: 70% !important;
+  font-weight: 600 !important;
+  font-size: 17px !important;
+  margin-top: 1rem;
+}
 .sign_extra {
   font-size: 15px;
 }
