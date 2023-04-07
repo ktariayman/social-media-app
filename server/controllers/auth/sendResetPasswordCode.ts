@@ -9,7 +9,7 @@ async function sendResetPasswordCode(req: Request, res: Response) {
     const { email } = req.body;
     const user = await User.findOne({ email }).select('-password');
     await Code.findOneAndRemove({ user: user._id });
-    const code: number = generateCode(5);
+    const code: string = generateCode(5);
     const savedCode = await new Code({
       code,
       user: user._id
