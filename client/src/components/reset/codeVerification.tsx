@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import LoginInput from '../input/inputLogin/InputLogin';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { validateCode } from '../../helper/validator';
 function CodeVerification({ code, setCode, setLoading, setVisible, setError, userInfos }: any) {
   const { email } = userInfos;
   const verifyCode = async () => {
@@ -32,7 +31,6 @@ function CodeVerification({ code, setCode, setLoading, setVisible, setError, use
         initialValues={{
           code
         }}
-        validationSchema={validateCode}
         onSubmit={() => {
           verifyCode();
         }}
