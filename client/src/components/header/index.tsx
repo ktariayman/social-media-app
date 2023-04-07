@@ -23,16 +23,12 @@ function Header({ page }: any) {
   const color = '#65676b';
   const { user } = useSelector((user: any) => ({ ...user }));
   const [showSearchMenu, setShowSearchMenu] = useState(false);
-  const [showAllMenu, setShowAllMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   console.log(typeof setShowSearchMenu);
 
   const allmenu = useRef(null);
   const usermenu = useRef(null);
 
-  useClickOutside(allmenu, () => {
-    setShowAllMenu(false);
-  });
   useClickOutside(usermenu, () => {
     setShowUserMenu(false);
   });
@@ -101,14 +97,12 @@ function Header({ page }: any) {
           <Notifications />
           <div className='right_notification'>5</div>
         </div>
-        <div
-          className={`circle_icon hover1 ${showUserMenu && 'active_header'}`}
-          ref={usermenu}
-          onClick={() => {
-            setShowUserMenu((prev) => !prev);
-          }}
-        >
-          <div>
+        <div className={`circle_icon hover1 ${showUserMenu && 'active_header'}`} ref={usermenu}>
+          <div
+            onClick={() => {
+              setShowUserMenu((prev) => !prev);
+            }}
+          >
             <div style={{ transform: 'translateY(2px)' }}>
               <ArrowDown1 />
             </div>
