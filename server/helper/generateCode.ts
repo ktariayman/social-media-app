@@ -6,6 +6,6 @@ function generateCode(length: any) {
     code += schema.charAt(Math.floor(Math.random() * schema.length));
   }
 
-  return Number(code);
+  return code;
 }
 export default generateCode;
