@@ -6,7 +6,7 @@ import findUserByEmail from './findUserByEmail';
 import sendResetPasswordCode from './sendResetPasswordCode';
 import validateResetCode from './validateResetCode';
 import changePassword from './changePassword';
-
+import resetPassword from './resetPassword';
 export {
   register,
   activateAccount,
@@ -15,5 +15,6 @@ export {
   findUserByEmail,
   sendResetPasswordCode,
   validateResetCode,
-  changePassword
+  changePassword,
+  resetPassword
 };
