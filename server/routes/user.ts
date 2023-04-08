@@ -10,7 +10,7 @@ import {
   changePassword,
   resetPassword
 } from '../controllers/auth';
-import isLogin from '../middlewares/isLogin';
+import { isLogin } from '../middlewares';
 const router: Router = express.Router();
 router.post('/register', register);
 router.post('/activateAccount', isLogin, activateAccount);

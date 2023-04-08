@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-import User from '../../model/user';
-import Code from '../../model/code';
+import { User, Code } from '../../model';
 import { sendResetCode, generateCode } from '../../helper';
 
 async function sendResetPasswordCode(req: Request, res: Response) {

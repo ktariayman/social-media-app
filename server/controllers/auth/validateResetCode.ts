@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import User from '../../model/user';
-import Code from '../../model/code';
+import { User, Code } from '../../model';
+
 async function validateResetCode(req: Request, res: Response) {
   try {
     const { email, code } = req.body;

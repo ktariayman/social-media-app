@@ -1,4 +1,4 @@
-import User from '../../model/user';
+import { User } from '../../model';
 import { Request, Response } from 'express';
 const findUserByEmail = async (req: Request, res: Response) => {
   try {
