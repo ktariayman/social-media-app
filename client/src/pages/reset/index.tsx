@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
 import { Form, Formik } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchAccount from '../../components/reset/searchAccount';
 import ChangePassword from '../../components/reset/changePassword';
 import CodeVerification from '../../components/reset/codeVerification';
@@ -28,6 +28,9 @@ function ResetPassword() {
     });
     navigate('/login');
   };
+  useEffect(() => {
+    if (user) setVisible(3);
+  }, []);
   return (
     <div className='reset'>
       <div className='reset_header'>
@@ -53,7 +56,7 @@ function ResetPassword() {
         )}
       </div>
       <div className='reset_wrap'>
-        {visible === 0 && (
+        {visible === 0 && !user && (
           <SearchAccount
             email={email}
             setEmail={setEmail}
@@ -64,7 +67,7 @@ function ResetPassword() {
             setVisible={setVisible}
           />
         )}
-        {visible === 1 && userInfos && (
+        {visible === 1 && userInfos && !user && (
           <SendEmail
             email={email}
             userInfos={userInfos}
@@ -75,7 +78,7 @@ function ResetPassword() {
             setVisible={setVisible}
           />
         )}
-        {visible === 2 && (
+        {visible === 2 && !user && (
           <CodeVerification
             user={user}
             code={code}
@@ -98,6 +101,7 @@ function ResetPassword() {
             setLoading={setLoading}
             setVisible={setVisible}
             userInfos={userInfos}
+            user={user}
           />
         )}
       </div>

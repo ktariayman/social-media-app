@@ -25,6 +25,10 @@ function AppRoutes() {
         {
           path: '/profile',
           element: <Profile />
+        },
+        {
+          path: '/changePassword',
+          element: <ResetPassword />
         }
       ]
     },
@@ -35,12 +39,12 @@ function AppRoutes() {
         {
           path: '/login',
           element: <Login />
+        },
+        {
+          path: '/resetPassword',
+          element: <ResetPassword />
         }
       ]
-    },
-    {
-      path: '/resetPassword',
-      element: <ResetPassword />
     }
   ]);
   return (
