@@ -5,6 +5,7 @@ import sendVerification from './sendVerification';
 import findUserByEmail from './findUserByEmail';
 import sendResetPasswordCode from './sendResetPasswordCode';
 import validateResetCode from './validateResetCode';
+import changePassword from './changePassword';
 
 export {
   register,
@@ -13,5 +14,6 @@ export {
   sendVerification,
   findUserByEmail,
   sendResetPasswordCode,
-  validateResetCode
+  validateResetCode,
+  changePassword
 };
