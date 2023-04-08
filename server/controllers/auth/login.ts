@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import User from '../../model/User';
+import User from '../../model/user';
 import bcrypt from 'bcrypt';
 import { generateToken } from '../../helper';
 
@@ -26,7 +26,8 @@ async function login(req: Request, res: Response) {
       first_name: user.first_name,
       last_name: user.last_name,
       token: token,
-      verified: user.verified
+      verified: user.verified,
+      email: user.email
     });
   } catch (error) {
     const errorMessage: string = (error as Error).message;

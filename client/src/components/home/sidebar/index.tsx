@@ -1,12 +1,13 @@
 import LeftLink from './leftLink';
 import './style.css';
 import { left } from './data';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowDown1 } from '../../../svg';
 import { useState } from 'react';
 import Shortcut from './Shortcut';
 function SideBar({ user }: any) {
   const [visible, setVisible] = useState(false);
+  const navigate = useNavigate();
   return (
     <div className='left_home scrollbar'>
       <Link to='/profile' className='left_link hover2'>
@@ -55,10 +56,27 @@ function SideBar({ user }: any) {
         <div className='edit_shortcut'>Edit</div>
       </div>
       <div className='shortcut_list'>
-        <Shortcut link='' img='../../images/ytb.png' name='My Youtube channel' />
-
-        <Shortcut link='' img='../../images/insta.png' name='My Instagram ' />
-        <Shortcut link='' img='../../images/' name='My Linkedin ' />
+        <div
+          onClick={() => {
+            navigate('/youtube');
+          }}
+        >
+          <Shortcut img='../../images/ytb.png' name='My Youtube channel' />
+        </div>
+        <div
+          onClick={() => {
+            navigate('/linkedin');
+          }}
+        >
+          <Shortcut img='../../images/linkedin.png' name='My Linkedin ' />
+        </div>
+        <div
+          onClick={() => {
+            navigate('/spotify');
+          }}
+        >
+          <Shortcut img='../../images/spotify.png' name='Spotify: Listen to music ' />
+        </div>
       </div>
     </div>
   );

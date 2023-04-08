@@ -1,4 +1,4 @@
-import User from '../model/User';
+import User from '../model/user';
 const validateEmail = (email: string) => {
   return String(email)
     .toLowerCase()
