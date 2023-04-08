@@ -3,7 +3,7 @@ import User from '../../model/user';
 import bcrypt from 'bcrypt';
 
 import { validateEmail, validateLength, validateUsername, generateToken } from '../../helper';
-import { sendVerificationEmail } from '../../helper/mailer';
+import { sendVerificationEmail } from '../../helper';
 async function register(req: Request, res: Response) {
   try {
     const { first_name, last_name, email, password, username, bYear, bMonth, bDay, gender } =

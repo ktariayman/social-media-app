@@ -9,11 +9,7 @@ const { EMAIL, MAILING_ID, MAILING_REFRESH, MAILING_SECRET } = process.env;
 
 const auth = new OAuth2(MAILING_ID, MAILING_SECRET, oauthLink);
 
-export const sendVerificationEmail = (
-  email: string,
-  name: string,
-  url: string
-): Promise<Transporter> => {
+const sendVerificationEmail = (email: string, name: string, url: string): Promise<Transporter> => {
   auth.setCredentials({
     refresh_token: MAILING_REFRESH
   });
@@ -47,7 +43,7 @@ export const sendVerificationEmail = (
   });
 };
 
-export const sendResetCode = (email: string, name: string, code: string): Promise<Transporter> => {
+const sendResetCode = (email: string, name: string, code: string): Promise<Transporter> => {
   auth.setCredentials({
     refresh_token: MAILING_REFRESH
   });
@@ -80,3 +76,4 @@ export const sendResetCode = (email: string, name: string, code: string): Promis
     });
   });
 };
+export { sendResetCode, sendVerificationEmail };

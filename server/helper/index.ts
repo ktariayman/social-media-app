@@ -1,3 +1,13 @@
 import { validateEmail, validateLength, validateUsername } from './validation';
 import generateToken from './token';
-export { validateEmail, validateLength, validateUsername, generateToken };
+import generateCode from './generateCode';
+import { sendVerificationEmail, sendResetCode } from './mailer';
+export {
+  validateEmail,
+  validateLength,
+  validateUsername,
+  generateToken,
+  generateCode,
+  sendVerificationEmail,
+  sendResetCode
+};
