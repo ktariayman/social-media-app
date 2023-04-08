@@ -4,6 +4,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { InputLogin } from '../../components';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { validatePassword } from '../../helper';
 export default function ChangePassword({
   password,
   setPassword,
@@ -19,18 +20,7 @@ export default function ChangePassword({
   const [email, setEmail] = useState('');
   const [oldPassword, setOldPassword] = useState('');
   const navigate = useNavigate();
-  const validatePassword = Yup.object({
-    password: Yup.string()
-      .required(
-        'Enter a combination of at least six numbers,letters and punctuation marks(such as ! and &).'
-      )
-      .min(6, 'Password must be atleast 6 characters.')
-      .max(36, "Password can't be more than 36 characters"),
 
-    conf_password: Yup.string()
-      .required('Confirm your password.')
-      .oneOf([Yup.ref('password')], 'Passwords must match.')
-  });
   useEffect(() => {
     if (userInfos) setEmail(userInfos.email);
     if (user) setEmail(user.email);
@@ -125,19 +115,19 @@ export default function ChangePassword({
       >
         {(formik) => (
           <Form>
-            <LoginInput
+            <InputLogin
               type='password'
               name='oldpassword'
               onChange={(e: any) => setOldPassword(e.target.value)}
               placeholder='Old password'
             />
-            <LoginInput
+            <InputLogin
               type='password'
               name='password'
               onChange={(e: any) => setPassword(e.target.value)}
               placeholder='New password'
             />
-            <LoginInput
+            <InputLogin
               type='password'
               name='conf_password'
               onChange={(e: any) => setConf_password(e.target.value)}

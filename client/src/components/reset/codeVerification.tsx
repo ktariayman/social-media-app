@@ -1,9 +1,6 @@
 import { Form, Formik } from 'formik';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { InputLogin } from '../../components';
-
-import * as Yup from 'yup';
 import axios from 'axios';
 function CodeVerification({ code, setCode, setLoading, setVisible, setError, userInfos }: any) {
   const { email } = userInfos;

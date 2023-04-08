@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function DefaultMenu({ picture, first_name, last_name, setVisible, logout }: any) {
