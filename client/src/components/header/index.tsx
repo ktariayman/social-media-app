@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useClickOutside from '../../hooks/useClickOutside';
 import SearchMenu from './SearchMenu';
-import UserMenu from '../userMenu';
+import { UserMenu } from '../../components';
 function Header({ page }: any) {
   const color = '#65676b';
   const { user } = useSelector((user: any) => ({ ...user }));

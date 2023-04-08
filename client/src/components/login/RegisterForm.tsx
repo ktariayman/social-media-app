@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import InputRegister from '../input/inputRegister/InputRegister';
+import { InputRegister } from '../../components';
 import DateOfBirthSelect from './DateOfBirthSelect';
 import GenderSelect from './GenderSelect';
 import { registerValidation } from '../../helper/validator';

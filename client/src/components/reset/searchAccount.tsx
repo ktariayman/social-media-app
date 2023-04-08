@@ -1,7 +1,7 @@
 import { Form, Formik } from 'formik';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import LoginInput from '../input/inputLogin/InputLogin';
+import { InputLogin } from '../../components';
 import * as Yup from 'yup';
 import axios from 'axios';
 export default function SearchAccount({
@@ -53,7 +53,7 @@ export default function SearchAccount({
       >
         {(formik) => (
           <Form>
-            <LoginInput
+            <InputLogin
               type='text'
               name='email'
               onChange={(e: any) => setEmail(e.target.value)}

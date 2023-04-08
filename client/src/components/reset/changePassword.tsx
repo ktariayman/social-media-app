@@ -1,7 +1,7 @@
 import { Form, Formik } from 'formik';
 import { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import LoginInput from '../input/inputLogin/InputLogin';
+import { InputLogin } from '../../components';
 import * as Yup from 'yup';
 import axios from 'axios';
 export default function ChangePassword({
@@ -86,13 +86,13 @@ export default function ChangePassword({
         >
           {(formik) => (
             <Form>
-              <LoginInput
+              <InputLogin
                 type='password'
                 name='password'
                 onChange={(e: any) => setPassword(e.target.value)}
                 placeholder='New password'
               />
-              <LoginInput
+              <InputLogin
                 type='password'
                 name='conf_password'
                 onChange={(e: any) => setConf_password(e.target.value)}

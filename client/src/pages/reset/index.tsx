@@ -4,10 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
 import { Form, Formik } from 'formik';
 import { useEffect, useState } from 'react';
-import SearchAccount from '../../components/reset/searchAccount';
-import ChangePassword from '../../components/reset/changePassword';
-import CodeVerification from '../../components/reset/codeVerification';
-import SendEmail from '../../components/reset/sendEmail';
+import { SendEmail, CodeVerification, ChangePassword, SearchAccount } from '../../components';
 
 function ResetPassword() {
   const { user } = useSelector((state: any) => ({ ...state }));
