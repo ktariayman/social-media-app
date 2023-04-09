@@ -2,6 +2,83 @@ import { Request, Response } from 'express';
 import { User } from '../../model';
 import bcrypt from 'bcrypt';
 import { generateToken } from '../../helper';
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Login a user
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       description: User credentials for login
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: User's email
+ *               password:
+ *                 type: string
+ *                 description: User's password
+ *             required:
+ *               - email
+ *               - password
+ *     responses:
+ *       200:
+ *         description: Login successful. Returns user details and token.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                   description: User's ID.
+ *                 username:
+ *                   type: string
+ *                   description: User's username.
+ *                 picture:
+ *                   type: string
+ *                   description: URL of user's profile picture.
+ *                 first_name:
+ *                   type: string
+ *                   description: User's first name.
+ *                 last_name:
+ *                   type: string
+ *                   description: User's last name.
+ *                 token:
+ *                   type: string
+ *                   description: JWT token for authenticated user.
+ *                 verified:
+ *                   type: boolean
+ *                   description: Whether user's account is verified or not.
+ *                 email:
+ *                   type: string
+ *                   description: User's email.
+ *       400:
+ *         description: Invalid email or password.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ *       500:
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ */
 
 async function login(req: Request, res: Response) {
   try {

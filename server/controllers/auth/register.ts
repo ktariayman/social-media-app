@@ -1,6 +1,108 @@
 import { Request, Response } from 'express';
 import { User } from '../../model';
 import bcrypt from 'bcrypt';
+/**
+ * @swagger
+ * /api/register:
+ *   post:
+ *     summary: Register a new user
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               first_name:
+ *                 type: string
+ *                 description: User's first name
+ *               last_name:
+ *                 type: string
+ *                 description: User's last name
+ *               email:
+ *                 type: string
+ *                 description: User's email address
+ *               password:
+ *                 type: string
+ *                 description: User's password
+ *               username:
+ *                 type: string
+ *                 description: User's username
+ *               bYear:
+ *                 type: string
+ *                 description: User's birth year
+ *               bMonth:
+ *                 type: string
+ *                 description: User's birth month
+ *               bDay:
+ *                 type: string
+ *                 description: User's birth day
+ *               gender:
+ *                 type: string
+ *                 description: User's gender
+ *             example:
+ *               first_name: John
+ *               last_name: Doe
+ *               email: john.doe@example.com
+ *               password: password123
+ *               username: johndoe
+ *               bYear: 1990
+ *               bMonth: 01
+ *               bDay: 01
+ *               gender: male
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                   description: User's ID
+ *                 username:
+ *                   type: string
+ *                   description: User's username
+ *                 picture:
+ *                   type: string
+ *                   description: User's profile picture
+ *                 first_name:
+ *                   type: string
+ *                   description: User's first name
+ *                 last_name:
+ *                   type: string
+ *                   description: User's last name
+ *                 verified:
+ *                   type: boolean
+ *                   description: Whether the user's email is verified or not
+ *                 token:
+ *                   type: string
+ *                   description: JWT access token
+ *                 message:
+ *                   type: string
+ *                   description: Success message
+ *       400:
+ *         description: Bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message
+ */
 
 import { validateEmail, validateLength, validateUsername, generateToken } from '../../helper';
 import { sendVerificationEmail } from '../../helper';
