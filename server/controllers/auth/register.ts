@@ -6,6 +6,8 @@ import bcrypt from 'bcrypt';
  * /api/register:
  *   post:
  *     summary: Register a new user
+ *     tags:
+ *       - Authentication
  *     requestBody:
  *       required: true
  *       content:
