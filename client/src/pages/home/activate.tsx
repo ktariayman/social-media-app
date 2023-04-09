@@ -1,11 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Header from '../../components/header';
-import SideBar from '../../components/home/sidebar';
+import { Header, SideBar, RightHome, Stories, CreatePost } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import RightHome from '../../components/home/right';
-import Stories from '../../components/home/stories';
-import CreatePost from '../../components/createPost';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 

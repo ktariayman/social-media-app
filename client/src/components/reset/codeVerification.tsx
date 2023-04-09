@@ -1,8 +1,6 @@
 import { Form, Formik } from 'formik';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import LoginInput from '../input/inputLogin/InputLogin';
-import * as Yup from 'yup';
+import { InputLogin } from '../../components';
 import axios from 'axios';
 function CodeVerification({ code, setCode, setLoading, setVisible, setError, userInfos }: any) {
   const { email } = userInfos;
@@ -37,7 +35,7 @@ function CodeVerification({ code, setCode, setLoading, setVisible, setError, use
       >
         {(formik) => (
           <Form>
-            <LoginInput
+            <InputLogin
               type='text'
               name='code'
               onChange={(e: any) => setCode(e.target.value)}

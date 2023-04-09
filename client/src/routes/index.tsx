@@ -3,7 +3,7 @@ import NotLoggedInRoutes from './NotLoggedInRoutes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Home, Login, Profile, Activate, ResetPassword } from '../pages';
 import { useState } from 'react';
-import PostPopup from '../components/postPopup';
+import { PostPopup } from '../components';
 import { useSelector } from 'react-redux';
 
 function AppRoutes() {

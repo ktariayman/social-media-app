@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useClickOutside from '../../hooks/useClickOutside';
 import SearchMenu from './SearchMenu';
-import UserMenu from '../userMenu';
+import { UserMenu } from '../../components';
 function Header({ page }: any) {
   const color = '#65676b';
   const { user } = useSelector((user: any) => ({ ...user }));
@@ -80,13 +80,6 @@ function Header({ page }: any) {
         </Link>
       </div>
       <div className='header_right'>
-        <Link
-          to='/profile'
-          className={`profile_link hover1 ${page === 'profile' ? 'active_link' : ''}`}
-        >
-          <img src={user?.picture} alt='' />
-          <span>{user?.first_name}</span>
-        </Link>
         <div className='circle_icon hover1'>
           <Menu />
         </div>
@@ -97,16 +90,14 @@ function Header({ page }: any) {
           <Notifications />
           <div className='right_notification'>5</div>
         </div>
-        <div className={`circle_icon hover1 ${showUserMenu && 'active_header'}`} ref={usermenu}>
-          <div
-            onClick={() => {
-              setShowUserMenu((prev) => !prev);
-            }}
-          >
-            <div style={{ transform: 'translateY(2px)' }}>
-              <ArrowDown1 />
-            </div>
-          </div>
+        <div
+          className={`profile_link circle_icon hover1 ${showUserMenu && 'active_header'}`}
+          ref={usermenu}
+          onClick={() => {
+            setShowUserMenu((prev) => !prev);
+          }}
+        >
+          <img src={user?.picture} alt='' />
 
           {showUserMenu && <UserMenu user={user} />}
         </div>

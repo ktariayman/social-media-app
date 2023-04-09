@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
-import Header from '../../components/header';
-import SideBar from '../../components/home/sidebar';
+import {
+  Header,
+  RightHome,
+  Stories,
+  CreatePost,
+  SendVerification,
+  SideBar
+} from '../../components';
 import { useSelector } from 'react-redux';
-import RightHome from '../../components/home/right';
-import Stories from '../../components/home/stories';
-import CreatePost from '../../components/createPost';
-import PostPopup from '../../components/postPopup';
 import './style.css';
-import SendVerification from '../../components/home/sendVerification/sendVerification';
 function Home({ setVisible, visible }: any) {
   const middle = useRef(null);
   const { user } = useSelector((state: any) => ({ ...state }));

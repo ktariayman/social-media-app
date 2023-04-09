@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { generateToken } from '../../helper';
-import User from '../../model/user';
-import { sendVerificationEmail } from '../../helper/mailer';
+import { User } from '../../model';
+import { sendVerificationEmail } from '../../helper';
 interface AuthenticatedRequest extends Request {
   user?: any;
 }
