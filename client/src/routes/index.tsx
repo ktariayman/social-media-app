@@ -3,8 +3,9 @@ import NotLoggedInRoutes from './NotLoggedInRoutes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Home, Login, Profile, Activate, ResetPassword } from '../pages';
 import { useState } from 'react';
-import { PostPopup } from '../components';
+import { CreateStory, PostPopup } from '../components';
 import { useSelector } from 'react-redux';
+import Storie from '../pages/stories';
 
 function AppRoutes() {
   const { user } = useSelector((state: any) => ({ ...state }));
@@ -29,6 +30,10 @@ function AppRoutes() {
         {
           path: '/changePassword',
           element: <ResetPassword />
+        },
+        {
+          path: '/stories/create',
+          element: <Storie />
         }
       ]
     },

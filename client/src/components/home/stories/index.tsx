@@ -4,7 +4,9 @@ import StoryItem from './StoryItem';
 import stories from './data';
 import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 function Stories({ setStoryVisible }: any) {
+  const navigate = useNavigate();
   const query1175px = useMediaQuery({
     query: '(max-width: 1175px)'
   });
@@ -20,14 +22,14 @@ function Stories({ setStoryVisible }: any) {
   const max = query885px ? 5 : query960px ? 4 : query1030px ? 5 : query1175px ? 4 : stories.length;
   return (
     <div className='stories'>
-      <div className='create_story_card'>
+      <div
+        className='create_story_card'
+        onClick={() => {
+          navigate('/stories/create');
+        }}
+      >
         <img src='../../../images/default_pic.png' alt='' className='create_story_img' />
-        <div
-          className='plus_story'
-          onClick={() => {
-            setStoryVisible(true);
-          }}
-        >
+        <div className='plus_story'>
           <Plus color='#fff' />
         </div>
         <div className='story_create_text'>Create Story</div>

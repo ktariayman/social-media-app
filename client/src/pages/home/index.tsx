@@ -12,24 +12,19 @@ import { useSelector } from 'react-redux';
 import './style.css';
 function Home({ setVisible, visible }: any) {
   const middle = useRef(null);
-  const [storyVisible, setStoryVisible] = useState(false);
+  const [storyVisible, setStoryVisible] = useState(true);
   const { user } = useSelector((state: any) => ({ ...state }));
   return (
     <div className='home'>
       <Header page='home' />
       <SideBar user={user} />
-      {!storyVisible && (
-        <>
-          <RightHome user={user} />
-          <div className='home_middle' ref={middle}>
-            {user.verified === false && <SendVerification user={user} />}
+      <RightHome user={user} />
+      <div className='home_middle' ref={middle}>
+        {user.verified === false && <SendVerification user={user} />}
 
-            <Stories setStoryVisible={setStoryVisible} />
-            <CreatePost user={user} setVisible={setVisible} />
-          </div>
-        </>
-      )}
-      {storyVisible && <CreateStory />}
+        <Stories setStoryVisible={setStoryVisible} />
+        <CreatePost user={user} setVisible={setVisible} />
+      </div>
     </div>
   );
 }
