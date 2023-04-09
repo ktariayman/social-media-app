@@ -22,6 +22,7 @@ import SendEmail from './reset/sendEmail';
 import SearchAccount from './reset/searchAccount';
 import CodeVerification from './reset/codeVerification';
 import UserMenu from './userMenu';
+import CreateStory from './createStory/createStory';
 
 export {
   InputLogin,
@@ -40,5 +41,6 @@ export {
   ChangePassword,
   SearchAccount,
   CodeVerification,
-  UserMenu
+  UserMenu,
+  CreateStory
 };
