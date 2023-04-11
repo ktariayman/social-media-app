@@ -1,32 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './style.css';
-import colorful from './colorful.png';
 import useClickOutside from '../../hooks/useClickOutside';
-import Picker, { EmojiClickData } from 'emoji-picker-react';
+import PulseLoader from 'react-spinners/PulseLoader';
+import EmojiPickerComponent from './emojiPicker';
+import AddToYourPost from './AddToYourPost';
+import ImagePreview from './imagePreview';
 function PostPopup({ setVisible, user, visible }: any) {
   const popup = useRef(null);
-  const textRef = useRef<HTMLTextAreaElement>(null);
+  const [showPrev, setShowPrev] = useState(false);
   const [textValue, setTextValue] = useState('');
+  const [loading, setLoading] = useState(false);
   const [text, setText] = useState('');
-  const [picker, setPicker] = useState(false);
-  const [cursorPosition, setCursorPosition] = useState<number | null>(0);
-  useEffect(() => {
-    if (textRef.current && cursorPosition) {
-      textRef.current.selectionEnd = cursorPosition;
-    }
-  }, [cursorPosition]);
-  const handleTextAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(event.target.value);
-  };
-  const handleEmoji = ({ emoji }: EmojiClickData) => {
-    const ref: any = textRef.current;
-    ref.focus();
-    const start: string = text.substring(0, ref.selectionStart);
-    const end = text.substring(ref.selectionStart);
-    const newText = start + emoji + end;
-    setText(newText);
-    setCursorPosition(start.length + emoji.length);
-  };
+  const textRef = useRef<HTMLTextAreaElement>(null);
+  const [images, setImages] = useState([]);
+  const [error, setError] = useState('');
+
   useClickOutside(popup, () => {
     setVisible(false);
   });
@@ -57,32 +45,26 @@ function PostPopup({ setVisible, user, visible }: any) {
             </div>
           </div>
         </div>
-        {visible && (
-          <div className='flex_center'>
-            <textarea
-              maxLength={100}
-              ref={textRef}
-              value={text}
-              placeholder='think twice and write once '
-              onChange={handleTextAreaChange}
-              className='post_input'
-            ></textarea>
-          </div>
+        {!showPrev ? (
+          <>
+            <EmojiPickerComponent text={text} setText={setText} textRef={textRef} user={user} />
+          </>
+        ) : (
+          <ImagePreview
+            text={text}
+            user={user}
+            setText={setText}
+            showPrev={showPrev}
+            images={images}
+            setImages={setImages}
+            setShowPrev={setShowPrev}
+            setError={setError}
+          />
         )}
-        <div className='post_emojis_wrap'>
-          {picker && (
-            <div className='comment_emoji_picker rlmove'>
-              <Picker onEmojiClick={handleEmoji} />
-            </div>
-          )}
-          <img src={colorful} />
-          <i
-            className='emoji_icon_large'
-            onClick={() => {
-              setPicker((prev) => !prev);
-            }}
-          ></i>
-        </div>
+        <AddToYourPost setShowPrev={setShowPrev} />
+        <button className='post_submit' disabled={loading}>
+          {loading ? <PulseLoader color='#fff' size={5} /> : 'Post'}
+        </button>
       </div>
     </div>
   );
