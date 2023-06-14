@@ -1,3 +1,4 @@
 import isLogin from './isLogin';
+import imageUpload from './imageUpload';
 
-export { isLogin };
+export { isLogin ,imageUpload};

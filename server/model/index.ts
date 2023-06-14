@@ -1,4 +1,5 @@
 import User from './user';
 import Code from './code';
+import Post from './post';
 
-export { User, Code };
+export { User, Code, Post };

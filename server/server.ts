@@ -5,7 +5,7 @@ import cors from 'cors';
 import { readdirSync } from 'fs';
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
-
+import fileUpload from "express-fileupload"
 import { connectDB } from './config/db';
 
 const options = {
@@ -28,6 +28,9 @@ const specs = swaggerJsDoc(options);
 const app: Application = express();
 connectDB();
 app.use(cors());
+app.use(fileUpload({
+  useTempFiles:true
+}))
 app.use(express.json());
 readdirSync('./routes').map((r) => app.use('/api', require(`./routes/${r}`)));
 app.get('/hello', (req: Request, res: Response) => {
