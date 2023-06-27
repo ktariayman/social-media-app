@@ -4,9 +4,9 @@ import EmojiPickerComponent from './emojiPicker';
 function ImagePreview({ text, user, setText, images, setImages, setShowPrev, setError }: any) {
   const imageInputRef = useRef<any>(null);
   const handleImages = (e: any) => {
+    console.log('e',e)
     let files = Array.from(e.target.files);
     files.forEach((img: any) => {
-      console.log(img);
       if (
         img.type !== 'image/jpeg' &&
         img.type !== 'image/png' &&

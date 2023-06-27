@@ -5,6 +5,10 @@ import PulseLoader from 'react-spinners/PulseLoader';
 import EmojiPickerComponent from './emojiPicker';
 import AddToYourPost from './AddToYourPost';
 import ImagePreview from './imagePreview';
+import { createPost } from '../../functions';
+import PostError from './postError';
+import dataURItoBlob from '../../helper/dataURItoBlob';
+import { uploadImages } from '../../functions/uploadImages';
 function PostPopup({ setVisible, user, visible }: any) {
   const popup = useRef(null);
   const [showPrev, setShowPrev] = useState(false);
@@ -14,13 +18,68 @@ function PostPopup({ setVisible, user, visible }: any) {
   const textRef = useRef<HTMLTextAreaElement>(null);
   const [images, setImages] = useState([]);
   const [error, setError] = useState('');
+  const [background, setBackground] = useState('');
 
   useClickOutside(popup, () => {
     setVisible(false);
   });
+
+const postSubmit = async (): Promise<void> => {
+  if (background) {
+    await handleBackgroundPost();
+  } else if (images && images.length > 0) {
+    await handleImagePost();
+  } else if (text) {
+  }
+};
+
+const handleBackgroundPost = async (): Promise<void> => {
+  setLoading(true);
+  try {
+    const response = await createPost(null, background, text, null, user.id, user.token);
+    if (response === "ok") {
+      setBackground('');
+      setText('');
+      setVisible(false);
+    } else {
+      setError(response);
+    }
+  } catch (error :any) {
+    setError(error.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
+const handleImagePost = async (): Promise<void> => {
+  setLoading(true);
+  try {
+    const postImages = images.map(dataURItoBlob);
+    const path = `${user.username}/postImages`;
+    const formData = new FormData();
+    formData.append('path', path);
+    postImages.forEach((image) => {
+      formData.append('file', image);
+    });
+    const response = await uploadImages(formData, path, user.token);
+    const res  =await createPost(null, null, text, response, user.id, user.token);
+    if (res === "ok") {
+      setText('');
+      setImages([]);
+      setVisible(false);
+    } else {
+      setError(res);
+    }
+  } catch (error:any) {
+    setError(error.message);
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <div className='blur'>
       <div className='postBox' ref={popup}>
+        {error &&<PostError error={error} setError={setError}/>}
         <div className='box_header'>
           <div
             className='small_circle'
@@ -47,7 +106,7 @@ function PostPopup({ setVisible, user, visible }: any) {
         </div>
         {!showPrev ? (
           <>
-            <EmojiPickerComponent text={text} setText={setText} textRef={textRef} user={user} />
+            <EmojiPickerComponent background={background} setBackground={setBackground} text={text} setText={setText} textRef={textRef} user={user} />
           </>
         ) : (
           <ImagePreview
@@ -62,7 +121,7 @@ function PostPopup({ setVisible, user, visible }: any) {
           />
         )}
         <AddToYourPost setShowPrev={setShowPrev} />
-        <button className='post_submit' disabled={loading}>
+        <button className='post_submit' disabled={loading} onClick={()=>{postSubmit()}}>
           {loading ? <PulseLoader color='#fff' size={5} /> : 'Post'}
         </button>
       </div>
