@@ -9,5 +9,8 @@
     "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "file-saver": "^2.0.5"
+  }
 }
