@@ -21,7 +21,6 @@ function AppRoutes() {
       dispatch({type:"POST_REQUEST"})
       const data = await getAllPostsService(user?.token)
       dispatch({type:'POST_SUCCESS',payload:data})
-      console.log('data from',data)
     } catch (error :any) {
       dispatch({type:"POST_ERROR",payload:"error.response.data.message"})
     }
@@ -36,7 +35,7 @@ function AppRoutes() {
       children: [
         {
           path: '/',
-          element: <Home setVisible={setVisible}  />
+          element: <Home setVisible={setVisible} posts={posts} />
         },
         {
           path: '/activate/:token',

@@ -5,11 +5,12 @@ import {
   Stories,
   CreatePost,
   SendVerification,
-  SideBar
+  SideBar,
+  Post
 } from '../../components';
 import { useSelector } from 'react-redux';
 import './style.css';
-function Home({ setVisible, visible }: any) {
+function Home({ setVisible, visible , posts }: any) {
   const middle = useRef(null);
   const { user } = useSelector((state: any) => ({ ...state }));
   return (
@@ -19,9 +20,11 @@ function Home({ setVisible, visible }: any) {
       <RightHome user={user} />
       <div className='home_middle' ref={middle}>
         {user.verified === false && <SendVerification user={user} />}
-
         <Stories />
         <CreatePost user={user} setVisible={setVisible} />
+        {posts.map((post:any, i:number)=>{
+          return <Post key={i} post={post} user={user}/>
+        })}
       </div>
     </div>
   );
