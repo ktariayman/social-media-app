@@ -5,10 +5,9 @@ import PulseLoader from 'react-spinners/PulseLoader';
 import EmojiPickerComponent from './emojiPicker';
 import AddToYourPost from './AddToYourPost';
 import ImagePreview from './imagePreview';
-import { createPost } from '../../functions';
+import { createPostService ,uploadImages} from '../../functions';
 import PostError from './postError';
 import dataURItoBlob from '../../helper/dataURItoBlob';
-import { uploadImages } from '../../functions/uploadImages';
 function PostPopup({ setVisible, user, visible }: any) {
   const popup = useRef(null);
   const [showPrev, setShowPrev] = useState(false);
@@ -36,7 +35,7 @@ const postSubmit = async (): Promise<void> => {
 const handleBackgroundPost = async (): Promise<void> => {
   setLoading(true);
   try {
-    const response = await createPost(null, background, text, null, user.id, user.token);
+    const response = await createPostService(null, background, text, null, user.id, user.token);
     if (response === "ok") {
       setBackground('');
       setText('');
@@ -62,7 +61,7 @@ const handleImagePost = async (): Promise<void> => {
       formData.append('file', image);
     });
     const response = await uploadImages(formData, path, user.token);
-    const res  =await createPost(null, null, text, response, user.id, user.token);
+    const res  =await createPostService(null, null, text, response, user.id, user.token);
     if (res === "ok") {
       setText('');
       setImages([]);

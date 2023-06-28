@@ -2,13 +2,33 @@ import LoggedInRoutes from './LoggedInRoutes';
 import NotLoggedInRoutes from './NotLoggedInRoutes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Home, Login, Profile, Activate, ResetPassword } from '../pages';
-import { useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { PostPopup } from '../components';
 import { useSelector } from 'react-redux';
+import postReducer from '../reducers/postReducer';
+import { getAllPostsService } from '../functions';
 
 function AppRoutes() {
   const { user } = useSelector((state: any) => ({ ...state }));
   const [visible, setVisible] = useState(false);
+  const [{loading,error,posts},dispatch]=useReducer(postReducer,{
+    loading:false,
+    posts:[],
+    error:''
+  })
+  const handleGetAllPosts=async()=>{
+    try {
+      dispatch({type:"POST_REQUEST"})
+      const data = await getAllPostsService(user?.token)
+      dispatch({type:'POST_SUCCESS',payload:data})
+      console.log('data from',data)
+    } catch (error :any) {
+      dispatch({type:"POST_ERROR",payload:"error.response.data.message"})
+    }
+  }
+  useEffect(()=>{
+    handleGetAllPosts()
+  },[])
   const router = createBrowserRouter([
     {
       path: '/',
@@ -16,7 +36,7 @@ function AppRoutes() {
       children: [
         {
           path: '/',
-          element: <Home setVisible={setVisible} />
+          element: <Home setVisible={setVisible}  />
         },
         {
           path: '/activate/:token',
