@@ -8,6 +8,7 @@ import RegisterForm from './login/RegisterForm';
 // Post
 import PostPopup from './postPopup';
 import CreatePost from './createPost';
+import Post from './post';
 
 // header
 import Header from './header';
@@ -31,6 +32,7 @@ export {
   RegisterForm,
   PostPopup,
   CreatePost,
+  Post,
   Header,
   RightHome,
   SendVerification,
