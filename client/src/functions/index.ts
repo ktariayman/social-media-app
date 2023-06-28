@@ -1,8 +1,18 @@
-import { createPostService } from "./createPost";
-import { getAllPostsService } from "./getAllPosts";
+import { comment } from "./post/comment";
+import { createPostService } from "./post/createPost";
+import { deletePost } from "./post/deletePost";
+import { getAllPostsService } from "./post/getAllPosts";
+import { getReacts } from "./post/getReacts";
+import { reactPost } from "./post/reactPost";
+import { savePost } from "./post/savePost";
 import { uploadImages } from "./uploadImages";
 export {
  createPostService,
 uploadImages,
-getAllPostsService
+getAllPostsService,
+reactPost,
+deletePost,
+savePost,
+comment,
+getReacts
 }
