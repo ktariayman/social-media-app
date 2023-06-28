@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { User } from '../../model';
 import bcrypt from 'bcrypt';
 import jwt, { JwtPayload } from 'jsonwebtoken';
-import { TOKEN_SECRET } from '../../config/config';
+import { TOKEN_SECRET } from '../../config';
 interface AuthenticatedRequest extends Request {
   user?: any;
 }

@@ -6,7 +6,7 @@ import { readdirSync } from 'fs';
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 import fileUpload from "express-fileupload"
-import { connectDB } from './config/db';
+import { connectDB } from './config';
 
 const options = {
   definition: {
