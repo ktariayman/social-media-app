@@ -2,8 +2,11 @@ import React from 'react';
 
 import { Feeling, LiveVideo, Photo } from '../../svg';
 import UserMenu from '../userMenu';
+import { CreatePostIcon } from './createPostIcon';
 import './style.css';
-function CreatePost({ user, setVisible, profile }: any) {
+
+
+function CreatePost({ user, setVisible, profile ,showPrev,setShowPrev}: any) {
   return (
     <div className='createPost'>
       <div className='createPost_header'>
@@ -19,25 +22,34 @@ function CreatePost({ user, setVisible, profile }: any) {
       </div>
       <div className='create_splitter'></div>
       <div className='createPost_body'>
-        <div className='createPost_icon hover1'>
-          <LiveVideo color='#f3425f' />
-          Live Video
+      <CreatePostIcon>
+        <LiveVideo color='#f3425f' />
+        Live Video
+      </CreatePostIcon>
+      <CreatePostIcon onClick={() => {
+            setVisible(true);
+            setShowPrev(true)
+          }}>
+      <div  >
+        <Photo color='#4bbf67' />
+     
+        Photo/Video
         </div>
-        <div className='createPost_icon hover1'>
-          <Photo color='#4bbf67' />
-          Photo/Video
-        </div>
-        {profile ? (
-          <div className='createPost_icon hover1'>
-            <i className='lifeEvent_icon'></i>
-            Life Event
-          </div>
-        ) : (
-          <div className='createPost_icon hover1'>
-            <Feeling color='#f7b928' />
-            Feeling/Activity
-          </div>
-        )}
+      </CreatePostIcon>
+
+      {profile ? (
+      <CreatePostIcon>
+        <i className='lifeEvent_icon'></i>
+        Life Event
+      </CreatePostIcon>
+      ) : (
+      <CreatePostIcon>
+        <Feeling color='#f7b928' />
+        Feeling/Activity
+
+      </CreatePostIcon>
+
+      )}
       </div>
     </div>
   );

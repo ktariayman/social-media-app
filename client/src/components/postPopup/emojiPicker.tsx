@@ -1,8 +1,8 @@
 import Picker, { EmojiClickData } from 'emoji-picker-react';
 import React, { useEffect, useRef, useState } from 'react';
-import colorful from './colorful.png';
+import { ArrowRight } from '../../svg';
 
-function EmojiPickerComponent({ text, setText, textRef, user, type2 ,background,setBackground}: any) {
+function EmojiPickerComponent({ text, setText, textRef, user, type2 ,background,setBackground,imageInputRef}: any) {
   const [showBgs, setShowBgs] = useState(false);
   const [picker, setPicker] = useState(false);
   const [cursorPosition, setCursorPosition] = useState<number | null>(0);
@@ -11,8 +11,10 @@ function EmojiPickerComponent({ text, setText, textRef, user, type2 ,background,
     if (textRef && textRef.current && cursorPosition) {
       textRef.current.selectionEnd = cursorPosition;
     }
-  }, [cursorPosition]);
 
+    
+  }, [cursorPosition]);
+  
   const postBackgrounds = [
     "../../../images/postbackgrounds/1.jpg",
     "../../../images/postbackgrounds/2.jpg",
@@ -44,7 +46,7 @@ function EmojiPickerComponent({ text, setText, textRef, user, type2 ,background,
     setText(event.target.value);
   };
   const handleEmoji = ({ emoji }: EmojiClickData) => {
-    const ref: any = textRef?.current;
+    const ref: any = textRef?.current
     ref.focus();
     const start: string = text.substring(0, ref.selectionStart);
     const end = text.substring(ref.selectionStart);
@@ -73,9 +75,16 @@ function EmojiPickerComponent({ text, setText, textRef, user, type2 ,background,
             <Picker onEmojiClick={handleEmoji} />
           </div>
         )}
-        {!type2 && <img src={colorful} 
+        {!type2 && !showBgs && <img src='"../../../images/postbackgrounds/colorful.png' 
         onClick={()=>{setShowBgs((prev)=>!prev)}}
         />}
+          {!type2 && showBgs && <div
+        onClick={()=>{setShowBgs((prev)=>!prev)}}
+        className='rotate-180'
+        style={{background:"#444",padding:0,height:'auto'}}
+        >
+        <ArrowRight color="#eee" />
+        </div>}
         {!type2 && showBgs && (
           <div className="post_backgrounds">
             <div

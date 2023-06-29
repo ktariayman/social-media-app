@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import EmojiPickerComponent from './emojiPicker';
 
-function ImagePreview({ text, user, setText, images, setImages, setShowPrev, setError }: any) {
+function ImagePreview({ text, user, setText, images, setImages, setShowPrev, setError,textRef }: any) {
   const imageInputRef = useRef<any>(null);
   const handleImages = (e: any) => {
     console.log('e',e)
@@ -31,7 +31,7 @@ function ImagePreview({ text, user, setText, images, setImages, setShowPrev, set
   };
   return (
     <div className='overflow_a scrollbar'>
-      <EmojiPickerComponent text={text} user={user} setText={setText} type2 />
+      <EmojiPickerComponent text={text} user={user} setText={setText} type2  imageInputRef={imageInputRef} textRef={textRef}/>
       <div className='add_pics_wrap'>
         <input
           type='file'

@@ -1,24 +1,19 @@
 import React, { useRef, useState } from 'react';
 import './style.css';
 import {
-  ArrowDown1,
-  Friends,
-  FriendsActive,
-  Home,
-  HomeActive,
   Logo,
-  Market,
   Menu,
   Messenger,
   Notifications,
   Search,
-  Watch
 } from '../../svg';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useClickOutside from '../../hooks/useClickOutside';
 import SearchMenu from './SearchMenu';
 import { UserMenu } from '../../components';
+import HeaderMiddle from './HeaderMiddle';
+
 function Header({ page }: any) {
   const color = '#65676b';
   const { user } = useSelector((user: any) => ({ ...user }));
@@ -54,7 +49,7 @@ function Header({ page }: any) {
         // <SearchMenu color={color} setShowSearchMenu={setShowSearchMenu} token={user.token} />
         <SearchMenu color={color} setShowSearchMenu={setShowSearchMenu} />
       )}
-      <div className='header_middle'>
+      {/* <div className='header_middle'>
         <Link
           to='/'
           className={`middle_icon ${page === 'home' ? 'active' : 'hover1'}`}
@@ -78,7 +73,8 @@ function Header({ page }: any) {
         <Link to='/' className='middle_icon hover1'>
           <Market color={color} />
         </Link>
-      </div>
+      </div> */}
+      <HeaderMiddle page={page} color={color}/>
       <div className='header_right'>
         <div className='circle_icon hover1'>
           <Menu />

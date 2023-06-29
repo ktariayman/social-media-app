@@ -23,3 +23,21 @@ function postReducer(
  }
 }
 export default postReducer;
+
+// postAction.ts
+
+export enum PostActionType {
+  POST_REQUEST = 'POST_REQUEST',
+  POST_SUCCESS = 'POST_SUCCESS',
+  POST_ERROR = 'POST_ERROR',
+}
+
+export interface PostAction {
+  type: PostActionType;
+  payload?: any;
+}
+export interface PostState {
+  loading: boolean;
+  posts: any[]; // Replace `any` with the actual type of posts
+  error: string;
+}

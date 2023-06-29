@@ -8,9 +8,8 @@ import ImagePreview from './imagePreview';
 import { createPostService ,uploadImages} from '../../functions';
 import PostError from './postError';
 import dataURItoBlob from '../../helper/dataURItoBlob';
-function PostPopup({ setVisible, user, visible }: any) {
+function PostPopup({ setVisible, user, visible,setShowPrev,showPrev }: any) {
   const popup = useRef(null);
-  const [showPrev, setShowPrev] = useState(false);
   const [textValue, setTextValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState('');
@@ -21,6 +20,7 @@ function PostPopup({ setVisible, user, visible }: any) {
 
   useClickOutside(popup, () => {
     setVisible(false);
+    setShowPrev(false)
   });
 
 const postSubmit = async (): Promise<void> => {
@@ -117,6 +117,7 @@ const handleImagePost = async (): Promise<void> => {
             setImages={setImages}
             setShowPrev={setShowPrev}
             setError={setError}
+            textRef={textRef}
           />
         )}
         <AddToYourPost setShowPrev={setShowPrev} />

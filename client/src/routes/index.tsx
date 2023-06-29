@@ -11,23 +11,8 @@ import { getAllPostsService } from '../functions';
 function AppRoutes() {
   const { user } = useSelector((state: any) => ({ ...state }));
   const [visible, setVisible] = useState(false);
-  const [{loading,error,posts},dispatch]=useReducer(postReducer,{
-    loading:false,
-    posts:[],
-    error:''
-  })
-  const handleGetAllPosts=async()=>{
-    try {
-      dispatch({type:"POST_REQUEST"})
-      const data = await getAllPostsService(user?.token)
-      dispatch({type:'POST_SUCCESS',payload:data})
-    } catch (error :any) {
-      dispatch({type:"POST_ERROR",payload:"error.response.data.message"})
-    }
-  }
-  useEffect(()=>{
-    handleGetAllPosts()
-  },[])
+  const [showPrev, setShowPrev] = useState(false);
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -35,7 +20,7 @@ function AppRoutes() {
       children: [
         {
           path: '/',
-          element: <Home setVisible={setVisible} posts={posts} />
+          element: <Home setVisible={setVisible}  showPrev={showPrev} setShowPrev={setShowPrev}/>
         },
         {
           path: '/activate/:token',
@@ -68,7 +53,7 @@ function AppRoutes() {
   ]);
   return (
     <>
-      {visible && <PostPopup setVisible={setVisible} user={user} visible={visible} />}
+      {visible && <PostPopup setVisible={setVisible} user={user} visible={visible} showPrev={showPrev} setShowPrev={setShowPrev}/>}
 
       <RouterProvider router={router} />
     </>

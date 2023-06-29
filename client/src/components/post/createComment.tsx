@@ -19,7 +19,9 @@ export default function CreateComment({ user, postId, setComments, setCount }:an
     }
   }, [cursorPosition]);
   const handleEmoji = (e:any, { emoji }:any) => {
-    const ref :any = textRef.current;
+    let ref :any 
+    if( textRef && textRef.current   )
+    ref= textRef.current
     ref.focus();
     const start = text.substring(0, ref.selectionStart);
     const end = text.substring(ref.selectionStart);
