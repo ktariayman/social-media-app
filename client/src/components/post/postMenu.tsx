@@ -64,12 +64,12 @@ export default function PostMenu({
           title="Turn on notifications for this post"
         />
       )}
-      {imagesLength && (
+      {imagesLength >=0 && (
         <div onClick={() => downloadImages()}>
           <MenuItem icon="download_icon" title="Download" />
         </div>
       )}
-      {imagesLength && (
+      {imagesLength >=0 &&  (
         <MenuItem icon="fullscreen_icon" title="Enter Fullscreen" />
       )}
       {test && <MenuItem img="../../../icons/lock.png" title="Edit audience" />}

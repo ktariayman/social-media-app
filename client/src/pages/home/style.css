@@ -10,6 +10,9 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.createPost{
+  margin-bottom: 10px;
+}
 @media (max-width: 1175px) {
   .stories,
   .createPost,

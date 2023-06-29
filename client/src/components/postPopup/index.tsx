@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './style.css';
 import useClickOutside from '../../hooks/useClickOutside';
 import PulseLoader from 'react-spinners/PulseLoader';
-import EmojiPickerComponent from './emojiPicker';
+import EmojiPickerComponent from './emojiPicker/emojiPicker';
 import AddToYourPost from './AddToYourPost';
 import ImagePreview from './imagePreview';
 import { createPostService ,uploadImages} from '../../functions';
@@ -17,6 +17,7 @@ function PostPopup({ setVisible, user, visible,setShowPrev,showPrev }: any) {
   const [images, setImages] = useState([]);
   const [error, setError] = useState('');
   const [background, setBackground] = useState('');
+  const [picker, setPicker] = useState(false);
 
   useClickOutside(popup, () => {
     setVisible(false);
@@ -105,7 +106,7 @@ const handleImagePost = async (): Promise<void> => {
         </div>
         {!showPrev ? (
           <>
-            <EmojiPickerComponent background={background} setBackground={setBackground} text={text} setText={setText} textRef={textRef} user={user} />
+            <EmojiPickerComponent picker={picker} setPicker={setPicker} background={background} setBackground={setBackground} text={text} setText={setText} textRef={textRef} user={user} />
           </>
         ) : (
           <ImagePreview
@@ -120,7 +121,7 @@ const handleImagePost = async (): Promise<void> => {
             textRef={textRef}
           />
         )}
-        <AddToYourPost setShowPrev={setShowPrev} />
+        <AddToYourPost setShowPrev={setShowPrev} setPicker={setPicker} />
         <button className='post_submit' disabled={loading} onClick={()=>{postSubmit()}}>
           {loading ? <PulseLoader color='#fff' size={5} /> : 'Post'}
         </button>

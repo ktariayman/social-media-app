@@ -21,11 +21,9 @@ function SearchMenu({ color, setShowSearchMenu }: any) {
   return (
     <div className='header_left search_area scrollbar' ref={menu}>
       <div className='search_wrap'>
-        <div className='header_logo'>
-          <div className='circle hover1'>
+          <div className='circle hover1 '>
             <Return color={color} />
           </div>
-        </div>
         <div
           className='search'
           onClick={() => {
@@ -52,6 +50,10 @@ function SearchMenu({ color, setShowSearchMenu }: any) {
             }}
           />
         </div>
+          <div className='circle hover1 ' onClick={()=>{setShowSearchMenu(false)}}>
+            <i className='exit_icon'></i>
+          </div>
+          
       </div>
       {results.length == 0 && (
         <div className='search_history_header'>

@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Feeling, LiveVideo, Photo } from '../../svg';
 import UserMenu from '../userMenu';
-import { CreatePostIcon } from './createPostIcon';
 import './style.css';
+import { CreatePostIcon } from './createPostIcon';
 
 
 function CreatePost({ user, setVisible, profile ,showPrev,setShowPrev}: any) {

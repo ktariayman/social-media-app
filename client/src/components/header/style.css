@@ -35,6 +35,9 @@ header {
   border-radius: 50px;
   cursor: text;
 }
+.flex{
+  display: flex;
+}
 .search input {
   outline: none;
   border: none;
@@ -52,8 +55,6 @@ header {
 .header_middle {
   display: flex;
   align-items: center;
-  gap: 14px;
-  transform: translateX(3px);
 }
 .middle_icon {
   position: relative;
@@ -103,10 +104,7 @@ header {
 
 .header_right {
   display: flex;
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
+  align-items: center;
 }
 .profile_link {
   display: flex;
@@ -168,6 +166,10 @@ header {
   min-height: 400px;
   max-height: 70vh;
   padding: 8px 16px 10px 6px;
+}
+.search_area .header_logo{
+  display: flex;
+  align-items: center;
 }
 .search_wrap {
   display: flex;

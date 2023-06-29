@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { InputRegister } from '../../components';
 import DateOfBirthSelect from './DateOfBirthSelect';
@@ -10,20 +10,22 @@ import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import DotLoader from 'react-spinners/DotLoader';
+import useClickOutside from '../../hooks/useClickOutside';
 
 function RegisterForm({ setVisible }: any) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setUser] = useState(RegisterFormData);
 
-  // state
-
   const [dateError, setDateError] = useState('');
   const [genderError, setGenderError] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
-
+  const registerRef= useRef(null)
+  useClickOutside(registerRef, () => {
+    setVisible(false)
+  });
   const { first_name, last_name, email, password, bYear, bMonth, bDay, gender } = user;
   const yearTemp = new Date().getFullYear();
   const handleRegisterChange = (e: any) => {
@@ -63,8 +65,8 @@ function RegisterForm({ setVisible }: any) {
     }
   };
   return (
-    <div className='blur'>
-      <div className='register'>
+    <div className='blur' >
+      <div className='register' ref={registerRef}>
         <div className='register_header'>
           <i className='exit_icon' onClick={() => setVisible(false)}></i>
           <span>Sign Up</span>

@@ -1,37 +1,48 @@
 export const left = [
   {
     text: 'Find friends',
-    img: 'friends'
+    img: 'friends',
+    to:"/friends"
   },
   {
     text: 'Memories',
-    img: 'memories'
+    img: 'memories',
+    to:'memories'
   },
   {
     text: 'Groups',
     img: 'groups',
-    notification: '5 new'
+    notification: '5 new',
+    to:'/groups'
+
   },
   {
     text: 'Marketplace',
-    img: 'marketplace'
+    img: 'marketplace',
+    to:'/marketplace'
   },
   {
     text: 'Watch',
     img: 'watch',
-    notification: '9 new videos'
+    notification: '9 new videos',
+    to:'/watch'
+
   },
   {
     text: 'Saved',
-    img: 'saved'
+    img: 'saved',
+    to:'/saved'
   },
   {
     text: 'Pages',
-    img: 'pages'
+    img: 'pages',
+    to:'/pages'
   },
   {
     text: 'Events',
-    img: 'events'
+    img: 'events',
+    to:'/events'
+
   },
   {
     text: 'Ad Center',

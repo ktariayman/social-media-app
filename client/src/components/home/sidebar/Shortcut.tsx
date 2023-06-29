@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 function Shortcut({ link, img, name }: any) {
   return (
-    <a href={link} target='_blank' rel='noreferrer' className='shortcut_item'>
+    <Link to={link} rel='noreferrer' className='shortcut_item'>
       <img src={img} alt='' />
       <span>{name}</span>
-    </a>
+    </Link>
   );
 }
 export default Shortcut;

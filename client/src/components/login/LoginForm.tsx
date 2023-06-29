@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import DotLoader from 'react-spinners/DotLoader';
 
-function LoginForm({ setVisible }: any) {
+function LoginForm({ setVisible ,setVisiblePage}: any) {
   const [login, setLogin] = useState(loginFormData);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -37,8 +37,9 @@ function LoginForm({ setVisible }: any) {
   return (
     <div className='login_wrap'>
       <div className='login_1'>
-        <img src='../../icons/facebook.svg' alt='' />
-        <span>Facebook helps you connect and share with the people in your life.</span>
+        <img  src='../../icons/facebook.svg' alt='' />
+        <p style={{fontWeight:"400",fontSize:"30px"}}>Recent Logins</p>
+        <p>Click your picture or Add Account.</p>
       </div>
       <div className='login_2'>
         <div className='login_2_wrap'>
@@ -85,9 +86,7 @@ function LoginForm({ setVisible }: any) {
             Create Account
           </button>
         </div>
-        <Link to='/' className='sign_extra'>
-          <b>Create a Page</b> for a celebrity, brand or business.
-        </Link>
+          <b onClick={()=>{setVisiblePage(true)}} style={{cursor:'pointer'}}>Create a Page</b> for a celebrity, brand or business.
       </div>
     </div>
   );

@@ -17,7 +17,8 @@ function SideBar({ user }: any) {
         </span>
       </Link>
       {left.slice(0, 8).map((link: any, i: any) => (
-        <LeftLink key={i} img={link.img} text={link.text} notification={link.notification} />
+      
+        <LeftLink key={i} img={link.img} text={link.text} notification={link.notification} link={link.to}/>
       ))}
       {!visible && (
         <div
@@ -56,27 +57,9 @@ function SideBar({ user }: any) {
         <div className='edit_shortcut'>Edit</div>
       </div>
       <div className='shortcut_list'>
-        <div
-          onClick={() => {
-            navigate('/youtube');
-          }}
-        >
-          <Shortcut img='../../images/ytb.png' name='My Youtube channel' />
-        </div>
-        <div
-          onClick={() => {
-            navigate('/linkedin');
-          }}
-        >
-          <Shortcut img='../../images/linkedin.png' name='My Linkedin ' />
-        </div>
-        <div
-          onClick={() => {
-            navigate('/spotify');
-          }}
-        >
-          <Shortcut img='../../images/spotify.png' name='Spotify: Listen to music ' />
-        </div>
+          <Shortcut img='../../images/ytb.png' name='My Youtube channel' link={'youtube'}/>
+          <Shortcut img='../../images/linkedin.png' name='My Linkedin '   link={'linkedin'}/>
+          <Shortcut img='../../images/spotify.png' name='Spotify: Listen to music ' link={'spotify'} />
       </div>
     </div>
   );

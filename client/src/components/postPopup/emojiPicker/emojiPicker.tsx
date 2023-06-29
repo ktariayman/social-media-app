@@ -1,10 +1,10 @@
 import Picker, { EmojiClickData } from 'emoji-picker-react';
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight } from '../../svg';
+import { ArrowRight } from '../../../svg';
+import postBackgroundsData from './emojiPickerData';
 
-function EmojiPickerComponent({ text, setText, textRef, user, type2 ,background,setBackground,imageInputRef}: any) {
+function EmojiPickerComponent({ picker , setPicker ,text, setText, textRef, user, type2 ,background,setBackground,imageInputRef}: any) {
   const [showBgs, setShowBgs] = useState(false);
-  const [picker, setPicker] = useState(false);
   const [cursorPosition, setCursorPosition] = useState<number | null>(0);
   const bgRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
@@ -15,21 +15,10 @@ function EmojiPickerComponent({ text, setText, textRef, user, type2 ,background,
     
   }, [cursorPosition]);
   
-  const postBackgrounds = [
-    "../../../images/postbackgrounds/1.jpg",
-    "../../../images/postbackgrounds/2.jpg",
-    "../../../images/postbackgrounds/3.jpg",
-    "../../../images/postbackgrounds/4.jpg",
-    "../../../images/postbackgrounds/5.jpg",
-    "../../../images/postbackgrounds/6.jpg",
-    "../../../images/postbackgrounds/7.jpg",
-    "../../../images/postbackgrounds/8.jpg",
-    "../../../images/postbackgrounds/9.jpg",
-  ];
   const backgroundHandler = (i: number) => {
     if (bgRef.current  ) {
-      bgRef.current.style.backgroundImage = `url(${postBackgrounds[i]})`;
-      setBackground(postBackgrounds[i]);
+      bgRef.current.style.backgroundImage = `url(${postBackgroundsData[i]})`;
+      setBackground(postBackgroundsData[i]);
       bgRef.current.classList.add("bgHandler");
     }
   };
@@ -92,7 +81,7 @@ function EmojiPickerComponent({ text, setText, textRef, user, type2 ,background,
               onClick={() => {removeBackground()
               }}
             ></div>
-            {postBackgrounds.map((bg, i) => (
+            {postBackgroundsData.map((bg:string, i:number) => (
               <img
                 src={bg}
                 key={i}
@@ -107,7 +96,7 @@ function EmojiPickerComponent({ text, setText, textRef, user, type2 ,background,
         <i
           className={`emoji_icon_large ${type2 ? 'moveleft' : ''}`}
           onClick={() => {
-            setPicker((prev) => !prev);
+            setPicker((prev:any) => !prev);
           }}
         ></i>
       </div>

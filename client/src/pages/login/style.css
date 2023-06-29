@@ -12,6 +12,9 @@
   width: 300px;
   margin: 0 auto;
 }
+.login_1 img {
+  width: 250px;
+}
 .login_1 span {
   font-size: 20px;
 }
@@ -283,7 +286,7 @@
     margin-bottom: 15vh;
   }
   .login_1 img {
-    width: 300px;
+    width: 250px;
     margin-left: -1.7rem;
   }
   .login_1 span {

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import EmojiPickerComponent from './emojiPicker';
+import EmojiPickerComponent from './emojiPicker/emojiPicker';
 
 function ImagePreview({ text, user, setText, images, setImages, setShowPrev, setError,textRef }: any) {
   const imageInputRef = useRef<any>(null);
