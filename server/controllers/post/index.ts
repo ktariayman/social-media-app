@@ -1,4 +1,10 @@
 import createPost from './createPost'
 import uploadImage from './uploadImage';
 import getAllPosts from './getAllPosts';
-export {createPost,uploadImage,getAllPosts};
+import archivePost from './archivePost';
+export {
+ createPost,
+ uploadImage,
+ getAllPosts,
+ archivePost
+};

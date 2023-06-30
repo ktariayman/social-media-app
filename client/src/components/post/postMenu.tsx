@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
 import MenuItem from "./MenuItem";
-import useClickOutside from '../../hooks/useClickOutside';
+import {useClickOutside}  from '../../hooks';
 import { deletePost, savePost } from "../../functions";
 import { saveAs } from "file-saver";
+import { archivePost } from "../../functions/post/archivePost";
 
 export default function PostMenu({
   postUserId,
@@ -15,6 +16,7 @@ export default function PostMenu({
   setCheckSaved,
   images,
   postRef,
+  postArchived
 }:any) {
   const [test, setTest] = useState(postUserId === userId ? true : false);
   const menu = useRef(null);
@@ -35,6 +37,14 @@ export default function PostMenu({
   const deleteHandler = async () => {
     const res = await deletePost(postId, token);
     if (res.status === "ok") {
+      postRef.current.remove();
+    }
+  };
+  const archiveHandler = async () => {
+    const res = await archivePost(postId, token,postArchived);
+    console.log('res' ,res);
+    
+    if (res === "ok") {
       postRef.current.remove();
     }
   };
@@ -84,7 +94,11 @@ export default function PostMenu({
       {test && (
         <MenuItem icon="refresh_icon" title="Refresh share attachment" />
       )}
-      {test && <MenuItem icon="archive_icon" title="Move to archive" />}
+      {test &&
+      <div onClick={() => archiveHandler()}>
+        <MenuItem icon="archive_icon" title="Move to archive" />
+      </div>
+      }
       {test && (
         <div onClick={() => deleteHandler()}>
           <MenuItem

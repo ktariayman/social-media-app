@@ -14,6 +14,8 @@ interface IPost extends Document {
   text?: string;
   images?: string[];
   user: ObjectId;
+  isArchived:boolean
+  isDeleted:boolean
   background?: string;
   comments?: IComment[];
   createdAt?: Date;
@@ -31,6 +33,14 @@ const postSchema = new Schema<IPost>(
     },
     images: {
       type: Array
+    },
+    isArchived : {
+      type:Boolean,
+      default:false
+    },
+    isDeleted : {
+      type:Boolean,
+      default:false
     },
     user: {
       type: Types.ObjectId,

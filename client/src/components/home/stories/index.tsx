@@ -16,7 +16,7 @@ function Stories() {
   const query885px = useMediaQuery({
     query: '(max-width: 885px)'
   });
-  const max = query885px ? 5 : query960px ? 4 : query1030px ? 5 : query1175px ? 4 : stories.length;
+  const max = query885px ? 5 : query960px ? 4 : query1030px ? 5 : query1175px ? 4  : stories.length;
   return (
     <div className='stories'>
       <div className='create_story_card'>
@@ -29,7 +29,7 @@ function Stories() {
       {stories.slice(0, max).map((story: any, i: any) => (
         <StoryItem story={story} key={i} />
       ))}
-      <div className='white_circle'>
+      <div className='white_circle' >
         <ArrowRight color='#65676b' />
       </div>
     </div>

@@ -109,7 +109,6 @@ header {
 .profile_link {
   display: flex;
   align-items: center;
-  gap: 5px;
   cursor: pointer;
   padding: 3px 10px 3px 6px;
   border-radius: 50px;
@@ -372,6 +371,14 @@ header {
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
+}
+.mmenu_flex{
+  display: flex;
+  justify-content: space-between;
+}
+.mmenu_flex_child{
+  display: flex;
+  gap: 15px;
 }
 .mmenu_col {
   display: flex;

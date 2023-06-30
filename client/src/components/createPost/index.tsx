@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Feeling, LiveVideo, Photo } from '../../svg';
-import UserMenu from '../userMenu';
 import './style.css';
 import { CreatePostIcon } from './createPostIcon';
 

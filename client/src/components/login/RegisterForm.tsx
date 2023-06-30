@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import DotLoader from 'react-spinners/DotLoader';
-import useClickOutside from '../../hooks/useClickOutside';
+import {useClickOutside} from '../../hooks';
 
 function RegisterForm({ setVisible }: any) {
   const dispatch = useDispatch();

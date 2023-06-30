@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Return, Search } from '../../svg';
 
-import useClickOutside from '../../hooks/useClickOutside';
+import {useClickOutside} from '../../hooks';
 function SearchMenu({ color, setShowSearchMenu }: any) {
   const [iconVisible, setIconVisible] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');

@@ -24,5 +24,6 @@ const stories = [
     profile_name: 'The Witcher Wild Hunt',
     image: '../../stories/5.jfif'
   }
+
 ];
 export default stories;

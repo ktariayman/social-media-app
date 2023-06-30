@@ -1,17 +1,33 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function DefaultMenu({ picture, first_name, last_name, setVisible, logout }: any) {
+function DefaultMenu({ picture, first_name, last_name, setVisible, logout ,setShowUserMenu}: any) {
+  const navigate =useNavigate()
+  console.log('type of setShowUserMenu ', setShowUserMenu);
+  
   return (
     <div>
-      <Link to='/profile' className='mmenu_header hover3'>
-        <img src={picture ? picture : ''} alt='' />
-        <div className='mmenu_col'>
-          <span>
-            {first_name && first_name} {last_name && last_name}
-          </span>
-          <span>See your profile</span>
+      
+        <div className='mmenu_flex'>
+
+        <div  className='mmenu_flex_child '>
+          <img src={picture ? picture : ''} alt='' onClick={()=>{navigate('/profile')}}/>
+          <div className='mmenu_col'>
+          <span >
+              {first_name && first_name} {last_name && last_name}
+            </span>
+            <span>See your profile</span>
+          </div>
+            
         </div>
-      </Link>
+       
+        <div
+           className='small_circle'
+          onClick={() => {
+            setShowUserMenu((prev:any) => !prev);
+          }}         >
+            <i className='exit_icon' ></i>
+        </div>
+        </div>
       <div className='mmenu_splitter'></div>
       <div className='mmenu_main hover3'>
         <div className='small_circle'>

@@ -21,13 +21,13 @@ function HeaderRight({user,setShowUserMenu,showUserMenu,usermenu}:any) {
         <div
           className={`profile_link circle_icon hover1 ${showUserMenu && 'active_header'}`}
           ref={usermenu}
-          onClick={() => {
-            setShowUserMenu((prev:any) => !prev);
-          }}
+         
         >
-          <img src={user?.picture} alt='' />
+          <img src={user?.picture} alt=''  onClick={() => {
+            setShowUserMenu((prev:any) => !prev);
+          }}/>
 
-          {showUserMenu && <UserMenu user={user} />}
+          {showUserMenu && <UserMenu user={user} setShowUserMenu={setShowUserMenu}/>}
         </div>
       </div>
   )

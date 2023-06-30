@@ -278,6 +278,7 @@ function Post({post,user}:any) {
         setCheckSaved={setCheckSaved}
         images={post.images}
         postRef={postRef}
+        postArchived={post.isArchived}
       />
     )}
   </div>

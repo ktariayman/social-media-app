@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './style.css';
-import useClickOutside from '../../hooks/useClickOutside';
+import {useClickOutside} from '../../hooks';
 import PulseLoader from 'react-spinners/PulseLoader';
 import EmojiPickerComponent from './emojiPicker/emojiPicker';
 import AddToYourPost from './AddToYourPost';
@@ -87,7 +87,7 @@ const handleImagePost = async (): Promise<void> => {
               setVisible(false);
             }}
           >
-            <i className='exit_icon'></i>
+            <i className='exit_icon' ></i>
           </div>
           <span>Create Post</span>
         </div>
