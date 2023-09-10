@@ -3,6 +3,60 @@ import { User } from '../../model';
 import bcrypt from 'bcrypt';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { TOKEN_SECRET } from '../../config';
+
+/**
+ * @swagger
+ * /api/activateAccount:
+ *   post:
+ *     summary: Activate a user account
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       description: Token for account activation
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               token:
+ *                 type: string
+ *                 description: Token for account activation.
+ *             required:
+ *               - token
+ *     responses:
+ *       200:
+ *         description: Account activation successful.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Success message.
+ *       400:
+ *         description: Invalid token or unauthorized user.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ *       500:
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ */
+
 interface AuthenticatedRequest extends Request {
   user?: any;
 }

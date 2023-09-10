@@ -1,6 +1,48 @@
 import { Request, Response } from 'express';
 import { User, Code } from '../../model';
 import { sendResetCode, generateCode } from '../../helper';
+/**
+ * @swagger
+ * /api/sendResetPasswordCode:
+ *   post:
+ *     summary: Send reset password code via email
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       description: User email for sending a reset password code
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: User's email for sending the reset password code.
+ *             required:
+ *               - email
+ *     responses:
+ *       200:
+ *         description: Reset password code sent successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Success message.
+ *       500:
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ */
 
 async function sendResetPasswordCode(req: Request, res: Response) {
   try {

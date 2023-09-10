@@ -1,6 +1,61 @@
 import { Request, Response } from 'express';
 import { User, Code } from '../../model';
-
+/**
+ * @swagger
+ * /api/validateResetCode:
+ *   post:
+ *     summary: Validate reset password code
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       description: User email and reset code for code validation
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: User's email.
+ *               code:
+ *                 type: string
+ *                 description: Reset code to validate.
+ *             required:
+ *               - email
+ *               - code
+ *     responses:
+ *       200:
+ *         description: Code validation successful.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Success message.
+ *       400:
+ *         description: Verification code is wrong.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ *       500:
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ */
 async function validateResetCode(req: Request, res: Response) {
   try {
     const { email, code } = req.body;

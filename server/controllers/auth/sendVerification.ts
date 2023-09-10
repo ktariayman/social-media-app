@@ -2,6 +2,46 @@ import { Request, Response } from 'express';
 import { generateToken } from '../../helper';
 import { User } from '../../model';
 import { sendVerificationEmail } from '../../helper';
+/**
+ * @swagger
+ * /api/sendVerification:
+ *   post:
+ *     summary: Send email verification link
+ *     tags:
+ *       - Authentication
+ *     responses:
+ *       200:
+ *         description: Email verification link sent successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Success message.
+ *       400:
+ *         description: Account is already activated.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ *       500:
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ */
+
 interface AuthenticatedRequest extends Request {
   user?: any;
 }
