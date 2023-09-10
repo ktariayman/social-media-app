@@ -1,4 +1,4 @@
-import { LoginFormValues, RegisterFormValues } from '../interface/user';
+import { LoginFormValues, RegisterFormValues } from '../ts/interface/user';
 
 const RegisterFormData: RegisterFormValues = {
   first_name: '',

@@ -1,15 +1,15 @@
 import { useEffect, useReducer, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import postReducer, { PostActionType, PostState } from '../reducers/postReducer';
-import { getAllPostsService } from '../functions';
+import postReducer, { PostState } from '../reducers/postReducer';
+import { PostActionType } from '../ts/enums';
 
 interface HomeProps {
   setVisible: (visible: boolean) => void;
   visible: boolean;
-  getData:Function;
+  getData: Function;
 }
 
-const usePosts = ({ setVisible, visible ,getData}: HomeProps) => {
+const usePosts = ({ setVisible, visible, getData }: HomeProps) => {
   const { user } = useSelector((state: any) => ({ ...state }));
 
   const [postState, dispatch] = useReducer(postReducer, {

@@ -1,4 +1,7 @@
-function HelpSupport({ setVisible }: any) {
+type Props = {
+  setVisible: (show: number) => void;
+}
+function HelpSupport({ setVisible }: Props) {
   return (
     <div className='absolute_wrap'>
       <div className='absolute_wrap_header'>

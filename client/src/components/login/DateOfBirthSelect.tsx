@@ -1,5 +1,14 @@
 import { useMediaQuery } from 'react-responsive';
-
+type Props = {
+  bDay: number;
+  bMonth: number;
+  bYear: number,
+  days: number[];
+  months: number[];
+  years: number[];
+  handleRegisterChange: (e: any) => void;
+  dateError: string
+}
 function DateOfBirthSelect({
   bDay,
   bMonth,
@@ -9,7 +18,7 @@ function DateOfBirthSelect({
   years,
   handleRegisterChange,
   dateError
-}: any) {
+}: Props) {
   const view1 = useMediaQuery({
     query: '(min-width: 539px)'
   });
@@ -22,14 +31,14 @@ function DateOfBirthSelect({
   return (
     <div className='reg_grid' style={{ marginBottom: `${dateError && !view3 ? '90px' : '0'}` }}>
       <select name='bDay' value={bDay} onChange={handleRegisterChange}>
-        {days.map((day: string, i: number) => (
+        {days.map((day: number, i: number) => (
           <option value={day} key={i}>
             {day}
           </option>
         ))}
       </select>
       <select name='bMonth' value={bMonth} onChange={handleRegisterChange}>
-        {months.map((month: string, i: number) => (
+        {months.map((month: number, i: number) => (
           <option value={month} key={i}>
             {month}
           </option>

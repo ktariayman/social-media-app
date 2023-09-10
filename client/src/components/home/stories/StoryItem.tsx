@@ -1,4 +1,8 @@
-function StoryItem({ story }: any) {
+import { IStory } from "../../../ts/interface/user";
+type Props = {
+  story: IStory
+}
+function StoryItem({ story }: Props) {
   return (
     <div className='story'>
       <img src={story.image} alt='' className='story_img' />

@@ -1,36 +1,7 @@
-function postReducer(
- state :any,
+import { PostActionType } from "../ts/enums";
+import { IPost } from "../ts/interface/posts.interfaces";
 
- action: any
-) {
- switch (action.type) {
-   case 'POST_REQUEST':
-     return {
-       ...state,loading:true,error:"",posts:[]
 
-     }
-   case 'POST_SUCCESS':
-     return {
-      ...state,
-      loading:false,
-      posts:action.payload,
-      error:""
-     };
-   case 'POST_ERROR':
-    return {...state,loading:false,error:action.payload,posts:[]}
-    default:
-     return state;
- }
-}
-export default postReducer;
-
-// postAction.ts
-
-export enum PostActionType {
-  POST_REQUEST = 'POST_REQUEST',
-  POST_SUCCESS = 'POST_SUCCESS',
-  POST_ERROR = 'POST_ERROR',
-}
 
 export interface PostAction {
   type: PostActionType;
@@ -38,6 +9,30 @@ export interface PostAction {
 }
 export interface PostState {
   loading: boolean;
-  posts: any[]; // Replace `any` with the actual type of posts
+  posts: IPost[];
   error: string;
 }
+
+
+function postReducer(state: PostState, action: PostAction): PostState {
+  switch (action.type) {
+    case PostActionType.POST_REQUEST:
+      return {
+        ...state, loading: true, error: "", posts: []
+
+      }
+    case PostActionType.POST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        posts: action.payload,
+        error: ""
+      };
+    case PostActionType.POST_ERROR:
+      return { ...state, loading: false, error: action.payload, posts: [] }
+    default:
+      return state;
+  }
+}
+export default postReducer;
+

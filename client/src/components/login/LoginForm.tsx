@@ -7,8 +7,11 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import DotLoader from 'react-spinners/DotLoader';
-
-function LoginForm({ setVisible ,setVisiblePage}: any) {
+type Props = {
+  setVisible: (b: boolean) => void
+  setVisiblePage: (b: boolean) => void
+}
+function LoginForm({ setVisible, setVisiblePage }: Props) {
   const [login, setLogin] = useState(loginFormData);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -37,8 +40,8 @@ function LoginForm({ setVisible ,setVisiblePage}: any) {
   return (
     <div className='login_wrap'>
       <div className='login_1'>
-        <img  src='../../icons/facebook.svg' alt='' />
-        <p style={{fontWeight:"400",fontSize:"30px"}}>Recent Logins</p>
+        <img src='../../icons/facebook.svg' alt='' />
+        <p style={{ fontWeight: "400", fontSize: "30px" }}>Recent Logins</p>
         <p>Click your picture or Add Account.</p>
       </div>
       <div className='login_2'>
@@ -86,7 +89,7 @@ function LoginForm({ setVisible ,setVisiblePage}: any) {
             Create Account
           </button>
         </div>
-          <b onClick={()=>{setVisiblePage(true)}} style={{cursor:'pointer'}}>Create a Page</b> for a celebrity, brand or business.
+        <b onClick={() => { setVisiblePage(true) }} style={{ cursor: 'pointer' }}>Create a Page</b> for a celebrity, brand or business.
       </div>
     </div>
   );

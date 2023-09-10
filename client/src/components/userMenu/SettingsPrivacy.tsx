@@ -1,4 +1,7 @@
-function SettingsPrivacy({ setVisible }: any) {
+type Props = {
+  setVisible: (show: number) => void;
+}
+function SettingsPrivacy({ setVisible }: Props) {
   return (
     <div className='absolute_wrap'>
       <div className='absolute_wrap_header'>

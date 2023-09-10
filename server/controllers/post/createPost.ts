@@ -54,6 +54,7 @@ import { Post } from '../../model';
  */
 const createPost = async (req: Request, res: Response) => {
   try {
+
     const post = await new Post(req.body).save();
     res.json(post);
   } catch (error) {

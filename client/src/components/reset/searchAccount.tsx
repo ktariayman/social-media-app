@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { InputLogin } from '../../components';
 import { validateEmail } from '../../helper';
+type Props = {
+  email: string
+  setEmail: (e: string) => void
+  error: string
+  setError: (s: string) => void
+  setLoading: (b: boolean) => void
+  setUserInfos: (data: any) => void
+  setVisible: (n: number) => void
+}
 export default function SearchAccount({
   email,
   setEmail,
@@ -11,7 +20,7 @@ export default function SearchAccount({
   setLoading,
   setUserInfos,
   setVisible
-}: any) {
+}: Props) {
   const handleSearch = async () => {
     try {
       setLoading(true);

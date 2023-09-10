@@ -2,7 +2,19 @@ import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { InputLogin } from '../../components';
 import axios from 'axios';
-function CodeVerification({ code, setCode, setLoading, setVisible, setError, userInfos }: any) {
+type Props = {
+  code: string
+  setCode: (e: string) => void
+  error: string
+  setError: (s: string) => void
+  setLoading: (b: boolean) => void
+  setVisible: (n: number) => void
+  userInfos: any
+  user: any
+}
+function CodeVerification(
+  { code, setCode, setLoading, setVisible, setError, userInfos }
+    : Props) {
   const { email } = userInfos;
   const verifyCode = async () => {
     try {

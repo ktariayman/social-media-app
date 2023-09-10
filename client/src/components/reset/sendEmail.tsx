@@ -1,6 +1,15 @@
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+type Props = {
+  email: string
+  error: string
+  setError: (s: string) => void
+  setLoading: (b: boolean) => void
+  setVisible: (n: number) => void
+  userInfos: any
+  setUserInfos: (data: any) => void
+  loading: boolean
+}
 export default function SendEmail({
   userInfos,
   email,
@@ -10,7 +19,7 @@ export default function SendEmail({
   setUserInfos,
   loading,
   setLoading
-}: any) {
+}: Props) {
   const sendEmail = async () => {
     try {
       setLoading(true);

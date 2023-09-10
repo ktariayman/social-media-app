@@ -1,33 +1,40 @@
 import { Link, useNavigate } from 'react-router-dom';
-
-function DefaultMenu({ picture, first_name, last_name, setVisible, logout ,setShowUserMenu}: any) {
-  const navigate =useNavigate()
+type Props = {
+  picture: string;
+  first_name: string
+  last_name: string
+  setVisible: (show: number) => void;
+  logout: () => void;
+  setShowUserMenu: (show: boolean) => void;
+}
+function DefaultMenu({ picture, first_name, last_name, setVisible, logout, setShowUserMenu }: Props) {
+  const navigate = useNavigate()
   console.log('type of setShowUserMenu ', setShowUserMenu);
-  
+
   return (
     <div>
-      
-        <div className='mmenu_flex'>
 
-        <div  className='mmenu_flex_child '>
-          <img src={picture ? picture : ''} alt='' onClick={()=>{navigate('/profile')}}/>
+      <div className='mmenu_flex'>
+
+        <div className='mmenu_flex_child '>
+          <img src={picture ? picture : ''} alt='' onClick={() => { navigate('/profile') }} />
           <div className='mmenu_col'>
-          <span >
+            <span >
               {first_name && first_name} {last_name && last_name}
             </span>
             <span>See your profile</span>
           </div>
-            
+
         </div>
-       
+
         <div
-           className='small_circle'
+          className='small_circle'
           onClick={() => {
-            setShowUserMenu((prev:any) => !prev);
+            setShowUserMenu(!setShowUserMenu);
           }}         >
-            <i className='exit_icon' ></i>
+          <i className='exit_icon' ></i>
         </div>
-        </div>
+      </div>
       <div className='mmenu_splitter'></div>
       <div className='mmenu_main hover3'>
         <div className='small_circle'>

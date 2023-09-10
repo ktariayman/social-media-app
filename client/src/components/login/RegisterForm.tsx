@@ -10,8 +10,11 @@ import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import DotLoader from 'react-spinners/DotLoader';
-import {useClickOutside} from '../../hooks';
+import { useClickOutside } from '../../hooks';
 
+type Props = {
+  setVisible: (v: boolean) => void
+}
 function RegisterForm({ setVisible }: any) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,7 +25,7 @@ function RegisterForm({ setVisible }: any) {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
-  const registerRef= useRef(null)
+  const registerRef = useRef(null)
   useClickOutside(registerRef, () => {
     setVisible(false)
   });

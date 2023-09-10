@@ -1,4 +1,7 @@
-const stories = [
+import { IStory } from "../../../ts/interface/user";
+
+
+const stories: IStory[] = [
   {
     profile_picture: '../../stories/profile1.jpg',
     profile_name: 'Elon Musk',

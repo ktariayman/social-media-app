@@ -1,14 +1,16 @@
+import { UserActionType } from "../ts/enums";
+
 function userReducer(
   state = null,
 
   action: any
 ) {
   switch (action.type) {
-    case 'LOGIN':
+    case UserActionType.LOGIN:
       return action.payload;
-    case 'REGISTER':
+    case UserActionType.REGISTER:
       return action.payload;
-    case 'LOGOUT':
+    case UserActionType.LOGOUT:
       return null;
     default:
       return state;

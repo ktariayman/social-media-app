@@ -1,47 +1,49 @@
-export const left = [
+import { ILeftItem } from "../../../ts/interface/user";
+
+export const left: ILeftItem[] = [
   {
     text: 'Find friends',
     img: 'friends',
-    to:"/friends"
+    to: "/friends"
   },
   {
     text: 'Memories',
     img: 'memories',
-    to:'memories'
+    to: 'memories'
   },
   {
     text: 'Groups',
     img: 'groups',
     notification: '5 new',
-    to:'/groups'
+    to: '/groups'
 
   },
   {
     text: 'Marketplace',
     img: 'marketplace',
-    to:'/marketplace'
+    to: '/marketplace'
   },
   {
     text: 'Watch',
     img: 'watch',
     notification: '9 new videos',
-    to:'/watch'
+    to: '/watch'
 
   },
   {
     text: 'Saved',
     img: 'saved',
-    to:'/saved'
+    to: '/saved'
   },
   {
     text: 'Pages',
     img: 'pages',
-    to:'/pages'
+    to: '/pages'
   },
   {
     text: 'Events',
     img: 'events',
-    to:'/events'
+    to: '/events'
 
   },
   {

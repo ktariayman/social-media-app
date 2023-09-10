@@ -4,8 +4,14 @@ import { Feeling, LiveVideo, Photo } from '../../svg';
 import './style.css';
 import { CreatePostIcon } from './createPostIcon';
 
-
-function CreatePost({ user, setVisible, profile ,showPrev,setShowPrev}: any) {
+type Props = {
+  user: any
+  setVisible: (visible: boolean) => void;
+  showPrev?: boolean;
+  setShowPrev?: (showPrev: boolean) => void;
+  profile?: any
+}
+function CreatePost({ user, setVisible, profile, showPrev, setShowPrev }: Props) {
   return (
     <div className='createPost'>
       <div className='createPost_header'>
@@ -21,34 +27,34 @@ function CreatePost({ user, setVisible, profile ,showPrev,setShowPrev}: any) {
       </div>
       <div className='create_splitter'></div>
       <div className='createPost_body'>
-      <CreatePostIcon>
-        <LiveVideo color='#f3425f' />
-        Live Video
-      </CreatePostIcon>
-      <CreatePostIcon onClick={() => {
-            setVisible(true);
-            setShowPrev(true)
-          }}>
-      <div  >
-        <Photo color='#4bbf67' />
-     
-        Photo/Video
-        </div>
-      </CreatePostIcon>
+        <CreatePostIcon>
+          <LiveVideo color='#f3425f' />
+          Live Video
+        </CreatePostIcon>
+        <CreatePostIcon onClick={() => {
+          setVisible!(true);
+          setShowPrev!(true)
+        }}>
+          <div  >
+            <Photo color='#4bbf67' />
 
-      {profile ? (
-      <CreatePostIcon>
-        <i className='lifeEvent_icon'></i>
-        Life Event
-      </CreatePostIcon>
-      ) : (
-      <CreatePostIcon>
-        <Feeling color='#f7b928' />
-        Feeling/Activity
+            Photo/Video
+          </div>
+        </CreatePostIcon>
 
-      </CreatePostIcon>
+        {profile ? (
+          <CreatePostIcon>
+            <i className='lifeEvent_icon'></i>
+            Life Event
+          </CreatePostIcon>
+        ) : (
+          <CreatePostIcon>
+            <Feeling color='#f7b928' />
+            Feeling/Activity
 
-      )}
+          </CreatePostIcon>
+
+        )}
       </div>
     </div>
   );

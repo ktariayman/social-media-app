@@ -3,17 +3,21 @@ import DisplayAccessibility from './DisplayAccessibility';
 import HelpSupport from './HelpSupport';
 import SettingsPrivacy from './SettingsPrivacy';
 import DefaultMenu from './DefaultMenu';
-import {useLogout} from '../../hooks';
-export default function UserMenu({ user , setShowUserMenu }: any) {
-  const [visible, setVisible] = useState(0);
+import { useLogout } from '../../hooks';
+type Props = {
+  user: any
+  setShowUserMenu: (show: boolean) => void
+}
+export default function UserMenu({ user, setShowUserMenu }: any) {
+  const [visible, setVisible] = useState<number>(0);
   const logout = useLogout()
   return (
-      <div>
-      {visible <0 && (
+    <div>
+      {visible < 0 && (
         <div></div>
       )}
-      {visible >=0 && (
-          <div className='mmenu'>
+      {visible >= 0 && (
+        <div className='mmenu'>
           {visible === 0 && (
             <DefaultMenu
               first_name={user?.first_name}
@@ -31,6 +35,6 @@ export default function UserMenu({ user , setShowUserMenu }: any) {
       )}
     </div>
 
-   
+
   );
 }

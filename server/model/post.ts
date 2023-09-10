@@ -1,26 +1,9 @@
 import mongoose, { Schema, Document, Types, model, models } from 'mongoose';
 
 import { ObjectId } from 'mongoose';
+import { IPost } from '../interfaces/post';
 
-interface IComment {
-  comment: string;
-  image?: string;
-  commentBy: ObjectId;
-  commentAt: Date;
-}
 
-interface IPost extends Document {
-  type: 'profilePicture' | 'coverPicture' | null;
-  text?: string;
-  images?: string[];
-  user: ObjectId;
-  isArchived:boolean
-  isDeleted:boolean
-  background?: string;
-  comments?: IComment[];
-  createdAt?: Date;
-  updatedAt?: Date;
-}
 const postSchema = new Schema<IPost>(
   {
     type: {
@@ -34,13 +17,13 @@ const postSchema = new Schema<IPost>(
     images: {
       type: Array
     },
-    isArchived : {
-      type:Boolean,
-      default:false
+    isArchived: {
+      type: Boolean,
+      default: false
     },
-    isDeleted : {
-      type:Boolean,
-      default:false
+    isDeleted: {
+      type: Boolean,
+      default: false
     },
     user: {
       type: Types.ObjectId,

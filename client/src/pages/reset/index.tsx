@@ -73,6 +73,7 @@ function ResetPassword() {
             setLoading={setLoading}
             setUserInfos={setUserInfos}
             setVisible={setVisible}
+            loading={loading}
           />
         )}
         {visible === 2 && !user && (
@@ -99,6 +100,7 @@ function ResetPassword() {
             setVisible={setVisible}
             userInfos={userInfos}
             user={user}
+            loading={loading}
           />
         )}
       </div>

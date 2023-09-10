@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Return, Search } from '../../svg';
 
-import {useClickOutside} from '../../hooks';
+import { useClickOutside } from '../../hooks';
 function SearchMenu({ color, setShowSearchMenu }: any) {
-  const [iconVisible, setIconVisible] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [iconVisible, setIconVisible] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [results, setResults] = useState([]);
   const [searchHistory, setSearchHistory] = useState([]);
   const menu = useRef(null);
@@ -16,14 +16,14 @@ function SearchMenu({ color, setShowSearchMenu }: any) {
   useEffect(() => {
     input?.current?.focus();
   }, []);
-  const searchHandler = async () => {};
+  const searchHandler = async () => { };
 
   return (
     <div className='header_left search_area scrollbar' ref={menu}>
       <div className='search_wrap'>
-          <div className='circle hover1 '>
-            <Return color={color} />
-          </div>
+        <div className='circle hover1 '>
+          <Return color={color} />
+        </div>
         <div
           className='search'
           onClick={() => {
@@ -50,10 +50,10 @@ function SearchMenu({ color, setShowSearchMenu }: any) {
             }}
           />
         </div>
-          <div className='circle hover1 ' onClick={()=>{setShowSearchMenu(false)}}>
-            <i className='exit_icon'></i>
-          </div>
-          
+        <div className='circle hover1 ' onClick={() => { setShowSearchMenu(false) }}>
+          <i className='exit_icon'></i>
+        </div>
+
       </div>
       {results.length == 0 && (
         <div className='search_history_header'>

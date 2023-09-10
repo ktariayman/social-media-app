@@ -1,7 +1,9 @@
 import Cookies from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
-
-function DisplayAccessibility({ setVisible }: any) {
+type Props = {
+  setVisible: (show: number) => void;
+}
+function DisplayAccessibility({ setVisible }: Props) {
   const dispatch = useDispatch();
   const { darkTheme } = useSelector((state: any) => ({ ...state }));
   return (
