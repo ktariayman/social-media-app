@@ -20,7 +20,7 @@ function AppRoutes() {
       children: [
         {
           path: '/',
-          element: <Home setVisible={setVisible}  showPrev={showPrev} setShowPrev={setShowPrev}/>
+          element: <Home setVisible={setVisible} showPrev={showPrev} setShowPrev={setShowPrev} />
         },
         {
           path: '/activate/:token',
@@ -28,6 +28,10 @@ function AppRoutes() {
         },
         {
           path: '/profile',
+          element: <Profile />
+        },
+        {
+          path: '/profile/:username',
           element: <Profile />
         },
         {
@@ -53,7 +57,7 @@ function AppRoutes() {
   ]);
   return (
     <>
-      {visible && <PostPopup setVisible={setVisible} user={user} visible={visible} showPrev={showPrev} setShowPrev={setShowPrev}/>}
+      {visible && <PostPopup setVisible={setVisible} user={user} visible={visible} showPrev={showPrev} setShowPrev={setShowPrev} />}
 
       <RouterProvider router={router} />
     </>

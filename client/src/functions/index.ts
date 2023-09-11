@@ -6,13 +6,15 @@ import { getReacts } from "./post/getReacts";
 import { reactPost } from "./post/reactPost";
 import { savePost } from "./post/savePost";
 import { uploadImages } from "./uploadImages";
+import { getProfile } from "./profile/getProfile";
 export {
  createPostService,
-uploadImages,
-getAllPostsService,
-reactPost,
-deletePost,
-savePost,
-comment,
-getReacts
+ uploadImages,
+ getAllPostsService,
+ reactPost,
+ deletePost,
+ savePost,
+ comment,
+ getReacts,
+ getProfile
 }

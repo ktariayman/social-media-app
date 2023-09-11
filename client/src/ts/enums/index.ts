@@ -3,7 +3,11 @@ export enum PostActionType {
  POST_SUCCESS = 'POST_SUCCESS',
  POST_ERROR = 'POST_ERROR',
 }
-
+export enum ProfileActionType {
+ PROFILE_REQUEST = 'PROFILE_REQUEST',
+ PROFILE_SUCCESS = 'PROFILE_SUCCESS',
+ PROFILE_ERROR = 'PROFILE_ERROR',
+}
 export enum UserActionType {
  LOGIN = "LOGIN",
  REGISTER = "REGISTER",

@@ -8,8 +8,9 @@ import {
   sendResetPasswordCode,
   validateResetCode,
   changePassword,
-  resetPassword
+  resetPassword,
 } from '../controllers/auth';
+import { getProfile } from '../controllers/user'
 import { isLogin } from '../middlewares';
 const router: Router = express.Router();
 
@@ -25,5 +26,6 @@ router.post('/findUserByEmail', findUserByEmail);
 router.post('/sendResetPasswordCode', sendResetPasswordCode);
 router.post('/validateResetCode', validateResetCode);
 router.post('/resetPassword', resetPassword);
+router.get('/getProfile/:username', isLogin, getProfile);
 
 module.exports = router;
