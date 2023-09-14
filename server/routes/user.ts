@@ -10,8 +10,9 @@ import {
   changePassword,
   resetPassword,
 } from '../controllers/auth';
-import { getProfile } from '../controllers/user'
+import { getProfile, updateProfilePicture } from '../controllers/user'
 import { isLogin } from '../middlewares';
+import updateDetails from '../controllers/user/updateDetails';
 const router: Router = express.Router();
 
 // need token
@@ -26,6 +27,10 @@ router.post('/findUserByEmail', findUserByEmail);
 router.post('/sendResetPasswordCode', sendResetPasswordCode);
 router.post('/validateResetCode', validateResetCode);
 router.post('/resetPassword', resetPassword);
+
+// Profile 
 router.get('/getProfile/:username', isLogin, getProfile);
+router.put("/updateProfilePicture", isLogin, updateProfilePicture);
+router.put("/updateDetails", isLogin, updateDetails);
 
 module.exports = router;
