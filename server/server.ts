@@ -18,7 +18,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:5000'
+        url: 'http://localhost:8000'
       }
     ]
   },
@@ -29,7 +29,7 @@ const app: Application = express();
 connectDB();
 app.use(cors());
 app.use(fileUpload({
-  useTempFiles:true
+  useTempFiles: true
 }))
 app.use(express.json());
 readdirSync('./routes').map((r) => app.use('/api', require(`./routes/${r}`)));
