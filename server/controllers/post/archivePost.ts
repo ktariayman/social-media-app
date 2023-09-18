@@ -59,13 +59,16 @@ import { Post } from '../../model';
 const archivePost = async (req: Request, res: Response) => {
   try {
     const { id, isArchived } = req.body;
-    console.log("req.body", req.body)
+    // await Post.findByIdAndUpdate(id, {
+    //   isArchived: !isArchived,
+    // }, { new: true });
 
-    const updatedPost = await Post.findByIdAndUpdate(id, {
-      isArchived: !isArchived,
-    }, { new: true });
+    const post = await Post.findOne({ _id: id }).exec()
+    console.log("isArchived", post);
+    post.isArchived = isArchived
+    await post.save()
 
-    res.json(updatedPost);
+    res.json({ status: 'ok' });
   } catch (error) {
     const errorMessage: string = (error as Error).message;
     res.status(500).json({ message: errorMessage });

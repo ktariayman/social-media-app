@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Post } from '../../model';
+import { Post, User } from '../../model';
 /**
  * @swagger
  * /api/getAllPosts:
@@ -59,19 +59,39 @@ import { Post } from '../../model';
  *                   type: string
  *                   description: Error message.
  */
-const getAllPosts = async (req: Request, res: Response) => {
+interface IRequest extends Request {
+  user?: any;
+  params: any
+}
+const getAllPosts = async (req: IRequest, res: Response) => {
   try {
-
-
-    const posts = await Post.find()
-      .populate("user", "first_name last_name picture username gender")
+    const followingTemp = await User.findById(req.user.id).select("following");
+    const following = followingTemp.following;
+    const promises = following.map((user: any) => {
+      return Post.find({ user: user })
+        .populate("user", "first_name last_name picture username cover")
+        .populate("comments.commentBy", "first_name last_name picture username")
+        .sort({ createdAt: -1 })
+        .limit(10);
+    });
+    const followingPosts = await (await Promise.all(promises)).flat();
+    const userPosts = await Post.find({ user: req.user.id })
+      .populate("user", "first_name last_name picture username cover")
+      .populate("comments.commentBy", "first_name last_name picture username")
       .sort({ createdAt: -1 })
-    res.json(posts);
+      .limit(10);
+    followingPosts.push(...[...userPosts]);
+    followingPosts.sort((a, b) => {
+      return b.createdAt - a.createdAt;
+    });
+    res.json(followingPosts);
+
   } catch (error) {
     const errorMessage: string = (error as Error).message;
     res.status(500).json({ message: errorMessage });
   }
 };
+
 export default getAllPosts;
 
 

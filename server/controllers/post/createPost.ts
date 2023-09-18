@@ -56,6 +56,7 @@ const createPost = async (req: Request, res: Response) => {
   try {
 
     const post = await new Post(req.body).save();
+    await post.populate("user", "first_name last_name cover picture username")
     res.json(post);
   } catch (error) {
     const errorMessage: string = (error as Error).message;
