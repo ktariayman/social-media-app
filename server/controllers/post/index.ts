@@ -5,6 +5,8 @@ import archivePost from './archivePost';
 import createComment from './createComment';
 import savePost from './savePost';
 import deletePost from './deletePost';
+import getPostsByUserId from './getPostsByUserId';
+
 export {
  createPost,
  uploadImage,
@@ -12,5 +14,6 @@ export {
  archivePost,
  createComment,
  savePost,
- deletePost
+ deletePost,
+ getPostsByUserId
 };
