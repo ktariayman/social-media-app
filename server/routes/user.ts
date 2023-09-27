@@ -10,11 +10,29 @@ import {
   changePassword,
   resetPassword,
 } from '../controllers/auth';
-import { getProfile, searchUsers, updateProfilePicture, getSearchHistory, addToSearchHistory, removeFromSearch } from '../controllers/user'
+import {
+  getProfile,
+  searchUsers,
+  updateProfilePicture,
+  getSearchHistory,
+  addToSearchHistory,
+  removeFromSearch,
+  usersNotFriends,
+  getFriendBirthdays,
+  getFriendsPageInfos
+} from '../controllers/user'
 import { isLogin } from '../middlewares';
 import updateDetails from '../controllers/user/updateDetails';
 import updateProfileCover from '../controllers/user/updateProfileCover';
-import { acceptRequest, addFriend, cancelRequest, deleteRequest, follow, unfollow, unfriend } from '../controllers/user/friendInvitationSystem';
+import {
+  acceptRequest,
+  addFriend,
+  cancelRequest,
+  deleteRequest,
+  follow,
+  unfollow,
+  unfriend
+} from '../controllers/user/friendInvitationSystem';
 const router: Router = express.Router();
 // need token
 router.post('/activateAccount', isLogin, activateAccount);
@@ -48,6 +66,9 @@ router.put("/unfollow/:id", isLogin, unfollow);
 router.put("/acceptRequest/:id", isLogin, acceptRequest);
 router.put("/deleteRequest/:id", isLogin, deleteRequest);
 router.put("/unfriend/:id", isLogin, unfriend);
+router.get("/getFriendsPageInfos", isLogin, getFriendsPageInfos);
+router.get('/usersNotFriends', isLogin, usersNotFriends)
+router.get('/getFriendBirthdays', isLogin, getFriendBirthdays)
 
 
 module.exports = router;

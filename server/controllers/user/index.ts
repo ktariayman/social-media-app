@@ -5,7 +5,9 @@ import searchUsers from './searchUsers'
 import updateProfilePicture from './updateProfilePicture'
 import addToSearchHistory from './addToSearchHistory'
 import removeFromSearch from './removeFromSearch'
-
+import usersNotFriends from './usersNotFriends'
+import getFriendBirthdays from './getFriendsBirthday'
+import getFriendsPageInfos from './getFriendsPageInfos'
 export {
  getProfile,
  listImages,
@@ -13,5 +15,8 @@ export {
  searchUsers,
  getSearchHistory,
  addToSearchHistory,
- removeFromSearch
+ removeFromSearch,
+ usersNotFriends,
+ getFriendBirthdays,
+ getFriendsPageInfos
 }
