@@ -8,7 +8,7 @@ const postSchema = new Schema<IPost>(
   {
     type: {
       type: String,
-      enum: ['profilePicture', 'coverPicture', null],
+      enum: ['profilePicture', 'coverPicture', 'story', null],
       default: null
     },
     text: {

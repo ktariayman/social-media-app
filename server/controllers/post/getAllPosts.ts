@@ -75,7 +75,7 @@ const getAllPosts = async (req: IRequest, res: Response) => {
         .limit(10);
     });
     const followingPosts = await (await Promise.all(promises)).flat();
-    const userPosts = await Post.find({ user: req.user.id })
+    const userPosts = await Post.find({ user: req.user.id, type: { $ne: 'story' } })
       .populate("user", "first_name last_name picture username cover")
       .populate("comments.commentBy", "first_name last_name picture username")
       .sort({ createdAt: -1 })

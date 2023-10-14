@@ -6,7 +6,7 @@ import createComment from './createComment';
 import savePost from './savePost';
 import deletePost from './deletePost';
 import getPostsByUserId from './getPostsByUserId';
-
+import getStories from './getStories';
 export {
  createPost,
  uploadImage,
@@ -15,5 +15,6 @@ export {
  createComment,
  savePost,
  deletePost,
- getPostsByUserId
+ getPostsByUserId,
+ getStories
 };
