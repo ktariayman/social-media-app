@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import MenuItem from "./MenuItem";
-import {useClickOutside}  from '../../hooks';
+import { useClickOutside } from '../../hooks';
 import { deletePost, savePost } from "../../functions";
 import { saveAs } from "file-saver";
 import { archivePost } from "../../functions/post/archivePost";
@@ -16,8 +16,8 @@ export default function PostMenu({
   setCheckSaved,
   images,
   postRef,
-  postArchived
-}:any) {
+  isArchived
+}: any) {
   const [test, setTest] = useState(postUserId === userId ? true : false);
   const menu = useRef(null);
   useClickOutside(menu, () => setShowMenu(false));
@@ -30,7 +30,7 @@ export default function PostMenu({
     }
   };
   const downloadImages = async () => {
-    images.map((img:any) => {
+    images.map((img: any) => {
       saveAs(img.url, "image.jpg");
     });
   };
@@ -41,10 +41,8 @@ export default function PostMenu({
     }
   };
   const archiveHandler = async () => {
-    const res = await archivePost(postId, token,postArchived);
-    console.log('res' ,res);
-    
-    if (res === "ok") {
+    const res = await archivePost(postId, token, isArchived);
+    if (res.status === "ok") {
       postRef.current.remove();
     }
   };
@@ -74,12 +72,12 @@ export default function PostMenu({
           title="Turn on notifications for this post"
         />
       )}
-      {imagesLength >=0 && (
+      {imagesLength >= 0 && (
         <div onClick={() => downloadImages()}>
           <MenuItem icon="download_icon" title="Download" />
         </div>
       )}
-      {imagesLength >=0 &&  (
+      {imagesLength >= 0 && (
         <MenuItem icon="fullscreen_icon" title="Enter Fullscreen" />
       )}
       {test && <MenuItem img="../../../icons/lock.png" title="Edit audience" />}
@@ -95,9 +93,9 @@ export default function PostMenu({
         <MenuItem icon="refresh_icon" title="Refresh share attachment" />
       )}
       {test &&
-      <div onClick={() => archiveHandler()}>
-        <MenuItem icon="archive_icon" title="Move to archive" />
-      </div>
+        <div onClick={() => archiveHandler()}>
+          <MenuItem icon="archive_icon" title="Move to archive" />
+        </div>
       }
       {test && (
         <div onClick={() => deleteHandler()}>

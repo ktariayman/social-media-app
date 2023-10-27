@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import EmojiPickerComponent from './emojiPicker/emojiPicker';
 
-function ImagePreview({ text, user, setText, images, setImages, setShowPrev, setError,textRef }: any) {
+function ImagePreview({ text, user, setText, images, setImages, setShowPrev, setError, textRef, setPicker, picker, backgroundImages }: any) {
   const imageInputRef = useRef<any>(null);
-  const handleImages = (e: any) => {
-    console.log('e',e)
+  const handleImages = (e: any, backgroundImages?: string[]) => {
+    console.log('e', e)
     let files = Array.from(e.target.files);
     files.forEach((img: any) => {
       if (
@@ -24,14 +24,28 @@ function ImagePreview({ text, user, setText, images, setImages, setShowPrev, set
         const reader = new FileReader();
         reader.readAsDataURL(img);
         reader.onload = (readerEvent: any) => {
+          if (backgroundImages !== undefined) {
+            setImages(() => [...backgroundImages, readerEvent.target.result]);
+            return
+          }
           setImages((images: any) => [...images, readerEvent.target.result]);
+
         };
       }
     });
   };
   return (
     <div className='overflow_a scrollbar'>
-      <EmojiPickerComponent text={text} user={user} setText={setText} type2  imageInputRef={imageInputRef} textRef={textRef}/>
+      <EmojiPickerComponent
+        text={text}
+        user={user}
+        setPicker={setPicker}
+        setText={setText}
+        type2
+        imageInputRef={imageInputRef}
+        textRef={textRef}
+        picker={picker}
+      />
       <div className='add_pics_wrap'>
         <input
           type='file'
@@ -71,16 +85,16 @@ function ImagePreview({ text, user, setText, images, setImages, setShowPrev, set
                 images.length === 1
                   ? 'preview1'
                   : images.length === 2
-                  ? 'preview2'
-                  : images.length === 3
-                  ? 'preview3'
-                  : images.length === 4
-                  ? 'preview4 '
-                  : images.length === 5
-                  ? 'preview5'
-                  : images.length % 2 === 0
-                  ? 'preview6'
-                  : 'preview6 singular_grid'
+                    ? 'preview2'
+                    : images.length === 3
+                      ? 'preview3'
+                      : images.length === 4
+                        ? 'preview4 '
+                        : images.length === 5
+                          ? 'preview5'
+                          : images.length % 2 === 0
+                            ? 'preview6'
+                            : 'preview6 singular_grid'
               }
             >
               {images.map((img: any, i: number) => (

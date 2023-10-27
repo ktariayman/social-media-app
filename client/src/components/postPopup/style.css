@@ -81,7 +81,7 @@
   font-family: inherit;
   font-size: 24px;
   background: var(--bg-primary);
-  color: #000;
+  color: var(--color-primary);
 }
 .flex_center textarea {
   min-height: 90px;

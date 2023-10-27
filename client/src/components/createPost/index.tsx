@@ -3,6 +3,8 @@ import React from 'react';
 import { Feeling, LiveVideo, Photo } from '../../svg';
 import './style.css';
 import { CreatePostIcon } from './createPostIcon';
+import { MoonLoader } from 'react-spinners';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   user: any
@@ -10,12 +12,22 @@ type Props = {
   showPrev?: boolean;
   setShowPrev?: (showPrev: boolean) => void;
   profile?: any
+  loading: boolean
 }
-function CreatePost({ user, setVisible, profile, showPrev, setShowPrev }: Props) {
+function CreatePost({ user, setVisible, profile, showPrev, setShowPrev, loading }: Props) {
+  const navigate = useNavigate()
   return (
     <div className='createPost'>
       <div className='createPost_header'>
-        <img src={user?.picture} alt='' />
+
+        {
+          loading ? (
+            <MoonLoader color="#1876f2" size={10} />
+          ) : (
+            <img src={user?.picture} alt='' onClick={() => { navigate(`/profile/${user.username}`) }} />
+
+          )
+        }
         <div
           className='open_post hover2'
           onClick={() => {

@@ -4,7 +4,7 @@ import { comment } from "../../functions";
 import { uploadImages } from "../../functions/uploadImages";
 import { ClipLoader } from "react-spinners";
 import dataURItoBlob from "../../helper/dataURItoBlob";
-export default function CreateComment({ user, postId, setComments, setCount }:any) {
+export default function CreateComment({ user, postId, setComments, setCount }: any) {
   const [picker, setPicker] = useState(false);
   const [text, setText] = useState("");
   const [error, setError] = useState("");
@@ -18,10 +18,10 @@ export default function CreateComment({ user, postId, setComments, setCount }:an
       textRef.current.selectionEnd = cursorPosition;
     }
   }, [cursorPosition]);
-  const handleEmoji = (e:any, { emoji }:any) => {
-    let ref :any 
-    if( textRef && textRef.current   )
-    ref= textRef.current
+  const handleEmoji = (e: any, { emoji }: any) => {
+    let ref: any
+    if (textRef && textRef.current)
+      ref = textRef.current
     ref.focus();
     const start = text.substring(0, ref.selectionStart);
     const end = text.substring(ref.selectionStart);
@@ -29,7 +29,7 @@ export default function CreateComment({ user, postId, setComments, setCount }:an
     setText(newText);
     setCursorPosition(start.length + emoji.length);
   };
-  const handleImage = (e:any) => {
+  const handleImage = (e: any) => {
     let file = e.target.files[0];
     if (
       file.type !== "image/jpeg" &&
@@ -46,11 +46,11 @@ export default function CreateComment({ user, postId, setComments, setCount }:an
 
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = (event:any) => {
+    reader.onload = (event: any) => {
       setCommentImage(event.target.result);
     };
   };
-  const handleComment = async (e:any) => {
+  const handleComment = async (e: any) => {
     if (e.key === "Enter") {
       if (commentImage != "") {
         setLoading(true);
@@ -68,7 +68,7 @@ export default function CreateComment({ user, postId, setComments, setCount }:an
           user.token
         );
         setComments(comments);
-        setCount((prev:number) => ++prev);
+        setCount((prev: number) => ++prev);
         setLoading(false);
         setText("");
         setCommentImage("");
@@ -77,7 +77,7 @@ export default function CreateComment({ user, postId, setComments, setCount }:an
 
         const comments = await comment(postId, text, "", user.token);
         setComments(comments);
-        setCount((prev:number) => ++prev);
+        setCount((prev: number) => ++prev);
         setLoading(false);
         setText("");
         setCommentImage("");
@@ -130,11 +130,11 @@ export default function CreateComment({ user, postId, setComments, setCount }:an
           </div>
           <div
             className="comment_circle_icon hover2"
-            onClick={() =>  {
-              if(imgInput && imgInput.current)
-              imgInput.current.click()
+            onClick={() => {
+              if (imgInput && imgInput.current)
+                imgInput.current.click()
             }
-    
+
             }
           >
             <i className="camera_icon"></i>

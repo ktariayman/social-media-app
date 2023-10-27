@@ -1,6 +1,7 @@
 import SendVerification from "../home/sendVerification/sendVerification";
 import Stories from "../home/stories";
 import CreatePost from "../createPost";
+import { BeatLoader } from "react-spinners";
 type Props = {
   render: (post: any, i: number) => React.ReactNode;
   middle: React.RefObject<HTMLDivElement>;
@@ -9,14 +10,29 @@ type Props = {
   setVisible: (visible: boolean) => void;
   showPrev: boolean;
   setShowPrev: (showPrev: boolean) => void;
+  setStoryVisible: (showPrev: boolean) => void;
+  loading: boolean
 }
-function ListPosts({ middle, user, posts, setVisible, showPrev, setShowPrev, render }: Props) {
+function ListPosts({ loading, middle, user, posts, setVisible, showPrev, setShowPrev, render, setStoryVisible }: Props) {
   return (
     <div className='home_middle' ref={middle}>
       {user.verified === false && <SendVerification user={user} />}
-      <Stories />
-      <CreatePost user={user} setVisible={setVisible} showPrev={showPrev} setShowPrev={setShowPrev} />
-      {posts.map(render)}
+      <Stories setStoryVisible={setStoryVisible} />
+      <CreatePost user={user} setVisible={setVisible} showPrev={showPrev} setShowPrev={setShowPrev} loading={loading} />
+
+      {loading ?
+        <div className='home_middle' >
+          <BeatLoader color="#1876f2" size={10} />
+
+        </div>
+        :
+        <>
+          {
+            posts.map(render)
+          }
+        </>
+
+      }
     </div>
   )
 }

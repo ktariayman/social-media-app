@@ -8,16 +8,18 @@ import CreateComment from "./createComment";
 import PostMenu from "./postMenu";
 import { getReacts, reactPost } from "../../functions";
 import Comment from "./Comment";
-function Post({ post, user }: any) {
+function Post({ post, user, profile, visitor, token }: any) {
   const [visible, setVisible] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [reacts, setReacts] = useState<any>([]);
-  const [check, setCheck] = useState();
+  const [check, setCheck] = useState(undefined);
   const [total, setTotal] = useState(0);
   const [count, setCount] = useState(1);
   const [checkSaved, setCheckSaved] = useState();
   const [comments, setComments] = useState<any>([]);
   const postRef = useRef(null);
+
+
   useEffect(() => {
     getPostReacts();
   }, [post]);
@@ -26,7 +28,7 @@ function Post({ post, user }: any) {
   }, [post]);
 
   const getPostReacts = async () => {
-    const res = await getReacts(post._id, user.token);
+    const res = await getReacts(post._id, token);
     setReacts(res.reacts);
     setCheck(res.check);
     setTotal(res.total);
@@ -34,9 +36,9 @@ function Post({ post, user }: any) {
   };
 
   const reactHandler = async (type: any) => {
-    reactPost(post._id, type, user.token);
+    reactPost(post._id, type, token);
     if (check === type) {
-      setCheck(type);
+      setCheck(undefined);
       let index = reacts.findIndex((x: any) => x.react === check);
       if (index !== -1) {
         setReacts([...reacts, (reacts[index].count = --reacts[index].count)]);
@@ -44,17 +46,16 @@ function Post({ post, user }: any) {
       }
     } else {
       setCheck(type);
-      let index = reacts.findIndex((x: any) => x.react == type);
-      let index1 = reacts.findIndex((x: any) => x.react == check);
+      let index = reacts.findIndex((x: any) => x.react === type);
+      let index1 = reacts.findIndex((x: any) => x.react === check);
+
       if (index !== -1) {
         setReacts([...reacts, (reacts[index].count = ++reacts[index].count)]);
         setTotal((prev) => ++prev);
-        console.log(reacts);
       }
       if (index1 !== -1) {
         setReacts([...reacts, (reacts[index1].count = --reacts[index1].count)]);
         setTotal((prev) => --prev);
-        console.log(reacts);
       }
     }
   };
@@ -69,10 +70,11 @@ function Post({ post, user }: any) {
     if (post.images.length >= 5) return "grid_5"
     return ""
   }
+
   return (
     <div
       className="post"
-      style={{ width: `${"100%"}` }}
+      style={{ width: `${profile && "100%"}` }}
       ref={postRef}
     >
       <div className="post_header">
@@ -83,12 +85,19 @@ function Post({ post, user }: any) {
           <img src={post.user.picture} alt="" />
           <div className="header_col">
             <div className="post_profile_name">
-              {post.user.first_name} {post.user.last_name}
+              {!visitor ? (
+                `
+                ${post.user.first_name + post.user.last_name}
+              `
+              ) : (
+                <span>You</span>
+              )}
+
               <div className="updated_p">
-                {post.type == "profilePicture" &&
+                {post.type === "profilePicture" &&
                   `updated ${post.user.gender === "male" ? "his" : "her"
                   } profile picture`}
-                {post.type == "coverPicture" &&
+                {post.type === "coverPicture" &&
                   `updated ${post.user.gender === "male" ? "his" : "her"
                   } cover picture`}
               </div>
@@ -118,7 +127,7 @@ function Post({ post, user }: any) {
       ) : post.type === null ? (
         <>
           <div className="post_text">{post.text}</div>
-          {post.images && post.images.length && (
+          {post.images && post.images.length !== 0 && (
             <div
               className={
                 handleClassNameGrid(post)
@@ -141,14 +150,14 @@ function Post({ post, user }: any) {
             <img src={post.user.cover} alt="" />
           </div>
           <img
-            src={post.images[0].url}
+            src={post.images[0]?.url}
             alt=""
             className="post_updated_picture"
           />
         </div>
       ) : (
         <div className="post_cover_wrap">
-          <img src={post.images[0].url} alt="" />
+          <img src={post.images[0]?.url} alt="" />
         </div>
       )}
 
@@ -270,12 +279,12 @@ function Post({ post, user }: any) {
           imagesLength={post?.images?.length}
           setShowMenu={setShowMenu}
           postId={post._id}
-          token={user.token}
+          token={token}
           checkSaved={checkSaved}
           setCheckSaved={setCheckSaved}
           images={post.images}
           postRef={postRef}
-          postArchived={post.isArchived}
+          isArchived={post.isArchived}
         />
       )}
     </div>
