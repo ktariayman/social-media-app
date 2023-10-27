@@ -7,6 +7,7 @@ import { reactPost } from "./post/reactPost";
 import { savePost } from "./post/savePost";
 import { uploadImages } from "./uploadImages";
 import { getProfile } from "./profile/getProfile";
+import usersNotFriends from "./user/usersNotFriends";
 export {
  createPostService,
  uploadImages,
@@ -16,5 +17,6 @@ export {
  savePost,
  comment,
  getReacts,
- getProfile
+ getProfile,
+ usersNotFriends
 }
