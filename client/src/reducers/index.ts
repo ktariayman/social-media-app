@@ -1,4 +1,4 @@
-import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware, combineReducers } from '@reduxjs/toolkit';
 import {
   persistReducer,
   persistStore,
@@ -13,7 +13,11 @@ import {
 import storage from 'reduxjs-toolkit-persist/lib/storage';
 import ReduxLogger from 'redux-logger';
 
+import postReducer from './postReducer';
 import userReducer from './userReducer';
+import profileReducer from './profileReducer';
+import { friendsReducer } from './friendsReducer';
+import { themeReducer } from './themeReducer';
 const persistConfig = {
   key: 'root',
   storage: storage
@@ -21,6 +25,10 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   user: userReducer,
+  posts: postReducer,
+  profile: profileReducer,
+  friendsPage: friendsReducer,
+  darkTheme: themeReducer
 });
 const _persistedReducer = persistReducer(persistConfig, rootReducer);
 

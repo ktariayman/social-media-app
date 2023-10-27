@@ -1,13 +1,11 @@
-
-
-
-import { useEffect, useReducer, useRef } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import postReducer, { PostState } from '../reducers/postReducer';
-import { PostActionType, ProfileActionType } from '../ts/enums';
+import { ProfileActionType } from '../ts/enums';
 import { getProfile } from '../functions';
-import profileReducer, { ProfileState } from '../reducers/profileReducer';
+import profileReducer from '../reducers/profileReducer';
 import { useNavigate } from 'react-router-dom';
+import listImages from '../functions/profile/Iistmages';
+import { useMediaQuery } from 'react-responsive';
 
 type ProfileProps = {
  usernameParams: string | undefined;
@@ -16,12 +14,33 @@ type ProfileProps = {
 
 const useProfile = ({ usernameParams, userName }: ProfileProps) => {
  const { user } = useSelector((user: any) => ({ ...user }));
+ var visitor = userName === user.username ? false : true;
  const navigate = useNavigate()
  const [profileState, dispatch] = useReducer(profileReducer, {
   loading: false,
-  profile: [],
+  profile: {},
   error: '',
- } as ProfileState);
+ });
+ const [othername, setOthername] = useState("");
+ useEffect(() => {
+  setOthername(profileState.profile?.details?.otherName!);
+ }, [profileState.profile]);
+ const [showCoverMenu, setShowCoverMenu] = useState(false)
+ const [photos, setPhotos] = useState({});
+
+ const profileTop = useRef<HTMLDivElement>(null);
+ const leftSide = useRef<HTMLDivElement>(null);
+ const [height, setHeight] = useState<any>();
+ const [leftHeight, setLeftHeight] = useState<any>();
+
+ const [scrollHeight, setScrollHeight] = useState<number>(0);
+
+ const check = useMediaQuery({
+  query: "(min-width:901px)",
+ });
+ const getScroll = () => {
+  setScrollHeight(window.pageYOffset);
+ };
  useEffect(() => {
   handleGetData()
  }, [usernameParams])
@@ -29,15 +48,48 @@ const useProfile = ({ usernameParams, userName }: ProfileProps) => {
   try {
    dispatch({ type: ProfileActionType.PROFILE_REQUEST });
    const data = await getProfile(user?.token, userName);
-   if (data.ok === false) navigate('/profile')
+   if (data.ok === false) {
+    navigate('/profile')
+   } else {
+    const responseImages = await listImages(user?.token, userName)
+    setPhotos(responseImages.data)
+   }
    dispatch({ type: ProfileActionType.PROFILE_SUCCESS, payload: data });
   } catch (error: any) {
    dispatch({ type: ProfileActionType.PROFILE_ERROR, payload: error.response.data.message });
   }
  };
-
+ useEffect(() => {
+  if (profileTop.current) {
+   setHeight(profileTop.current.clientHeight + 300);
+  }
+  if (leftSide.current) {
+   setLeftHeight(leftSide.current.clientHeight);
+  }
+  window.addEventListener("scroll", getScroll, { passive: true });
+  return () => {
+   window.addEventListener("scroll", getScroll, { passive: true });
+  };
+ }, [profileState.loading, scrollHeight]);
  return {
   profileState,
+  showCoverMenu,
+  setShowCoverMenu,
+  othername,
+  setOthername,
+  photos, setPhotos,
+  dispatch,
+  visitor,
+  profileTop,
+  leftSide,
+  height,
+  setHeight,
+  leftHeight,
+  setLeftHeight,
+  scrollHeight,
+  setScrollHeight,
+  check,
+  getScroll
  };
 };
 

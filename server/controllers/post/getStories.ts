@@ -7,6 +7,7 @@ interface IStory {
  image: string;
  username?: string;
  createdAt: string;
+ text?: string
 }
 interface IRequest extends Request {
  user?: any;
@@ -34,6 +35,9 @@ interface IRequest extends Request {
 //    if (!usersStoriesMap.has(userId)) {
 //     usersStoriesMap.set(userId, []);
 //    }
+
+//    console.log('storyPosts ddd', storyPosts);
+
 //    const createdDate = post.createdAt;
 //    const now = new Date();
 //    const timeDiffInMinutes = Math.floor((+now - createdDate) / (1000 * 60));
@@ -52,6 +56,7 @@ interface IRequest extends Request {
 //     profile_name: `${post.user.first_name} ${post.user.last_name}`,
 //     image: post.images[0].url,
 //     username: post.user.username,
+//     text: post.text,
 //     createdAt: createdAt,
 
 //    };
@@ -107,9 +112,10 @@ const getStories = async (req: IRequest, res: Response) => {
     const formattedStory: IStory = {
      profile_picture: post.user.picture,
      profile_name: `${post.user.first_name} ${post.user.last_name}`,
-     image: post.images[0].url,
+     image: post.images[0]?.url ? post.images[0]?.url : '',
      username: post.user.username,
      createdAt: createdAt,
+     text: post.text ? post.text : ''
     };
 
     if (!usersStoriesMap.has(userId)) {

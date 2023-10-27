@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import postReducer, { PostState } from '../reducers/postReducer';
+import postReducer from '../reducers/postReducer';
 import { PostActionType } from '../ts/enums';
 
 interface HomeProps {
@@ -16,7 +16,7 @@ const usePosts = ({ setVisible, visible, getData }: HomeProps) => {
     loading: false,
     posts: [],
     error: '',
-  } as PostState);
+  });
 
   useEffect(() => {
     handleGetData();
@@ -36,6 +36,7 @@ const usePosts = ({ setVisible, visible, getData }: HomeProps) => {
     postState,
     setVisible,
     visible,
+    dispatch
   };
 };
 

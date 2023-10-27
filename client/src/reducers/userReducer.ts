@@ -1,7 +1,8 @@
 import { UserActionType } from "../ts/enums";
+import Cookies from "js-cookie";
 
 function userReducer(
-  state = null,
+  state = Cookies.get("user") ? JSON.parse(Cookies.get("user")!) : null,
 
   action: any
 ) {
@@ -9,6 +10,8 @@ function userReducer(
     case UserActionType.LOGIN:
       return action.payload;
     case UserActionType.REGISTER:
+      return action.payload;
+    case UserActionType.UPDATEPROFILEPICTURE:
       return action.payload;
     case UserActionType.LOGOUT:
       return null;
