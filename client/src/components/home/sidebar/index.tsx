@@ -6,12 +6,13 @@ import { ArrowDown1 } from '../../../svg';
 import { useState } from 'react';
 import Shortcut from './Shortcut';
 import { ILeftItem } from '../../../ts/interface/user';
-function SideBar({ user }: any) {
+function SideBar({ user, loading }: any) {
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
   return (
     <div className='left_home scrollbar'>
       <Link to='/profile' className='left_link hover2'>
+
         <img src={user?.picture} alt='' />
         <span>
           {user?.first_name} {user.last_name}

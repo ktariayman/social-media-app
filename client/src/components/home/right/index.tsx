@@ -1,7 +1,9 @@
+import useFriends from '../../../hooks/useFriends';
 import { Dots, NewRoom, Search } from '../../../svg';
 import Contact from './Contact';
 import './style.css';
 function RightHome({ user }: any) {
+  const { data } = useFriends(user)
   const color = '#65676b';
   return (
     <div className='right_home'>
@@ -23,7 +25,12 @@ function RightHome({ user }: any) {
           </div>
         </div>
         <div className='contacts_list'>
-          <Contact user={user} />
+          {data.friends &&
+            data.friends.map((user: any) => (
+              <Contact
+                user={user}
+              />
+            ))}
         </div>
       </div>
     </div>

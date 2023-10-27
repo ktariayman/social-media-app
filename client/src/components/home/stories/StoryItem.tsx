@@ -1,16 +1,41 @@
+import { useEffect, useState } from "react";
 import { IStory } from "../../../ts/interface/user";
 type Props = {
-  story: IStory
+  stories: IStory[]
 }
-function StoryItem({ story }: Props) {
+function StoryItem({ stories }: Props) {
+  const [lastStory, setLastStory] = useState<IStory>()
+  const getLastStoryImage = (): IStory => {
+    return stories[0];
+  };
+
+  useEffect(() => {
+    setLastStory(getLastStoryImage())
+  }, [])
+
   return (
-    <div className='story'>
-      <img src={story.image} alt='' className='story_img' />
-      <div className='story_profile_pic'>
-        <img src={story.profile_picture} alt='' />
+    lastStory ? (
+      <div className='story'>
+        {lastStory.image !== '' && <img src={lastStory.image} alt='' className='story_img' />}
+        <b
+          style={{
+            position: 'absolute',
+            color: "#b30d0dba",
+            top: 10,
+            right: 0,
+            zIndex: 99,
+            fontSize: "12px"
+          }}
+        >{lastStory.createdAt}</b>
+        <div className='story_profile_pic'>
+          <img src={lastStory.profile_picture} alt='' />
+        </div>
+        <div className='story_profile_name'>{lastStory.profile_name}</div>
       </div>
-      <div className='story_profile_name'>{story.profile_name}</div>
-    </div>
+    ) :
+      (
+        <div>eeeeeeeeeeeeeeeeeee</div>
+      )
   );
 }
 export default StoryItem

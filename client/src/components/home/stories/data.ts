@@ -5,7 +5,8 @@ const stories: IStory[] = [
   {
     profile_picture: '../../stories/profile1.jpg',
     profile_name: 'Elon Musk',
-    image: '../../stories/1.jpg'
+    image: '../../stories/1.jpg',
+    username: "aymanktari"
   },
   {
     profile_picture: '../../stories/profile2.jpg',

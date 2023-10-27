@@ -6,7 +6,7 @@ import {
 import { UserMenu } from '../../components';
 import { Link } from 'react-router-dom';
 type Props = {
-  user: any; // Replace 'any' with the actual type for user data
+  user: any;
   usermenu: React.RefObject<HTMLDivElement>;
   showUserMenu: boolean;
   setShowUserMenu: (show: boolean) => void;

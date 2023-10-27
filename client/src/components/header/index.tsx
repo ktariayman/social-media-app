@@ -14,7 +14,6 @@ function Header({ page }: Props) {
 
   const [showSearchMenu, setShowSearchMenu] = useState<boolean>(false);
   const [showUserMenu, setShowUserMenu] = useState<boolean>(false);
-  console.log(typeof setShowSearchMenu);
 
   const allmenu = useRef(null);
   const usermenu = useRef(null);
