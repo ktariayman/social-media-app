@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from 'react';
+import React, { useState, useReducer, useRef } from 'react';
 import {
   Header,
   RightHome,
@@ -14,25 +14,33 @@ import { getAllPostsService } from '../../functions';
 import postReducer from '../../reducers/postReducer';
 import { usePosts } from '../../hooks';
 import ListPosts from '../../components/ListPosts/ListPosts';
+import { PostActionType } from '../../ts/enums';
+import { BeatLoader, HashLoader } from 'react-spinners';
 
-function Home({ setVisible, visible, showPrev, setShowPrev }: any) {
+function Home({ setVisible, visible, showPrev, setShowPrev, postState }: any) {
   const middle = useRef<HTMLDivElement>(null);
-  const { postState: { loading, posts, error } } = usePosts({
-    setVisible,
-    visible,
-    getData: getAllPostsService,
-  });
+
+  const [storyVisible, setStoryVisible] = useState(false);
 
   const { user } = useSelector((state: any) => ({ ...state }));
   return (
     <div className='home'>
       <Header page='home' />
       <SideBar user={user} />
+
       <ListPosts
         render={(post: any, i: number) => {
-          return <Post key={i} post={post} user={user} />
+          return <Post key={i} post={post} user={user} token={user.token} />
         }}
-        middle={middle} user={user} posts={posts} setVisible={setVisible} showPrev={showPrev} setShowPrev={setShowPrev} />
+        setStoryVisible={setStoryVisible}
+        middle={middle}
+        user={user}
+        posts={postState?.posts}
+        setVisible={setVisible}
+        showPrev={showPrev}
+        setShowPrev={setShowPrev}
+        loading={postState?.loading}
+      />
       <RightHome user={user} />
 
     </div>

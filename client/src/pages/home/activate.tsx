@@ -15,6 +15,7 @@ function Activate({ setVisible, visible }: any) {
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+  const [storyVisible, setStoryVisible] = useState(false);
   const { token } = useParams();
   useEffect(() => {
     activateAccount();
@@ -71,8 +72,8 @@ function Activate({ setVisible, visible }: any) {
       <SideBar user={user} />
       <RightHome user={user} />
       <div className='home_middle' ref={middle}>
-        <Stories />
-        <CreatePost user={user} setVisible={setVisible} />
+        <Stories setStoryVisible={setStoryVisible} />
+        <CreatePost user={user} setVisible={setVisible} loading={loading} />
       </div>
     </div>
   );

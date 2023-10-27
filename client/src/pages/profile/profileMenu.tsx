@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import { Dots } from "../../svg";
+import { BeatLoader } from "react-spinners";
 
-type Props = {}
-export default function ProfileMenu(props: Props) {
+type Props = {
+ nbreOfFriends: number
+ photos: any
+ loading: boolean
+}
+export default function ProfileMenu({ nbreOfFriends, photos, loading }: Props) {
  const color = '#65676b';
+
  return (
   <div className="profile_menu_wrap">
    <div className="profile_menu">
@@ -15,9 +21,15 @@ export default function ProfileMenu(props: Props) {
     </Link>
     <Link to="/" className="hover1">
      Friends
+     <span style={{ fontSize: "16px", color: "#1876f2 " }}>
+      ({!loading && nbreOfFriends && <span>{nbreOfFriends}</span>})
+     </span>
     </Link>
     <Link to="/" className="hover1">
      Photos
+     <span style={{ fontSize: "16px", color: "#1876f2 " }}>
+      ({!loading && photos.total_count && <span>{photos.total_count}</span>})
+     </span>
     </Link>
     <Link to="/" className="hover1">
      Videos

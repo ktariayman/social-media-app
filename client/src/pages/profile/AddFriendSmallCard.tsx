@@ -1,29 +1,47 @@
+import { useNavigate } from "react-router-dom";
 import { IStory } from "../../ts/interface/user";
+import { useState } from 'react'
+import { useSelector } from "react-redux";
+import { addFriend, cancelRequest } from "../../functions/profile/invitationSystem";
 
-type Props = {
- item: IStory
-}
-export default function AddFriendSmallCard({ item }: Props) {
- return (
-  <div className="addfriendCard">
-   <div className="addfriend_imgsmall">
-    <img src={item.profile_picture} alt="" />
-    <div className="addfriend_infos">
-     <div className="addfriend_name">
-      {item.profile_name.length > 11
-       ? `${item.profile_name.substring(0, 11)}...`
-       : item.profile_name}
-     </div>
-     <div className="light_blue_btn">
-      <img
-       src="../../../icons/addFriend.png"
-       alt=""
-       className="filter_blue"
-      />
-      Add Friend
-     </div>
+export default function AddFriendSmallCard(item: any) {
+  const { user } = useSelector((state: any) => ({ ...state }));
+  const [requestSend, setRequestSend] = useState()
+
+  const [text, setText] = useState(item.item.requests.includes(user.id) ? "Cancel request" : "Add Friend")
+  const handleAddFriend = async () => {
+    const res = await addFriend(item.item._id as string, user.token as string);
+    setText('Cancel request')
+  }
+  const handleCancelRequest = async () => {
+    const res = await cancelRequest(item.item._id, user.token);
+    setText('Add Friend')
+  }
+  const navigate = useNavigate()
+  const [profileName, setProfileName] = useState(`${item.item.first_name} ${item.item.last_name}`)
+  return (
+    <div className="addfriendCard" >
+      <div className="addfriend_imgsmall">
+        <img src={item.item.picture} alt="" onClick={() => { navigate(`/profile/${item.item.username}`) }} />
+        <div className="addfriend_infos">
+          <div className="addfriend_name">
+            {profileName.length > 11
+              ? `${profileName.substring(0, 11)}...`
+              : profileName}
+          </div>
+          <button className="blue_btn" style={{ height: '40px' }} onClick={text === "Add Friend" ? handleAddFriend : handleCancelRequest}         >
+            <img
+              src={text === "Add Friend" ? "../../../icons/addFriend.png" : "../../../icons/cancelRequest.png"}
+              alt=""
+              style={{ width: "20px", height: "20px" }}
+              className="invert"
+            />
+            <span >
+              {text}
+            </span>
+          </button>
+        </div>
+      </div>
     </div>
-   </div>
-  </div>
- );
+  );
 }

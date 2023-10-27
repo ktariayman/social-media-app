@@ -187,6 +187,7 @@
  gap: 5px;
  align-items: center;
  height: 240px;
+ flex-wrap: wrap;
 }
 .pplumayknow {
  width: 100%;
@@ -224,7 +225,7 @@
  text-align: center;
  display: flex;
  flex-direction: column;
- gap: 5px;
+ gap: 12px;
 }
 .addfriend_name {
  font-size: 16px;
@@ -492,6 +493,9 @@
 @media (max-width: 405px) {
  .friendship {
    flex-direction: column;
+ }
+ .friendship .flex {
+  flex-direction: column;
  }
 }
 
