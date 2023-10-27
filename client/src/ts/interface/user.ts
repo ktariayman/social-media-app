@@ -17,6 +17,9 @@ interface IStory {
   profile_picture: string;
   profile_name: string;
   image: string;
+  username?: string
+  createdAt?: string
+  text?: string
 }
 
 interface ILeftItem {

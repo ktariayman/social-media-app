@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './styles/icons/icons.css';
 import App from './App';
+import "./styles/dark.css";
 
 import { Provider } from 'react-redux';
 import { persistor, store } from './reducers';
