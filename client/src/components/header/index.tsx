@@ -22,7 +22,7 @@ function Header({ page }: Props) {
     setShowUserMenu(false);
   });
   return (
-    <header style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+    <header >
       <HeaderLeft color={color} setShowSearchMenu={setShowSearchMenu} showSearchMenu={showSearchMenu} />
       <HeaderMiddle page={page} color={color} />
       <HeaderRight page={page} user={user} usermenu={usermenu} showUserMenu={showUserMenu} setShowUserMenu={setShowUserMenu} />

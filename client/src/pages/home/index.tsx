@@ -26,22 +26,25 @@ function Home({ setVisible, visible, showPrev, setShowPrev, postState }: any) {
   return (
     <div className='home'>
       <Header page='home' />
-      <SideBar user={user} />
+      <div className='home_2'>
 
-      <ListPosts
-        render={(post: any, i: number) => {
-          return <Post key={i} post={post} user={user} token={user.token} />
-        }}
-        setStoryVisible={setStoryVisible}
-        middle={middle}
-        user={user}
-        posts={postState?.posts}
-        setVisible={setVisible}
-        showPrev={showPrev}
-        setShowPrev={setShowPrev}
-        loading={postState?.loading}
-      />
-      <RightHome user={user} />
+        <SideBar user={user} />
+
+        <ListPosts
+          render={(post: any, i: number) => {
+            return <Post key={i} post={post} user={user} token={user.token} />
+          }}
+          setStoryVisible={setStoryVisible}
+          middle={middle}
+          user={user}
+          posts={postState?.posts}
+          setVisible={setVisible}
+          showPrev={showPrev}
+          setShowPrev={setShowPrev}
+          loading={postState?.loading}
+        />
+        <RightHome user={user} />
+      </div>
 
     </div>
   );

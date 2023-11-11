@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProfilePicture from "../../components/profilePicture";
 import Friendship from "./Friendship";
 import { BeatLoader, MoonLoader } from "react-spinners";
@@ -19,7 +19,7 @@ export default function ProfielPictureInfos({
   loading,
   setShowEdit
 }: Props) {
-
+  const navigate = useNavigate()
   const [show, setShow] = useState(false);
   const pRef = useRef(null);
   return (
@@ -104,7 +104,7 @@ export default function ProfielPictureInfos({
           <Friendship friendshipp={profile?.friendship} profileid={profile._id} loading={loading} />
         ) : (
           <div className="profile_w_right">
-            <div className="blue_btn">
+            <div className="blue_btn" onClick={() => { navigate('/stories/create') }}>
               <img src="../../../icons/plus.png" alt="" className="invert" />
               <span>Add to story</span>
             </div >

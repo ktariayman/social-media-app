@@ -1,8 +1,11 @@
 .right_home {
   position: fixed;
-  left: 80.7vw;
+  right: 0;
   top: 4rem;
-  width: 17vw;
+  width: 20%;
+  background: var(--bg-primary);
+  height: 100vh;
+
 }
 .splitter1 {
   height: 1.3px;

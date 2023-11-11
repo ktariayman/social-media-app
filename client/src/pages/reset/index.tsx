@@ -31,7 +31,7 @@ function ResetPassword() {
   return (
     <div className='reset'>
       <div className='reset_header'>
-        <img src='../../../icons/facebook.svg' alt='' />
+        <img src='../../../icons/facebook.svg' alt='' onClick={() => { navigate('/') }} />
         {user ? (
           <div className='right_reset'>
             <Link to='/profile'>

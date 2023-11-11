@@ -4,7 +4,7 @@ import { Footer, LoginForm, RegisterForm } from '../../components';
 import CreatePage from '../../components/createPage/createPage';
 
 function Login() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState<boolean>(false);
   const [visiblePage, setVisiblePage] = useState<boolean>(false);
 
   return (

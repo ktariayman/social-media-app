@@ -2,7 +2,7 @@ import {
   Logo,
   Search,
 } from '../../svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchMenu from './SearchMenu';
 type Props = {
   setShowSearchMenu: (show: boolean) => void;
@@ -10,11 +10,12 @@ type Props = {
   color: string;
 }
 function HeaderLeft({ setShowSearchMenu, showSearchMenu, color }: Props) {
+  const navigate = useNavigate()
   return (
     <>
       <div className='header_left'>
         <Link to='/' className='header_logo'>
-          <div className='circle'>
+          <div className='circle' onClick={() => { navigate('/') }}>
             <Logo />
           </div>
         </Link>

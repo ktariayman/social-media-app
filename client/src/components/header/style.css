@@ -54,6 +54,7 @@ header {
 
 .header_middle {
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 .middle_icon {
@@ -104,6 +105,7 @@ header {
 
 .header_right {
   display: flex;
+  justify-content: end;
   align-items: center;
 }
 .profile_link {

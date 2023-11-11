@@ -39,6 +39,7 @@ function Profile() {
   } = useProfile({ usernameParams: username, userName })
   const [showEdit, setShowEdit] = useState(false);
   const [showPrev, setShowPrev] = useState(false);
+  const { darkTheme } = useSelector((state: any) => ({ ...state }));
 
   return (
     <div className='profile'>
@@ -56,7 +57,7 @@ function Profile() {
         />}
 
       <Header page="profile" />
-      <div className="profile_top" ref={profileTop}>
+      <div className="profile_top" ref={profileTop} style={{ marginTop: darkTheme ? "2px" : '' }} >
         <div className="profile_container">
           {
             profileState.loading ?

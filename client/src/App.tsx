@@ -1,12 +1,10 @@
-import LoggedInRoutes from './routes/LoggedInRoutes';
-import NotLoggedInRoutes from './routes/NotLoggedInRoutes';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import { useState } from 'react';
 import { PostPopup } from './components';
 import { useSelector } from 'react-redux';
 import { getAllPostsService } from './functions';
 import { usePosts } from './hooks';
-import { useRouter } from './routes/useRouter';
+import { useRoutes } from './routes/useRoutes';
 
 function AppRoutes() {
   const { user } = useSelector((state: any) => ({ ...state }));
@@ -18,11 +16,10 @@ function AppRoutes() {
     getData: getAllPostsService,
     visible
   })
-  const { router } = useRouter({ setShowPrev, showPrev, setVisible, postState })
+  const { router } = useRoutes({ setShowPrev, showPrev, setVisible, postState })
   return (
     <div className={`${darkTheme ? "dark" : ''}`} style={{ minHeight: "100vh" }}>
       {visible && <PostPopup setVisible={setVisible} user={user} visible={visible} showPrev={showPrev} setShowPrev={setShowPrev} posts={postState.posts} dispatch={dispatch} />}
-
       <RouterProvider router={router} />
     </div>
   );

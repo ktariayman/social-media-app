@@ -13,7 +13,7 @@ type Props = {
   setShowPrev: (showPrev: boolean) => void;
   postState: any
 }
-export const useRouter = ({ setVisible, showPrev, setShowPrev, postState }: Props) => {
+export const useRoutes = ({ setVisible, showPrev, setShowPrev, postState }: Props) => {
   const router = createBrowserRouter([
     {
       path: '/',
