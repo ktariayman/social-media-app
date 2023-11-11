@@ -18,7 +18,7 @@ function AppRoutes() {
   })
   const { router } = useRoutes({ setShowPrev, showPrev, setVisible, postState })
   return (
-    <div className={`${darkTheme ? "dark" : ''}`} style={{ minHeight: "100vh" }}>
+    <div className={`${darkTheme ? "dark" : ''}`} style={{ height: "auto" }}>
       {visible && <PostPopup setVisible={setVisible} user={user} visible={visible} showPrev={showPrev} setShowPrev={setShowPrev} posts={postState.posts} dispatch={dispatch} />}
       <RouterProvider router={router} />
     </div>

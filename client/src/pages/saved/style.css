@@ -1,5 +1,5 @@
 .saved {
- height: calc(100vh - 56px);
+ height: auto;
  width: 100%;
  margin-top: 56px;
  color: var(--color-primary);

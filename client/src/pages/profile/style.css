@@ -2,7 +2,6 @@
  color: var(--color-primary);
 }
 .profile_top {
- margin-top: 56px;
  box-shadow: 0 1px 2px var(--shadow-1);
  background: var(--bg-primary);
 }
@@ -27,7 +26,7 @@
 }
 .udpate_cover_wrapper {
  position: absolute;
- bottom: 1rem;
+ bottom: 1.5rem;
  right: 1rem;
 }
 .open_cover_update {
@@ -429,6 +428,12 @@
 
 /*-----profile card--------*/
 @media (max-width: 900px) {
+  .profile_cover{
+    height:auto;
+  }
+  .cover{
+    margin-top: 32px;
+  }
  .profile_w_left {
    flex-direction: column;
    align-items: center;
@@ -487,7 +492,7 @@
 }
 @media (max-width: 510px) {
  .udpate_cover_wrapper {
-   bottom: 3rem;
+   bottom: 1.5rem;
  }
 }
 @media (max-width: 405px) {
@@ -497,6 +502,9 @@
  .friendship .flex {
   flex-direction: column;
  }
+ .udpate_cover_wrapper {
+  right:0.5rem;
+}
 }
 
 .scrollFixed .profile_left {
