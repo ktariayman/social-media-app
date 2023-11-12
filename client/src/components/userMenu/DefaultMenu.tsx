@@ -1,26 +1,24 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useLogout } from '../../hooks';
+import { useSelector } from 'react-redux';
 type Props = {
-  picture: string;
-  first_name: string
-  last_name: string
   setVisible: (show: number) => void;
-  logout: () => void;
-  setShowUserMenu: (show: boolean) => void;
+  handleUserMenuClick: () => void
 }
-function DefaultMenu({ picture, first_name, last_name, setVisible, logout, setShowUserMenu }: Props) {
+function DefaultMenu({ setVisible, handleUserMenuClick }: Props) {
   const navigate = useNavigate()
-  console.log('type of setShowUserMenu ', setShowUserMenu);
-
+  const logout = useLogout()
+  const { user } = useSelector((user: any) => ({ ...user }));
   return (
     <div>
 
       <div className='mmenu_flex'>
 
         <div className='mmenu_flex_child '>
-          <img src={picture ? picture : ''} alt='' onClick={() => { navigate('/profile') }} />
+          <img src={user.picture ? user.picture : ''} alt='' onClick={() => { navigate('/profile') }} />
           <div className='mmenu_col'>
             <span >
-              {first_name && first_name} {last_name && last_name}
+              {user.first_name && user.first_name} {user.last_name && user.last_name}
             </span>
             <span>See your profile</span>
           </div>
@@ -29,9 +27,7 @@ function DefaultMenu({ picture, first_name, last_name, setVisible, logout, setSh
 
         <div
           className='small_circle'
-          onClick={() => {
-            setShowUserMenu(!setShowUserMenu);
-          }}         >
+          onClick={handleUserMenuClick}         >
           <i className='exit_icon' ></i>
         </div>
       </div>
@@ -90,9 +86,7 @@ function DefaultMenu({ picture, first_name, last_name, setVisible, logout, setSh
       </div>
       <div
         className='mmenu_item hover3'
-        onClick={() => {
-          logout();
-        }}
+        onClick={logout}
       >
         <div className='small_circle'>
           <i className='logout_filled_icon'></i>

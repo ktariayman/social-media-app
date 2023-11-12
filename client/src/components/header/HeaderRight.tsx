@@ -13,7 +13,9 @@ type Props = {
   page: string
 }
 function HeaderRight({ user, setShowUserMenu, showUserMenu, usermenu, page }: Props) {
-
+  const handleUserMenuClick = () => {
+    setShowUserMenu(!showUserMenu);
+  };
   return (
     <div className='header_right'>
       <Link
@@ -39,11 +41,9 @@ function HeaderRight({ user, setShowUserMenu, showUserMenu, usermenu, page }: Pr
         ref={usermenu}
 
       >
-        <img src={user?.picture} alt='' onClick={() => {
-          setShowUserMenu(!showUserMenu);
-        }} />
+        <img src={user?.picture} alt='' onClick={handleUserMenuClick} />
 
-        {showUserMenu && <UserMenu user={user} setShowUserMenu={setShowUserMenu} />}
+        {showUserMenu && <UserMenu handleUserMenuClick={handleUserMenuClick} />}
       </div>
     </div>
   )

@@ -1,54 +1,70 @@
-import Cookies from 'js-cookie';
-import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import useTheme from '../../hooks/useTheme';
+import useFullScreen from '../../hooks/useScreen';
 type Props = {
   setVisible: (show: number) => void;
 }
 function DisplayAccessibility({ setVisible }: Props) {
-  const dispatch = useDispatch();
-  const { darkTheme } = useSelector((state: any) => ({ ...state }));
-  const fullScreenRef = useRef<any>(null)
-  const [full, setFull] = useState(false)
-  useEffect(() => {
-    if (full) {
-      openFullscreen()
-    }
-    else {
-      closeFullscreen()
-    }
-  }, [full])
-
-  function openFullscreen() {
-    let elem = document.documentElement
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    }
-  }
-
-  function closeFullscreen() {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-  }
   return (
     <div className='absolute_wrap'>
-      <div className='absolute_wrap_header'>
-        <div
-          className='circle hover1'
-          onClick={() => {
-            setVisible(0);
-          }}
-        >
-          <i className='arrow_back_icon'></i>
+      <DisplayAccessibilityHeader setVisible={setVisible} />
+      <ThemeMode />
+      <ScreenMode />
+      <KeyboardMode />
+    </div>
+  );
+}
+export default DisplayAccessibility;
+
+
+
+const ScreenMode = () => {
+  const { fullScreenRef, isFullScreen, toggleFullScreen, openFullscreen, closeFullscreen } = useFullScreen()
+  return (
+    <>
+      <div className='mmenu_main'>
+        <div className='small_circle' style={{ width: '50px' }} onClick={toggleFullScreen}>
+          <i className='compact_icon'></i>
         </div>
-        Display & Accessibility
+        <div className='mmenu_col' ref={fullScreenRef}>
+          <span className='mmenu_span1'>Compact mode</span>
+          <span className='mmenu_span2'>
+            Make your font size smaller so more content can fit on the screen.
+          </span>
+        </div>
       </div>
+      <label htmlFor='compactOff' className='hover1'
+        onClick={closeFullscreen}
+      >
+        <span>Off</span>
+        {isFullScreen ? (
+          <input type='radio' name='compact' id='compactOff' />
+        ) : (
+          <input type='radio' name='compact' id='compactOff' checked />
+        )}
+      </label>
+      <label htmlFor='compactOn' className='hover1' onClick={openFullscreen}>
+        <span>On</span>
+        {isFullScreen ? (
+          <input type='radio' name='compact' id='compactOn' checked />
+        ) : (
+          <input type='radio' name='compact' id='compactOn' />
+        )}
+
+      </label>
+    </>
+  )
+};
+
+const ThemeMode = () => {
+  const { darkTheme } = useSelector((state: any) => ({ ...state }));
+  const { onDark, onLight, onSwitch } = useTheme()
+
+  return (
+    <>
       <div className='mmenu_main'>
         <div className='small_circle' style={{ width: '50px' }}
-          onClick={() => {
-            Cookies.set('darkTheme', darkTheme ? "true" : "false");
-            dispatch({ type: darkTheme ? 'LIGHT' : "DARK" });
-          }}
+          onClick={onSwitch}
         >
           {darkTheme ?
             <img
@@ -71,10 +87,7 @@ function DisplayAccessibility({ setVisible }: Props) {
       <label
         htmlFor='darkOff'
         className='hover1'
-        onClick={() => {
-          Cookies.set('darkTheme', 'false');
-          dispatch({ type: 'LIGHT' });
-        }}
+        onClick={onLight}
       >
         <span>Off</span>
         {darkTheme ? (
@@ -86,11 +99,7 @@ function DisplayAccessibility({ setVisible }: Props) {
       <label
         htmlFor='darkOn'
         className='hover1'
-        onClick={() => {
-          Cookies.set('darkTheme', 'true');
-
-          dispatch({ type: 'DARK' });
-        }}
+        onClick={onDark}
       >
         <span>On</span>
         {darkTheme ? (
@@ -98,38 +107,37 @@ function DisplayAccessibility({ setVisible }: Props) {
         ) : (
           <input type='radio' name='dark' id='darkOn' />
         )}
-      </label>
-      <div className='mmenu_main'>
-        <div className='small_circle' style={{ width: '50px' }} onClick={() => { setFull(!full) }}>
-          <i className='compact_icon'></i>
-        </div>
-        <div className='mmenu_col' ref={fullScreenRef}>
-          <span className='mmenu_span1'>Compact mode</span>
-          <span className='mmenu_span2'>
-            Make your font size smaller so more content can fit on the screen.
-          </span>
-        </div>
+      </label></>
+  )
+};
+
+const KeyboardMode = () => {
+  return (
+    <div className='mmenu_item hover3'>
+      <div className='small_circle'>
+        <i className='keyboard_icon'></i>
       </div>
-      <label htmlFor='compactOff' className='hover1'
-      >
-        <span>Off</span>
-        <input type='radio' name='compact' id='compactOff' />
-      </label>
-      <label htmlFor='compactOn' className='hover1'
-      >
-        <span>On</span>
-        <input type='radio' name='compact' id='compactOff' />
-      </label>
-      <div className='mmenu_item hover3'>
-        <div className='small_circle'>
-          <i className='keyboard_icon'></i>
-        </div>
-        <span>Keyboard</span>
-        <div className='rArrow'>
-          <i className='right_icon'></i>
-        </div>
+      <span>Keyboard</span>
+      <div className='rArrow'>
+        <i className='right_icon'></i>
       </div>
     </div>
-  );
-}
-export default DisplayAccessibility;
+  )
+};
+
+const DisplayAccessibilityHeader = ({ setVisible }: Props) => {
+  return (
+    <div className='absolute_wrap_header'>
+      <div
+        className='circle hover1'
+        onClick={() => {
+          setVisible(0);
+        }}
+      >
+        <i className='arrow_back_icon'></i>
+      </div>
+      Display & Accessibility
+    </div>
+  )
+};
+

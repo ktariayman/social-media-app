@@ -1,17 +1,16 @@
 .right_home {
   position: fixed;
-  right: 0;
+  right: 2px;
   top: 64px;
   width: 20%;
   background: var(--bg-primary);
-  height: calc(100vh -56px);
+  height: 100%
 
 }
 .splitter1 {
   height: 1.3px;
   background: var(--divider);
-  width: 17vw;
-  margin: 6px 2px 0 12px;
+  margin: 6px 6px 0 12px;
 }
 .contacts_header {
   position: relative;
