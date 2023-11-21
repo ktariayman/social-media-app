@@ -5,17 +5,17 @@ import { useClickOutside } from '../../hooks';
 import HeaderMiddle from './HeaderMiddle';
 import HeaderRight from './HeaderRight';
 import HeaderLeft from './HeaderLeft';
+import { pagesType } from '../../ts/types';
 type Props = {
-  page: string
+  page?: pagesType
 }
-function Header({ page }: Props) {
+function Header({ page = "home" }: Props) {
   const color = '#65676b';
   const { user } = useSelector((user: any) => ({ ...user }));
 
   const [showSearchMenu, setShowSearchMenu] = useState<boolean>(false);
   const [showUserMenu, setShowUserMenu] = useState<boolean>(false);
 
-  const allmenu = useRef(null);
   const usermenu = useRef(null);
 
   useClickOutside(usermenu, () => {

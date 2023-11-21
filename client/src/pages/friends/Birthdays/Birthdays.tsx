@@ -18,7 +18,6 @@ function Birthdays() {
     const data = await getFriendBirthdays(user.token)
     setBirthdays(data);
   }
-  const navigate = useNavigate()
   return (
     <>
       <Header page="friends" />

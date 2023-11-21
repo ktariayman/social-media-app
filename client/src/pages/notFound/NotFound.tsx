@@ -6,7 +6,7 @@ import './style.css'
 function NotFoundPage() {
  return (
   <div className='not_found_page'>
-   <Header page='home' />
+   <Header />
    <h1 >404 - Page Not Found</h1>
    <p>Sorry, the page you are looking for does not exist.</p>
    <Link to="/">

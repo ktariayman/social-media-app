@@ -2,7 +2,6 @@
 import InputLogin from './input/inputLogin/InputLogin';
 import InputRegister from './input/inputRegister/InputRegister';
 // login
-import Footer from './login/Footer';
 import LoginForm from './login/LoginForm';
 import RegisterForm from './login/RegisterForm';
 // Post
@@ -27,7 +26,6 @@ import UserMenu from './userMenu';
 export {
   InputLogin,
   InputRegister,
-  Footer,
   LoginForm,
   RegisterForm,
   PostPopup,

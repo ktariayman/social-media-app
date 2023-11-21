@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './style.css';
-import { Footer, LoginForm, RegisterForm } from '../../components';
-import CreatePage from '../../components/createPage/createPage';
+import { LoginForm, RegisterForm } from '../../components';
+// import CreatePage from '../../components/createPage/createPage';
 
 function Login() {
   const [visible, setVisible] = useState<boolean>(false);
@@ -12,10 +12,8 @@ function Login() {
       <div className='login_wrapper'>
         <LoginForm setVisible={setVisible} setVisiblePage={setVisiblePage} />
         {visible && <RegisterForm setVisible={setVisible} />}
-        {visiblePage && <CreatePage setVisiblePage={setVisiblePage} />}
+        {/* {visiblePage && <CreatePage setVisiblePage={setVisiblePage} />} */}
       </div>
-      <Footer />
-
     </div>
   );
 }

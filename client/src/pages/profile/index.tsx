@@ -150,7 +150,6 @@ function Profile() {
                     <Friends friends={profileState.profile.friends} />
                   </>
                 )}
-                <Footer />
               </div>
               <div className="profile_right">
                 {!visitor && (
