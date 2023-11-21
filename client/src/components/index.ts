@@ -2,8 +2,8 @@
 import InputLogin from './input/inputLogin/InputLogin';
 import InputRegister from './input/inputRegister/InputRegister';
 // login
-import LoginForm from './login/LoginForm';
-import RegisterForm from './login/RegisterForm';
+import LoginForm from '../pages/login/components/LoginForm';
+import RegisterForm from '../pages/login/components/RegisterForm';
 // Post
 import PostPopup from './postPopup';
 import CreatePost from './createPost';

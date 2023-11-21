@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Form, Formik } from 'formik';
-import { InputLogin } from '../../components';
+import { InputLogin } from '../../../components';
 import DotLoader from 'react-spinners/DotLoader';
-import useLoginForm from '../../hooks/useLoginForm';
-import { useAuthConfigurationContext } from '../../contexts/AuthentificationContext';
+import useLoginForm from '../hooks/useLoginForm';
+import { useAuthConfigurationContext } from '../../../contexts/AuthentificationContext';
 type Props = {}
 function LoginForm({ }: Props) {
   const { setVisible, setVisiblePage } = useAuthConfigurationContext()

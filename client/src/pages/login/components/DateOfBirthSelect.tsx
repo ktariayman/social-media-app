@@ -1,4 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
+import useRegisterForm from '../hooks/useRegisterForm';
 type Props = {
   bDay: number;
   bMonth: number;
@@ -6,7 +7,6 @@ type Props = {
   days: number[];
   months: number[];
   years: number[];
-  handleRegisterChange: (e: any) => void;
   dateError: string
 }
 function DateOfBirthSelect({
@@ -16,9 +16,9 @@ function DateOfBirthSelect({
   days,
   months,
   years,
-  handleRegisterChange,
   dateError
 }: Props) {
+  const { handleRegisterChange } = useRegisterForm()
   const view1 = useMediaQuery({
     query: '(min-width: 539px)'
   });
