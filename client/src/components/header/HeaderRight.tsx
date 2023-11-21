@@ -20,7 +20,7 @@ function HeaderRight({ user, setShowUserMenu, showUserMenu, usermenu, page }: Pr
     <div className='header_right'>
       <Link
         to="/profile"
-        className={`profile_link hover1 ${page === "profile" ? "active_link" : ""
+        className={`profile_link profile_link_name hover1 ${page === "profile" ? "active_link" : ""
           }`}
       >
         <img src={user?.picture} alt="" />
@@ -39,7 +39,6 @@ function HeaderRight({ user, setShowUserMenu, showUserMenu, usermenu, page }: Pr
       <div
         className={`profile_link circle_icon hover1 ${showUserMenu && 'active_header'}`}
         ref={usermenu}
-
       >
         <img src={user?.picture} alt='' onClick={handleUserMenuClick} />
 

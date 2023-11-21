@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import { generateToken } from '../../helper';
 /**
  * @swagger
- * /login:
+ * /api/login:
  *   post:
  *     summary: Login a user
  *     tags:

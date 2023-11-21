@@ -1,5 +1,6 @@
 .home {
   height: auto;
+  min-height: 100vh;
   background: var(--bg-secondary);
   display: flex;
   flex-direction: column;
@@ -42,19 +43,42 @@
     display: none;
   }
   .left_home {
-    width: 10%;
-  }
+    width: 8%;
+    min-width: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    }
   .left_link {
     background: var(--bg-third);
-    width: 55px;
-    height: 55px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: grid;
     place-items: center;
+    padding: 0;
   }
+  .left_link img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    vertical-align: -0.25em;    
+    margin-right:0;
+
+  }
+  .shortcut_list{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+  }
+
   .home_middle {
     width: 80%;
-    margin-right: 5%;
+    margin-right: 0;
+    margin-left: 15%;  
   }
   .right_home {
     display: none;
@@ -105,8 +129,6 @@
     width: 112%;
   }
   .home_middle {
-    margin-left: auto;
-    margin-right: auto;
     width: 75%;
   }
 }
@@ -136,13 +158,9 @@
   }
 }
 @media (max-width: 620px) {
-  .left_home {
-    display: none;
-  }
+ 
   .home_middle {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
+    width: 80%;
   }
   .stories,
   .createPost,
@@ -169,13 +187,21 @@
   .createPost_icon svg {
     width: 20px;
   }
+  .create_comment img{
+    width: 30px;
+    height: 30px;
+  }
+  .comment_input_wrap{
+    padding-right: 0;
+    width: 90%;
+  }
 }
 @media (max-width: 400px) {
   .createPost,
   .post {
     margin-top: 1rem;
   }
-  .home_middle,
+  /* .home_middle, */
   .createPost,
   .post {
     width: 98%;
@@ -189,12 +215,14 @@
     grid-template-columns: repeat(6, 13vw);
     padding-left: 10px;
   }
-  .home_middle {
-    margin: 56px auto;
-  }
+  
   .createPost_body {
     padding: 5px 0;
   }
+  .left_home{
+    width: 40px;
+  }
+  
 }
 /*-----Activate popup----*/
 .popup {

@@ -46,8 +46,8 @@ function Stories({ setStoryVisible }: Props) {
   const query1175px = useMediaQuery({
     query: '(max-width: 1175px)'
   });
-  const query1030px = useMediaQuery({
-    query: '(max-width: 1030px)'
+  const query1040px = useMediaQuery({
+    query: '(max-width: 1040px)'
   });
   const query960px = useMediaQuery({
     query: '(max-width: 960px)'
@@ -55,7 +55,7 @@ function Stories({ setStoryVisible }: Props) {
   const query885px = useMediaQuery({
     query: '(max-width: 885px)'
   });
-  const max = query885px ? 5 : query960px ? 4 : query1030px ? 5 : query1175px ? 4 : stories.length;
+  const max = query885px ? 5 : query960px ? 4 : query1040px ? 5 : query1175px ? 4 : stories.length;
   return (
     <div className='stories'>
       <div className='create_story_card'

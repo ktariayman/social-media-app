@@ -87,7 +87,7 @@
   min-height: 90px;
   background: transparent;
   overflow-y: visible;
-  position: absolute;
+  /* position: absolute; */
 }
 .post_emojis_wrap {
   position: relative;
@@ -134,7 +134,6 @@
   width: 35px;
   height: 35px;
   display: grid;
-  place-items: center;
   cursor: pointer;
   border-radius: 50%;
 }
@@ -463,6 +462,12 @@
   }
   .addto_text {
     display: none;
+  }
+  .addto_icons{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
   }
 }
 .l0 {

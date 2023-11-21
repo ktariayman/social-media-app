@@ -99,7 +99,7 @@
 .shortcut_item img {
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  border-radius: 50%;
   object-fit: cover;
 }
 .shortcut_item span {

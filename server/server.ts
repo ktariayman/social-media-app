@@ -6,25 +6,10 @@ import { readdirSync } from 'fs';
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 import fileUpload from "express-fileupload"
-import { connectDB } from './config';
+import { connectDB, swaggerJsDocOptions } from './config';
 
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'social-media-app',
-      version: '1.0.0',
-      description: '***'
-    },
-    servers: [
-      {
-        url: 'http://localhost:8000'
-      }
-    ]
-  },
-  apis: ['./controllers/*/*.ts']
-};
-const specs = swaggerJsDoc(options);
+
+const specs = swaggerJsDoc(swaggerJsDocOptions);
 const app: Application = express();
 connectDB();
 app.use(cors());

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 import Moment from "react-moment";
 import { Dots, Public } from "../../svg";
@@ -18,7 +18,7 @@ function Post({ post, user, profile, visitor, token }: any) {
   const [checkSaved, setCheckSaved] = useState();
   const [comments, setComments] = useState<any>([]);
   const postRef = useRef(null);
-
+  const navigate = useNavigate()
 
   useEffect(() => {
     getPostReacts();
@@ -78,8 +78,8 @@ function Post({ post, user, profile, visitor, token }: any) {
       ref={postRef}
     >
       <div className="post_header">
-        <Link
-          to={`/profile/${post.user.username}`}
+        <div
+          onClick={() => { navigate(`/profile/${post.user.username}`) }}
           className="post_header_left"
         >
           <img src={post.user.picture} alt="" />
@@ -109,7 +109,7 @@ function Post({ post, user, profile, visitor, token }: any) {
               . <Public color="#828387" />
             </div>
           </div>
-        </Link>
+        </div>
         <div
           className="post_header_right hover1"
           onClick={() => setShowMenu((prev) => !prev)}

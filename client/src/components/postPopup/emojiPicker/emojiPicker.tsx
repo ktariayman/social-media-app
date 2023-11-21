@@ -44,7 +44,7 @@ function EmojiPickerComponent({ picker, setPicker, text, setText, textRef, user,
     setCursorPosition(start.length + emoji.length);
   };
   return (
-    <div className={type2 ? 'images_input' : ''}>
+    <div className={type2 ? 'images_input' : ''} style={{ marginBottom: '10px' }}>
       <div className={!type2 ? 'flex_center' : ''} ref={bgRef}>
         <textarea
           maxLength={250}
