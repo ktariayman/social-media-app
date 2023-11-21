@@ -11,11 +11,11 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import DotLoader from 'react-spinners/DotLoader';
 import { useClickOutside } from '../../hooks';
+import { useAuthConfigurationContext } from '../../contexts/AuthentificationContext';
 
-type Props = {
-  setVisible: (v: boolean) => void
-}
-function RegisterForm({ setVisible }: any) {
+type Props = {}
+function RegisterForm({ }: Props) {
+  const { setVisible } = useAuthConfigurationContext()
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setUser] = useState(RegisterFormData);

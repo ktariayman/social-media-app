@@ -121,6 +121,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: inherit;
+
 }
 .reg_col {
   position: relative;

@@ -1,42 +1,14 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import { InputLogin } from '../../components';
-import { loginValidation, loginFormData } from '../../helper';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import Cookies from 'js-cookie';
 import DotLoader from 'react-spinners/DotLoader';
-type Props = {
-  setVisible: (b: boolean) => void
-  setVisiblePage: (b: boolean) => void
-}
-function LoginForm({ setVisible, setVisiblePage }: Props) {
-  const [login, setLogin] = useState(loginFormData);
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [error, setError] = useState('');
+import useLoginForm from '../../hooks/useLoginForm';
+import { useAuthConfigurationContext } from '../../contexts/AuthentificationContext';
+type Props = {}
+function LoginForm({ }: Props) {
+  const { setVisible, setVisiblePage } = useAuthConfigurationContext()
+  const { error, handleLoginChange, loading, login, loginSubmit, loginValidation } = useLoginForm()
   const { email, password } = login;
-  const handleLoginChange = (e: any) => {
-    const { name, value } = e.target;
-    setLogin({ ...login, [name]: value.toString() });
-  };
-  const loginSubmit = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
-        email,
-        password
-      });
-      dispatch({ type: 'LOGIN', payload: data });
-      Cookies.set('user', JSON.stringify(data));
-      navigate('/');
-    } catch (error: any) {
-      setLoading(false);
-      setError(error.response.data.message);
-    }
-  };
   return (
     <div className='login_wrap'>
       <div className='login_1'>
@@ -53,9 +25,7 @@ function LoginForm({ setVisible, setVisiblePage }: Props) {
               password
             }}
             validationSchema={loginValidation}
-            onSubmit={() => {
-              loginSubmit();
-            }}
+            onSubmit={loginSubmit}
           >
             {(formik: any) => (
               <Form>

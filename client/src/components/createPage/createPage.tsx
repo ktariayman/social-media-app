@@ -1,9 +1,8 @@
 import React from "react";
-type Props = {
-  setVisiblePage: React.Dispatch<React.SetStateAction<boolean>>;
-
-}
-function CreatePage({ setVisiblePage }: Props) {
+import { useAuthConfigurationContext } from "../../contexts/AuthentificationContext";
+type Props = {}
+function CreatePage({ }: Props) {
+  const { setVisiblePage } = useAuthConfigurationContext()
   return <div className="blur">
     <div>
       <i className='exit_icon' onClick={() => setVisiblePage(false)}></i>
