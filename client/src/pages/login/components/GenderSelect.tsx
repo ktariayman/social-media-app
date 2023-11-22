@@ -1,9 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
-import useRegisterForm from '../hooks/useRegisterForm';
-
-function GenderSelect({ genderError }: any) {
-  const { handleRegisterChange } = useRegisterForm()
-
+function GenderSelect({ handleRegisterChange, genderError }: any) {
   const view1 = useMediaQuery({
     query: '(min-width: 539px)'
   });

@@ -4,16 +4,13 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { RegisterFormData } from '../../../helper';
 
-const useRegisterForm = () => {
+const useRegisterForm = (user: any, setUser: any) => {
  const dispatch = useDispatch();
  const [loading, setLoading] = useState(false);
  const [error, setError] = useState('');
  const [success, setSuccess] = useState('');
  const [dateError, setDateError] = useState('');
  const [genderError, setGenderError] = useState('');
- const [user, setUser] = useState(RegisterFormData);
-
-
 
 
  const yearTemp = new Date().getFullYear();
@@ -67,11 +64,8 @@ const useRegisterForm = () => {
    registerSubmit(values);
   }
  }
- console.log('useruser', user);
  const handleRegisterChange = (e: any) => {
   const { name, value } = e.target;
-  console.log('e', e.target.value);
-
   setUser({ ...user, [name]: value });
  };
  return {

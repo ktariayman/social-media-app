@@ -5,13 +5,18 @@ import GenderSelect from './GenderSelect';
 import DotLoader from 'react-spinners/DotLoader';
 import { useAuthConfigurationContext } from '../../../contexts/AuthentificationContext';
 import { useClickOutside } from '../../../hooks';
-import { registerValidation } from '../../../helper';
+import { RegisterFormData, registerValidation } from '../../../helper';
 import { InputRegister } from '../../../components';
 import useRegisterForm from '../hooks/useRegisterForm';
 
 type Props = {}
 function RegisterForm({ }: Props) {
   const { setVisible } = useAuthConfigurationContext()
+  const registerRef = useRef(null)
+  useClickOutside(registerRef, () => {
+    setVisible(false)
+  });
+  const [user, setUser] = useState(RegisterFormData);
 
   const {
     handleRegisterChange,
@@ -25,13 +30,8 @@ function RegisterForm({ }: Props) {
     onSubmit,
     genderError,
     dateError,
-    user
-  } = useRegisterForm();
-  const { bYear, bMonth, bDay } = user;
-  const registerRef = useRef(null)
-  useClickOutside(registerRef, () => {
-    setVisible(false)
-  });
+  } = useRegisterForm(user, setUser);
+
 
 
   return (
@@ -85,13 +85,14 @@ function RegisterForm({ }: Props) {
                   Date of birth <i className='info_icon'></i>
                 </div>
                 <DateOfBirthSelect
-                  bDay={bDay}
-                  bMonth={bMonth}
-                  bYear={bYear}
+                  bDay={user.bDay}
+                  bMonth={user.bMonth}
+                  bYear={user.bYear}
                   days={days}
                   months={months}
                   years={years}
                   dateError={dateError}
+                  handleRegisterChange={handleRegisterChange}
                 />
               </div>
               <div className='reg_col'>
@@ -100,6 +101,7 @@ function RegisterForm({ }: Props) {
                 </div>
 
                 <GenderSelect
+                  handleRegisterChange={handleRegisterChange}
                   genderError={genderError}
                 />
               </div>

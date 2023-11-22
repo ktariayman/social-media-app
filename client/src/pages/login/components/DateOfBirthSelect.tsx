@@ -7,7 +7,8 @@ type Props = {
   days: number[];
   months: number[];
   years: number[];
-  dateError: string
+  dateError: string;
+  handleRegisterChange: any
 }
 function DateOfBirthSelect({
   bDay,
@@ -16,9 +17,9 @@ function DateOfBirthSelect({
   days,
   months,
   years,
-  dateError
+  dateError,
+  handleRegisterChange
 }: Props) {
-  const { handleRegisterChange } = useRegisterForm()
   const view1 = useMediaQuery({
     query: '(min-width: 539px)'
   });
