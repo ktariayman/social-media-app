@@ -155,9 +155,9 @@ async function register(req: Request, res: Response) {
       gender
     }).save();
 
-    const emailVerificationToken = generateToken({ id: user._id.toString() }, '30m');
-    const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
-    sendVerificationEmail(user.email, user.first_name, url);
+    // const emailVerificationToken = generateToken({ id: user._id.toString() }, '30m');
+    // const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
+    // sendVerificationEmail(user.email, user.first_name, url);
     const token = generateToken({ id: user._id.toString() }, '7d');
 
     res.send({

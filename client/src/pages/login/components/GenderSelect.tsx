@@ -10,29 +10,19 @@ function GenderSelect({ handleRegisterChange, genderError }: any) {
     query: '(min-width: 1170px)'
   });
   return (
-    <div className='reg_grid' style={{ marginBottom: `${genderError && !view3 ? '70px' : '0'}` }}>
-      <label htmlFor='male'>
+    <div className='reg_grid' style={{ display: 'flex', marginBottom: `${genderError && !view3 ? '70px' : '0'}` }}>
+      <label htmlFor='male' style={{ width: '100%' }}>
         Male
-        <input type='radio' name='gender' id='male' value='male' onChange={handleRegisterChange} />
+        <input type='radio' name='gender' id='male' value='male' onInput={handleRegisterChange} />
       </label>
-      <label htmlFor='female'>
+      <label htmlFor='female' style={{ width: '100%' }}>
         Female
         <input
           type='radio'
           name='gender'
           id='female'
           value='female'
-          onChange={handleRegisterChange}
-        />
-      </label>
-      <label htmlFor='custom'>
-        Custom
-        <input
-          type='radio'
-          name='gender'
-          id='custom'
-          value='custom'
-          onChange={handleRegisterChange}
+          onInput={handleRegisterChange}
         />
       </label>
       {genderError && (

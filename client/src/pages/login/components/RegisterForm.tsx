@@ -17,9 +17,11 @@ function RegisterForm({ }: Props) {
     setVisible(false)
   });
   const [user, setUser] = useState(RegisterFormData);
-
+  const handleRegisterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
   const {
-    handleRegisterChange,
     loading,
     error,
     success,
@@ -30,7 +32,7 @@ function RegisterForm({ }: Props) {
     onSubmit,
     genderError,
     dateError,
-  } = useRegisterForm(user, setUser);
+  } = useRegisterForm(user);
 
 
 
@@ -46,7 +48,7 @@ function RegisterForm({ }: Props) {
           enableReinitialize
           initialValues={initialValues}
           validationSchema={registerValidation}
-          onSubmit={onSubmit}
+          onSubmit={() => onSubmit(user)}
         >
           {(formik) => (
             <Form className='register_form'>
@@ -95,7 +97,7 @@ function RegisterForm({ }: Props) {
                   handleRegisterChange={handleRegisterChange}
                 />
               </div>
-              <div className='reg_col'>
+              <div className='reg_col' style={{ width: '100%' }}>
                 <div className='reg_line_header'>
                   Gender <i className='info_icon'></i>
                 </div>
@@ -111,7 +113,7 @@ function RegisterForm({ }: Props) {
                 opt out at any time.
               </div>
               <div className='reg_btn_wrapper'>
-                <button className='blue_btn open_signup'>Sign Up</button>
+                <button type={"submit"} className='blue_btn open_signup'>Sign Up</button>
               </div>
               <div className='reg_btn_wrapper'>
                 <button className='blue_btn haveAccount' onClick={() => setVisible(false)}>

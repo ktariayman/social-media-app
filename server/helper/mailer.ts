@@ -1,7 +1,6 @@
 import { Response } from 'express';
-import { google, Auth } from 'googleapis';
+import { google } from 'googleapis';
 import nodemailer, { Transporter } from 'nodemailer';
-import smtpTransport from 'nodemailer-smtp-transport';
 const { OAuth2 } = google.auth;
 
 const oauthLink = 'https://developers.google.com/oauthplayground';

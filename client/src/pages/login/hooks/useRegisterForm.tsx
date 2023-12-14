@@ -4,7 +4,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { RegisterFormData } from '../../../helper';
 
-const useRegisterForm = (user: any, setUser: any) => {
+const useRegisterForm = (user: any) => {
  const dispatch = useDispatch();
  const [loading, setLoading] = useState(false);
  const [error, setError] = useState('');
@@ -31,7 +31,7 @@ const useRegisterForm = (user: any, setUser: any) => {
    setSuccess(data.message);
    const { message, ...rest } = data;
    setTimeout(() => {
-    dispatch({ type: 'LOGIN', payload: rest });
+    dispatch({ type: 'REGISTER', payload: rest });
     Cookies.set('user', JSON.stringify(rest));
    }, 2000);
   } catch (error: any) {
@@ -55,7 +55,8 @@ const useRegisterForm = (user: any, setUser: any) => {
    setDateError(
     'It looks like you have entered the wrong information. Please make sure that you use your real date of birth.'
    );
-  } else if (user.gender === '') {
+
+  } else if (values.gender == '') {
    setDateError('');
    setGenderError('Please choose a gender. You can change who can see this later.');
   } else {
@@ -64,10 +65,6 @@ const useRegisterForm = (user: any, setUser: any) => {
    registerSubmit(values);
   }
  }
- const handleRegisterChange = (e: any) => {
-  const { name, value } = e.target;
-  setUser({ ...user, [name]: value });
- };
  return {
   loading,
   error,
@@ -80,8 +77,7 @@ const useRegisterForm = (user: any, setUser: any) => {
   months,
   years,
   onSubmit,
-  setUser,
-  handleRegisterChange
+
  };
 };
 
