@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { acceptRequest, cancelRequest, deleteRequest, unfollow, unfriend } from '../../functions/profile/invitationSystem'
+import { acceptRequest, cancelRequest, deleteRequest, unfollow, unfriend } from '../../../functions/profile/invitationSystem'
 
 
 export default function Card({ userr, type, getData }: any) {
