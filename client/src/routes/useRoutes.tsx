@@ -1,8 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home, Login, Profile, Activate, ResetPassword, Friends, Saved } from '../pages';
 import CreateStories from '../pages/stories';
-import Suggestions from '../pages/friends/Suggestions/Suggestions';
-import Birthdays from '../pages/friends/Birthdays/Birthdays';
+import Birthdays from '../pages/friends/Rights/FriendsBirthdays';
 import NotFoundPage from '../pages/notFound/NotFound';
 import Download from '../pages/Download';
 import LoggedInRoutes from "./LoggedInRoutes";
@@ -43,14 +42,10 @@ export const useRoutes = ({ setVisible, showPrev, setShowPrev, postState }: Prop
           path: '/friends/:type',
           element: <Friends />
         },
-        {
-          path: '/friends/suggestions',
-          element: <Suggestions />
-        },
-        {
-          path: '/friends/birthdays',
-          element: <Birthdays />
-        },
+        // {
+        //   path: '/friends/birthdays',
+        //   element: <Birthdays />
+        // },
         {
           path: '/changePassword',
           element: <ResetPassword />

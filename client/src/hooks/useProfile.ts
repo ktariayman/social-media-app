@@ -6,6 +6,7 @@ import profileReducer from '../reducers/profileReducer';
 import { useNavigate } from 'react-router-dom';
 import listImages from '../functions/profile/Iistmages';
 import { useMediaQuery } from 'react-responsive';
+import { Profile } from '../ts/types';
 
 type ProfileProps = {
  usernameParams: string | undefined;
@@ -18,9 +19,11 @@ const useProfile = ({ usernameParams, userName }: ProfileProps) => {
  const navigate = useNavigate()
  const [profileState, dispatch] = useReducer(profileReducer, {
   loading: false,
-  profile: {},
+  profile: {} as Profile,
   error: '',
  });
+ console.log('profileState', profileState);
+
  const [othername, setOthername] = useState("");
  useEffect(() => {
   setOthername(profileState.profile?.details?.otherName!);

@@ -10,11 +10,11 @@ export default function AddFriendSmallCard(item: any) {
 
   const [text, setText] = useState(item.item.requests.includes(user.id) ? "Cancel request" : "Add Friend")
   const handleAddFriend = async () => {
-    const res = await addFriend(item.item._id as string, user.token as string);
+    await addFriend(item.item._id as string, user.token as string);
     setText('Cancel request')
   }
   const handleCancelRequest = async () => {
-    const res = await cancelRequest(item.item._id, user.token);
+    await cancelRequest(item.item._id, user.token);
     setText('Add Friend')
   }
   const navigate = useNavigate()

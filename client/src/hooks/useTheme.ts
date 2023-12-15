@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from 'js-cookie';
+import { appType } from "../ts/types";
 
 const useTheme = () => {
- const { darkTheme } = useSelector((state: any) => ({ ...state }));
+ const { darkTheme } = useSelector((state: appType) => ({ ...state }));
  const dispatch = useDispatch();
  const onSwitch = () => {
   Cookies.set('darkTheme', darkTheme ? "true" : "false");

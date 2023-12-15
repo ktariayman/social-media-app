@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import useProfile from '../../hooks/useProfile';
 import { CreatePost, Header, Post, PostPopup } from '../../components';
@@ -28,10 +28,6 @@ function Profile() {
     othername,
     profileTop,
     leftSide,
-    height,
-    leftHeight,
-    scrollHeight,
-    check,
     setOthername,
     photos,
     visitor,
@@ -40,7 +36,7 @@ function Profile() {
   const [showEdit, setShowEdit] = useState(false);
   const [showPrev, setShowPrev] = useState(false);
   const { darkTheme } = useSelector((state: any) => ({ ...state }));
-
+  const navigate = useNavigate()
   return (
     <div className='profile'>
       <Skeleton />
@@ -121,12 +117,15 @@ function Profile() {
                         <HashLoader color="#1876f2" />
                       </div>
                     </div>
-                    <div className="profile_card">
+                    <div className="profile_card" >
                       <div className="profile_card_header">
                         Friends
-                        <div className="profile_header_link">
-                          See all friends
-                        </div>
+                        <button className="profile_header_link" >
+                          <Link to="/" className="profile_menu_active">
+                            See all friends
+                          </Link>
+
+                        </button>
                       </div>
                       <div className="sekelton_loader">
                         <HashLoader color="#1876f2" />

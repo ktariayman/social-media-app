@@ -1,5 +1,6 @@
 import { ProfileActionType } from "../ts/enums";
 import { IPost } from "../ts/interface/posts.interfaces";
+import { Profile } from "../ts/types";
 
 
 
@@ -9,19 +10,17 @@ export interface ProfileAction {
 }
 export interface ProfileState {
   loading: boolean;
-  profile: any;
+  profile: Profile;
   error: string;
 }
 const initialState: ProfileState = {
   error: "",
   loading: false,
-  profile: {},
+  profile: {} as Profile,
 }
 
 
-function profileReducer(state: ProfileState = initialState, action: ProfileAction): ProfileState {
-  console.log('action', action);
-
+function profileReducer(state = initialState, action: ProfileAction): ProfileState {
   switch (action.type) {
     case ProfileActionType.PROFILE_REQUEST:
       return {
@@ -36,6 +35,8 @@ function profileReducer(state: ProfileState = initialState, action: ProfileActio
         error: ""
       };
     case ProfileActionType.PROFILE_POSTS:
+      console.log('action.payload postsssss', action.payload);
+
       return {
         loading: false,
         profile: { ...state.profile, posts: action.payload },

@@ -54,17 +54,15 @@ export default function ProfileDetails({ oldDetails, visitor, setOthername, show
  return (
   <div className="profile_card">
    <div className="profile_card_header">Intro</div>
-   {details?.bio && !showBio && (
+   {details?.bio && !showBio && !visitor && (
     <div className="info_col">
      <span className="info_text">{details?.bio}</span>
-     {!visitor && (
-      <button
-       className="gray_btn hover1"
-       onClick={() => setShowBio(true)}
-      >
-       Edit Bio
-      </button>
-     )}
+     <button
+      className="gray_btn hover1"
+      onClick={() => setShowBio(true)}
+     >
+      Edit Bio
+     </button>
     </div>
    )}
    {!details?.bio && !showBio && !visitor && (

@@ -455,9 +455,6 @@
    padding-bottom: 10px;
    flex-direction: column;
  }
- .pplumayknow {
-   display: none;
- }
  .profile_grid {
    grid-template-columns: 1fr;
  }

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Feeling, LiveVideo, Photo } from '../../svg';
 import './style.css';
 import { CreatePostIcon } from './createPostIcon';
@@ -44,8 +42,8 @@ function CreatePost({ user, setVisible, profile, showPrev, setShowPrev, loading 
           Live Video
         </CreatePostIcon>
         <CreatePostIcon onClick={() => {
-          setVisible!(true);
-          setShowPrev!(true)
+          setVisible && setVisible(true);
+          setShowPrev && setShowPrev(true)
         }}>
           <div  >
             <Photo color='#4bbf67' />
