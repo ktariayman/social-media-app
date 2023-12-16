@@ -5,31 +5,19 @@ import { InputLogin } from '../../components';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { validatePassword } from '../../helper';
-type Props = {
-  password: string
-  conf_password: string
-  setPassword: (e: string) => void;
-  setConf_password: (e: string) => void;
-  error: string
-  setError: (s: string) => void
-  setLoading: (b: boolean) => void
-  setVisible: (n: number) => void
-  userInfos: any
-  user: any
-  loading: boolean
-}
-export default function ChangePassword({
-  password,
-  setPassword,
-  conf_password,
-  setConf_password,
-  error,
-  loading,
-  setLoading,
-  userInfos,
-  setError,
-  user
-}: Props) {
+import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+
+export default function ChangePassword({ user }: any) {
+  const {
+    password,
+    setPassword,
+    conf_password,
+    setConf_password,
+    error,
+    setLoading,
+    userInfos,
+    setError,
+  } = useResetPassConfigurationContext()
   const [email, setEmail] = useState('');
   const [oldPassword, setOldPassword] = useState('');
   const navigate = useNavigate();

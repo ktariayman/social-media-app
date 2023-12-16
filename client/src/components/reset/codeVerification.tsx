@@ -2,19 +2,9 @@ import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { InputLogin } from '../../components';
 import axios from 'axios';
-type Props = {
-  code: string
-  setCode: (e: string) => void
-  error: string
-  setError: (s: string) => void
-  setLoading: (b: boolean) => void
-  setVisible: (n: number) => void
-  userInfos: any
-  user: any
-}
-function CodeVerification(
-  { code, setCode, setLoading, setVisible, setError, userInfos }
-    : Props) {
+import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+function CodeVerification() {
+  const { code, setCode, setLoading, setError, userInfos, setVisible } = useResetPassConfigurationContext()
   const { email } = userInfos;
   const verifyCode = async () => {
     try {

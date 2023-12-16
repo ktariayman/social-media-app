@@ -3,24 +3,16 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { InputLogin } from '../../components';
 import { validateEmail } from '../../helper';
-type Props = {
-  email: string
-  setEmail: (e: string) => void
-  error: string
-  setError: (s: string) => void
-  setLoading: (b: boolean) => void
-  setUserInfos: (data: any) => void
-  setVisible: (n: number) => void
-}
-export default function SearchAccount({
-  email,
-  setEmail,
-  error,
-  setError,
-  setLoading,
-  setUserInfos,
-  setVisible
-}: Props) {
+import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+export default function SearchAccount() {
+  const { email,
+    setEmail,
+    error,
+    setError,
+    setLoading,
+    setUserInfos,
+    setVisible
+  } = useResetPassConfigurationContext()
   const handleSearch = async () => {
     try {
       setLoading(true);
@@ -49,9 +41,7 @@ export default function SearchAccount({
           email
         }}
         validationSchema={validateEmail}
-        onSubmit={() => {
-          handleSearch();
-        }}
+        onSubmit={handleSearch}
       >
         {(formik) => (
           <Form>

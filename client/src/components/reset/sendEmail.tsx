@@ -1,25 +1,13 @@
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-type Props = {
-  email: string
-  error: string
-  setError: (s: string) => void
-  setLoading: (b: boolean) => void
-  setVisible: (n: number) => void
-  userInfos: any
-  setUserInfos: (data: any) => void
-  loading: boolean
-}
-export default function SendEmail({
-  userInfos,
-  email,
-  error,
-  setError,
-  setVisible,
-  setUserInfos,
-  loading,
-  setLoading
-}: Props) {
+import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+export default function SendEmail() {
+  const { userInfos,
+    email,
+    error,
+    setError,
+    setVisible,
+    setLoading } = useResetPassConfigurationContext()
   const sendEmail = async () => {
     try {
       setLoading(true);
