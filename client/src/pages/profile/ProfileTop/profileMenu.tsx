@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Dots } from "../../svg";
+import { Dots } from "../../../svg";
 import { BeatLoader } from "react-spinners";
 
 type Props = {

@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 function FriendsLeft() {
-
   const { type } = useParams();
-  const [isBirthDayPage, isSuggestionPage] = [window.location.pathname === '/friends/birthdays', window.location.pathname === '/friends/suggestions']
-  const links = [
-    { to: '/friends', text: 'Home', iconClass: 'friends_home_icon' },
-    { to: '/friends/requests', text: 'Friend Requests', iconClass: 'friends_requests_icon' },
-    { to: '/friends/sent', text: 'Sent Requests', iconClass: 'friends_requests_icon' },
-    { to: '/friends/all', text: 'All Friends', iconClass: 'all_friends_icon' },
-    { to: '/friends/birthdays', text: 'Birthdays', iconClass: 'birthdays_icon' },
-    { to: '/friends/suggestions', text: 'Suggestions', iconClass: 'friends_suggestions_icon' }
-  ];
+  const links: {
+    to: string;
+    text: string;
+    iconClass: string;
+  }[] = [
+      { to: '/friends', text: 'Home', iconClass: 'friends_home_icon' },
+      { to: '/friends/requests', text: 'Friend Requests', iconClass: 'friends_requests_icon' },
+      { to: '/friends/sent', text: 'Sent Requests', iconClass: 'friends_requests_icon' },
+      { to: '/friends/all', text: 'All Friends', iconClass: 'all_friends_icon' },
+      { to: '/friends/birthdays', text: 'Birthdays', iconClass: 'birthdays_icon' },
+      { to: '/friends/suggestions', text: 'Suggestions', iconClass: 'friends_suggestions_icon' }
+    ];
   return (
     <div className="friends_left">
       <div className="friends_left_header">
@@ -22,7 +24,7 @@ function FriendsLeft() {
       </div>
       <div className="friends_left_wrap">
         {links.map((link, index) => (
-          <LinkItem key={index} link={link} type={type} />
+          <LinkItem key={index} link={link} type={type!} />
         ))}
       </div>
     </div>
@@ -32,8 +34,16 @@ function FriendsLeft() {
 export default FriendsLeft;
 
 
-
-const LinkItem = ({ key, link, type }: any) => {
+type Props = {
+  link: {
+    to: string;
+    text: string;
+    iconClass: string;
+  },
+  key: number
+  type: string
+}
+const LinkItem = ({ key, link, type }: Props) => {
   return (
     <Link
       key={key}

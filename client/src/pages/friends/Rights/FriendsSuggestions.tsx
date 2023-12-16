@@ -1,4 +1,4 @@
-import PplYouMayKnow from "../../profile/PeoplesYouMayKnow";
+import PplYouMayKnow from "../../profile/ProfileBottom/PeoplesYouMayKnow";
 
 const FriendsSuggestions = () => {
   return <PplYouMayKnow />

@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import ProfilePicture from "../../components/profilePicture";
+import ProfilePicture from "../../../components/profilePicture";
 import Friendship from "./Friendship";
 import { BeatLoader, MoonLoader } from "react-spinners";
 type Props = {

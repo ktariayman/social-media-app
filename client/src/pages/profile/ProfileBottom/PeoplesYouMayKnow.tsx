@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import { Dots } from "../../svg";
+import { Dots } from "../../../svg";
 import AddFriendSmallCard from "./AddFriendSmallCard";
-import { usersNotFriends } from '../../functions';
+import { usersNotFriends } from '../../../functions';
 import { useSelector } from "react-redux";
-import MenuFriends from "../../components/ppltYouMayKnow/MenuFriends";
+import MenuFriends from "../../../components/ppltYouMayKnow/MenuFriends";
 
 export default function PplYouMayKnow() {
   const [notFriends, setNotFriends] = useState([])

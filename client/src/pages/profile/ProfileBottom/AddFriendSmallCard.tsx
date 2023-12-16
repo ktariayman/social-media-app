@@ -1,13 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { IStory } from "../../ts/interface/user";
+import { IStory } from "../../../ts/interface/user";
 import { useState } from 'react'
 import { useSelector } from "react-redux";
-import { addFriend, cancelRequest } from "../../functions/profile/invitationSystem";
+import { addFriend, cancelRequest } from "../../../functions/profile/invitationSystem";
 
 export default function AddFriendSmallCard(item: any) {
   const { user } = useSelector((state: any) => ({ ...state }));
-  const [requestSend, setRequestSend] = useState()
-
   const [text, setText] = useState(item.item.requests.includes(user.id) ? "Cancel request" : "Add Friend")
   const handleAddFriend = async () => {
     await addFriend(item.item._id as string, user.token as string);

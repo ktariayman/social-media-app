@@ -22,8 +22,6 @@ const useProfile = ({ usernameParams, userName }: ProfileProps) => {
   profile: {} as Profile,
   error: '',
  });
- console.log('profileState', profileState);
-
  const [othername, setOthername] = useState("");
  useEffect(() => {
   setOthername(profileState.profile?.details?.otherName!);
@@ -31,7 +29,7 @@ const useProfile = ({ usernameParams, userName }: ProfileProps) => {
  const [showCoverMenu, setShowCoverMenu] = useState(false)
  const [photos, setPhotos] = useState({});
 
- const profileTop = useRef<HTMLDivElement>(null);
+ const profileTopRef = useRef<HTMLDivElement>(null);
  const leftSide = useRef<HTMLDivElement>(null);
  const [height, setHeight] = useState<any>();
  const [leftHeight, setLeftHeight] = useState<any>();
@@ -63,8 +61,8 @@ const useProfile = ({ usernameParams, userName }: ProfileProps) => {
   }
  };
  useEffect(() => {
-  if (profileTop.current) {
-   setHeight(profileTop.current.clientHeight + 300);
+  if (profileTopRef.current) {
+   setHeight(profileTopRef.current.clientHeight + 300);
   }
   if (leftSide.current) {
    setLeftHeight(leftSide.current.clientHeight);
@@ -83,7 +81,7 @@ const useProfile = ({ usernameParams, userName }: ProfileProps) => {
   photos, setPhotos,
   dispatch,
   visitor,
-  profileTop,
+  profileTopRef,
   leftSide,
   height,
   setHeight,

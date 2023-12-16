@@ -5,10 +5,10 @@ import Cookies from 'js-cookie';
 import { Form, Formik } from 'formik';
 import { useEffect, useState } from 'react';
 import { SendEmail, CodeVerification, ChangePassword, SearchAccount } from '../../components';
+import { useLogout } from '../../hooks';
 
 function ResetPassword() {
   const { user } = useSelector((state: any) => ({ ...state }));
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [visible, setVisible] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -18,13 +18,7 @@ function ResetPassword() {
   const [conf_password, setConf_password] = useState('');
   const [error, setError] = useState('');
   const [userInfos, setUserInfos] = useState('');
-  const logout = () => {
-    Cookies.set('user', '');
-    dispatch({
-      type: 'LOGOUT'
-    });
-    navigate('/login');
-  };
+  const logout = useLogout()
   useEffect(() => {
     if (user) setVisible(3);
   }, []);

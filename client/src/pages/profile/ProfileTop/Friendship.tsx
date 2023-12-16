@@ -8,9 +8,9 @@ import {
  follow,
  unfollow,
  unfriend,
-} from "../../functions/profile/invitationSystem";
-import { useClickOutside } from "../../hooks";
-import { BeatLoader, SyncLoader } from "react-spinners";
+} from "../../../functions/profile/invitationSystem";
+import { useClickOutside } from "../../../hooks";
+import { SyncLoader } from "react-spinners";
 export default function Friendship({ friendshipp, profileid, loading }: any) {
 
  const [friendship, setFriendship] = useState(friendshipp);

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useClickOutside } from "../../hooks";
+import { useClickOutside } from "../../../hooks";
 import { useSelector } from "react-redux";
-import getCroppedImg from "../../helper/getCroppedImg";
+import getCroppedImg from "../../../helper/getCroppedImg";
 import { PulseLoader } from "react-spinners";
-import { createPostService, uploadImages } from "../../functions";
-import { updateProfileCoverService } from "../../functions/profile/updateProfileCover";
+import { createPostService, uploadImages } from "../../../functions";
+import { updateProfileCoverService } from "../../../functions/profile/updateProfileCover";
 import Cropper from "react-easy-crop";
 import OldCovers from "./oldCovers";
 
