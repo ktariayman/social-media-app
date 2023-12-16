@@ -15,7 +15,8 @@ function SavedRight({ data, token }: any) {
             data && data.map((p: any, i: number) => {
               return <Post key={i} post={p.post} user={p.post.user} token={token} />
             })
-          }</>
+          }
+        </>
       }
     </div>
   )

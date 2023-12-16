@@ -11,12 +11,10 @@ function Saved() {
   useEffect(() => {
     getData()
   }, [])
-  console.log('data', data);
 
   const getData = async () => {
     const data = await getSavedPostsByUserId(user?.token)
     setData(data)
-
   }
 
   return (

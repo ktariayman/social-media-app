@@ -13,7 +13,6 @@ type Props = {
   color: string;
 }
 function HeaderMiddle({ page, color }: Props) {
-  const { user } = useSelector((user: any) => ({ ...user }));
   return (
     <div className='header_middle'>
       <Link

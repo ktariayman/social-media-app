@@ -1,5 +1,11 @@
 import PropagateLoader from 'react-spinners/PropagateLoader';
-function ActivateForm({ type, header, text, loading }: any) {
+type Props = {
+  type: 'success' | "error"
+  header: string
+  text: string
+  loading: boolean
+}
+function ActivateForm({ type, header, text, loading }: Props) {
   return (
     <div className='blur'>
       <div className='popup'>

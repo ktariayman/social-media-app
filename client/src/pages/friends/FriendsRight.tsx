@@ -1,7 +1,4 @@
-import { Link, useParams } from "react-router-dom";
-import Card from "./components/Card";
-import { BeatLoader } from "react-spinners";
-import PplYouMayKnow from "../profile/ProfileBottom/PeoplesYouMayKnow";
+import { useParams } from "react-router-dom";
 import FriendsRequests from "./Rights/FriendsRequests";
 import FriendsSent from "./Rights/FriendsSent";
 import AllFriends from "./Rights/AllFriends";
