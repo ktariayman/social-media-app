@@ -15,18 +15,18 @@ export interface PostState {
 
 function postReducer(state: any = null, action: PostAction): any {
   switch (action.type) {
-    case 'POST_REQUEST':
+    case PostActionType.POST_REQUEST:
       return {
         ...state, loading: true, error: "", posts: []
       }
-    case 'POST_SUCCESS':
+    case PostActionType.POST_SUCCESS:
       return {
         ...state,
         loading: false,
         posts: action.payload,
         error: ""
       };
-    case 'POST_ERROR':
+    case PostActionType.POST_ERROR:
       return { ...state, loading: false, error: action.payload, posts: [] }
     default:
       return state;

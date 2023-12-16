@@ -8,7 +8,6 @@ type Props = {
 }
 export default function UserMenu({ handleUserMenuClick }: Props) {
   const [visible, setVisible] = useState<number>(0);
-  // const logout = useLogout()
   return (
     <div>
       {visible < 0 && (

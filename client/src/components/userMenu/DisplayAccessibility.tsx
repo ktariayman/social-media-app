@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import useTheme from '../../hooks/useTheme';
-import useFullScreen from '../../hooks/useScreen';
+import { useTheme } from '../../hooks';
+import { useFullScreen } from '../../hooks';
 type Props = {
   setVisible: (show: number) => void;
 }
@@ -59,7 +59,6 @@ const ScreenMode = () => {
 const ThemeMode = () => {
   const { darkTheme } = useSelector((state: any) => ({ ...state }));
   const { onDark, onLight, onSwitch } = useTheme()
-
   return (
     <>
       <div className='mmenu_main'>

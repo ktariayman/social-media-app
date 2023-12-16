@@ -1,4 +1,4 @@
-import useFriends from '../../../hooks/useFriends';
+import { useFriends } from '../../../hooks';
 import { Dots, NewRoom, Search } from '../../../svg';
 import Contact from './Contact';
 import './style.css';

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import useProfile from '../../hooks/useProfile';
+import { useProfile } from '../../hooks';
 import { Header, PostPopup } from '../../components';
 import './style.css'
 import Skeleton from 'react-loading-skeleton';
