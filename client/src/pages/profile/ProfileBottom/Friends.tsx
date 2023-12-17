@@ -8,6 +8,7 @@ export default function Friends({ friends }: any) {
       </div>
       {friends && (
         <div className="profile_card_count">
+          <i className="fa-solid fa-user-plus"></i>
           {friends.length === 0
             ? ""
             : friends.length === 1

@@ -47,7 +47,6 @@ export default function Friendship({ friendshipp, profileid, loading }: any) {
    following: true,
    requestSent: false,
    requestReceived: false,
-
   });
   await acceptRequest(profileid, user.token);
  };
@@ -77,7 +76,9 @@ export default function Friendship({ friendshipp, profileid, loading }: any) {
 
     : friendship?.friends ? (
      <div className="friends_menu_wrap">
-      <button className="gray_btn" onClick={() => setFriendsMenu(true)}>
+      <button className="gray_btn" onClick={() => {
+       setFriendsMenu(true)
+      }}>
        <img src="../../../icons/friends.png" alt="" />
        <span>Friends</span>
       </button>

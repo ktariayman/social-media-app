@@ -4,7 +4,7 @@ import { InputLogin } from '../../components';
 import axios from 'axios';
 import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
 function CodeVerification() {
-  const { code, setCode, setLoading, setError, userInfos, setVisible } = useResetPassConfigurationContext()
+  const { code, setCode, setLoading, setError, userInfos, setVisible, visiblePages } = useResetPassConfigurationContext()
   const { email } = userInfos;
   const verifyCode = async () => {
     try {
@@ -13,8 +13,7 @@ function CodeVerification() {
         email,
         code
       });
-
-      setVisible(3);
+      setVisible(visiblePages.changePass);
       setError('');
       setLoading(false);
     } catch (error: any) {
