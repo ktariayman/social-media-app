@@ -18,10 +18,10 @@ function ResetPassword() {
 function ResetPasswordContent() {
   const { user } = useSelector((state: any) => ({ ...state }));
   const navigate = useNavigate();
-  const { visible, userInfos, setVisible } = useResetPassConfigurationContext()
+  const { visible, userInfos, setVisible, visiblePages } = useResetPassConfigurationContext()
   const logout = useLogout()
   useEffect(() => {
-    if (user) setVisible(3);
+    if (user) setVisible(visiblePages.changePass);
   }, []);
 
 

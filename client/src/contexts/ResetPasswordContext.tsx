@@ -25,7 +25,15 @@ export const useResetPassConfigurationContext = () =>
 
 
 export const usePasswordState = () => {
- const [visible, setVisible] = useState(0);
+ const visiblePages = {
+  search: 0,
+  sendEmail: 1,
+  code: 2,
+  changePass: 3,
+ } as const;
+
+ type TypeOfVisiblePages = typeof visiblePages[keyof typeof visiblePages];
+ const [visible, setVisible] = useState<TypeOfVisiblePages>(visiblePages.search);
  const [loading, setLoading] = useState(false);
  const [email, setEmail] = useState<any>();
  const [code, setCode] = useState('');
@@ -51,6 +59,7 @@ export const usePasswordState = () => {
   setError,
   userInfos,
   setUserInfos,
+  visiblePages
  };
 };
 

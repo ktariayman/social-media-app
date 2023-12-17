@@ -7,13 +7,15 @@ export default function SendEmail() {
     error,
     setError,
     setVisible,
-    setLoading } = useResetPassConfigurationContext()
+    setLoading,
+    visiblePages
+  } = useResetPassConfigurationContext()
   const sendEmail = async () => {
     try {
       setLoading(true);
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/sendResetPasswordCode`, { email });
       setError('');
-      setVisible(2);
+      setVisible(visiblePages.code);
       setLoading(false);
     } catch (error: any) {
       setLoading(false);

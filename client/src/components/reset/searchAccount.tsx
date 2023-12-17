@@ -11,7 +11,8 @@ export default function SearchAccount() {
     setError,
     setLoading,
     setUserInfos,
-    setVisible
+    setVisible,
+    visiblePages
   } = useResetPassConfigurationContext()
   const handleSearch = async () => {
     try {
@@ -21,7 +22,7 @@ export default function SearchAccount() {
         email
       });
       setUserInfos(data);
-      setVisible(1);
+      setVisible(visiblePages.code);
       setError('');
       setLoading(false);
     } catch (error: any) {

@@ -25,7 +25,6 @@ function profileReducer(state = initialState, action: ProfileAction): ProfileSta
     case ProfileActionType.PROFILE_REQUEST:
       return {
         ...state, loading: true, error: ""
-
       }
     case ProfileActionType.PROFILE_SUCCESS:
       return {
@@ -35,8 +34,6 @@ function profileReducer(state = initialState, action: ProfileAction): ProfileSta
         error: ""
       };
     case ProfileActionType.PROFILE_POSTS:
-      console.log('action.payload postsssss', action.payload);
-
       return {
         loading: false,
         profile: { ...state.profile, posts: action.payload },

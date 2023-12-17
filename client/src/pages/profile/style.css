@@ -50,7 +50,7 @@
  position: absolute;
  right: 0;
  padding: 10px;
- width: 300px;
+ width: 200px;
  border-radius: 10px;
  box-shadow: 0 12px 28px 0 var(--shadow-1), 0 2px 4px 0 var(--shadow-2),
    inset 0 0 0 px var(--shadow-inset);
@@ -492,7 +492,7 @@
    bottom: 1.5rem;
  }
 }
-@media (max-width: 405px) {
+@media (max-width: 500px) {
  .friendship {
    flex-direction: column;
  }

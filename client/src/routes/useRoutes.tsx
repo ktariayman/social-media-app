@@ -42,10 +42,6 @@ export const useRoutes = ({ setVisible, showPrev, setShowPrev, postState }: Prop
           path: '/friends/:type',
           element: <Friends />
         },
-        // {
-        //   path: '/friends/birthdays',
-        //   element: <Birthdays />
-        // },
         {
           path: '/changePassword',
           element: <ResetPassword />
