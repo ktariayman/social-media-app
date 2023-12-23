@@ -1,16 +1,16 @@
 import { useNavigate } from "react-router-dom";
+import { Friend } from "../../../ts/types";
 
-function Contact({ user }: any) {
-  console.log('user from contact', user);
+function Contact({ friend }: { friend: Friend }) {
 
   const navigate = useNavigate();
   return (
-    <div className='contact hover3' onClick={() => { (navigate(`/profile/${user.username}`)) }}>
+    <div className='contact hover3' onClick={() => { (navigate(`/profile/${friend.username}`)) }}>
       <div className='contact_img'>
-        <img src={user.picture} alt='' />
+        <img src={friend.picture} alt='' />
       </div>
       <span>
-        {user.first_name} {user.last_name}
+        {friend.first_name} {friend.last_name}
       </span>
     </div>
   );

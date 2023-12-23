@@ -3,10 +3,11 @@ import { BeatLoader } from "react-spinners";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useFriends } from "../../../hooks";
+import { IUser } from "../../../ts/interface/user";
 
 const FriendsSent = () => {
   const type = useParams()
-  const { user } = useSelector((state: any) => ({ ...state }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   const { data, getData } = useFriends(user)
   return (
     <div className="friends_right_wrap">

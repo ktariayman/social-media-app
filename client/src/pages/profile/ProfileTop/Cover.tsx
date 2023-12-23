@@ -7,6 +7,7 @@ import { createPostService, uploadImages } from "../../../functions";
 import { updateProfileCoverService } from "../../../functions/profile/updateProfileCover";
 import Cropper from "react-easy-crop";
 import OldCovers from "./oldCovers";
+import { IUser } from "../../../ts/interface/user";
 
 type Props = {
  cover: string
@@ -19,7 +20,7 @@ function Cover({ cover, visitor, photos }: Props) {
  const [coverPicture, setCoverPicture] = useState<any>("");
  const [loading, setLoading] = useState(false);
  const [show, setShow] = useState(false);
- const { user } = useSelector((state: any) => ({ ...state }));
+ const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
  const refInput = useRef<any>(null);
  const cRef = useRef<any>(null);
  useClickOutside(menuRef, () => setShowCoverMenu(false));

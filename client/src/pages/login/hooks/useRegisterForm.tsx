@@ -6,15 +6,14 @@ import { RegisterFormData } from '../../../helper';
 
 const useRegisterForm = (user: any) => {
  const dispatch = useDispatch();
- const [loading, setLoading] = useState(false);
- const [error, setError] = useState('');
- const [success, setSuccess] = useState('');
- const [dateError, setDateError] = useState('');
- const [genderError, setGenderError] = useState('');
+ const [loading, setLoading] = useState<boolean>(false);
+ const [error, setError] = useState<string>('');
+ const [success, setSuccess] = useState<string>('');
+ const [dateError, setDateError] = useState<string>('');
+ const [genderError, setGenderError] = useState<string>('');
 
 
  const yearTemp = new Date().getFullYear();
-
  const years = Array.from(new Array(108), (val, index) => yearTemp - index);
  const months = Array.from(new Array(12), (val, index) => 1 + index);
  const getDays = () => {

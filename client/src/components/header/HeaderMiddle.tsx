@@ -7,7 +7,6 @@ import {
   Market,
   Watch
 } from '../../svg';
-import { useSelector } from "react-redux";
 type Props = {
   page: string;
   color: string;

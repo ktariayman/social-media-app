@@ -8,11 +8,12 @@ import dataURItoBlob from '../../helper/dataURItoBlob';
 import EmojiPickerComponent from '../postPopup/emojiPicker/emojiPicker';
 import ImagePreview from '../postPopup/imagePreview';
 import AddToYourPost from '../postPopup/AddToYourPost';
+import { IUser } from '../../ts/interface/user';
 type Props = {
- setVisible: any;
- user: any;
- setShowPrev: any;
- showPrev: any;
+ setVisible: (v: boolean) => void;
+ user: IUser;
+ setShowPrev: (v: boolean) => void;
+ showPrev: boolean;
 
 }
 function CreateStory({ setVisible, user, setShowPrev, showPrev }: Props) {
@@ -72,9 +73,7 @@ function CreateStory({ setVisible, user, setShowPrev, showPrev }: Props) {
  const handleImagePost = async (): Promise<void> => {
   setLoading(true);
   try {
-   console.log('images', images);
    const postImages = images.map(dataURItoBlob);
-   console.log('postImages', postImages);
    const path = `${user.username}/postImages`;
    const formData = new FormData();
    formData.append('path', path);

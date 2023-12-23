@@ -59,7 +59,7 @@ function Post({ post, user, profile, visitor, token }: any) {
       }
     }
   };
-  const showMore = () => {
+  const showMoreComments = () => {
     setCount((prev) => prev + 3);
   };
   const handleClassNameGrid = (post: any) => {
@@ -267,7 +267,7 @@ function Post({ post, user, profile, visitor, token }: any) {
             .slice(0, count)
             .map((comment: any, i: any) => <Comment comment={comment} key={i} />)}
         {count < comments.length && (
-          <div className="view_comments" onClick={() => showMore()}>
+          <div className="view_comments" onClick={showMoreComments}>
             View more comments
           </div>
         )}

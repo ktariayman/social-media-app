@@ -63,7 +63,7 @@ export type appType = {
 };
 
 
-type Friend = {
+export type Friend = {
  first_name: string;
  last_name: string;
  picture: string;

@@ -11,6 +11,7 @@ import {
 } from "../../../functions/profile/invitationSystem";
 import { useClickOutside } from "../../../hooks";
 import { SyncLoader } from "react-spinners";
+import { IUser } from "../../../ts/interface/user";
 export default function Friendship({ friendshipp, profileid, loading }: any) {
 
  const [friendship, setFriendship] = useState(friendshipp);
@@ -24,7 +25,7 @@ export default function Friendship({ friendshipp, profileid, loading }: any) {
  const menu1 = useRef(null);
  useClickOutside(menu, () => setFriendsMenu(false));
  useClickOutside(menu1, () => setRespondMenu(false));
- const { user } = useSelector((state: any) => ({ ...state }));
+ const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
  const addFriendHandler = async () => {
   setFriendship({ ...friendship, requestSent: true, following: true });
   await addFriend(profileid, user.token);

@@ -5,9 +5,14 @@ import { useClickOutside } from '../../hooks';
 import { getSearchHistory, searchUsers, addToSearchHistory, removeFromSearch } from '../../functions/user';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-function SearchMenu({ color, setShowSearchMenu }: any) {
+import { IUser } from '../../ts/interface/user';
+type Props = {
+  color: string,
+  setShowSearchMenu: (show: boolean) => void
+}
+function SearchMenu({ color, setShowSearchMenu }: Props) {
   const [iconVisible, setIconVisible] = useState<boolean>(true);
-  const { user } = useSelector((user: any) => ({ ...user }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   const [searchTerm, setSearchTerm] = useState<any>('');
   const [results, setResults] = useState<any>([]);
   const [searchHistory, setSearchHistory] = useState<any>([]);

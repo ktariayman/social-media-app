@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 import { useClickOutside } from "../../../hooks";
+import { IUser } from "../../../ts/interface/user";
 
 export default function OldCovers({ photos, setCoverPicture, setShow }: any) {
-   const { user } = useSelector((state: any) => ({ ...state }));
+   const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
    const Ref = useRef(null);
    useClickOutside(Ref, () => setShow(false));
    return (

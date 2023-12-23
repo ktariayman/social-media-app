@@ -4,8 +4,9 @@ import { useSelector } from 'react-redux';
 import { Header } from '../../components';
 import CreateStory from '../../components/createStory';
 import CreateStoriesLeft from './CreateStoriesLeft';
+import { IUser } from '../../ts/interface/user';
 function CreateStories() {
-  const { user } = useSelector((state: any) => ({ ...state }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   const [visible, setVisible] = useState(false);
   const [showPrev, setShowPrev] = useState(false);
 

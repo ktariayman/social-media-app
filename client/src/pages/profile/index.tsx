@@ -7,11 +7,12 @@ import './style.css'
 import Skeleton from 'react-loading-skeleton';
 import ProfileTop from './ProfileTop';
 import ProfileBottom from './ProfileBottom';
+import { IUser } from '../../ts/interface/user';
 
 function Profile() {
   const [visible, setVisible] = useState(false)
   const { username } = useParams()
-  const { user } = useSelector((user: any) => ({ ...user }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   const userName = username === undefined ? user.username : username
   const {
     profileState,

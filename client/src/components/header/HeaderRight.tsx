@@ -5,8 +5,9 @@ import {
 } from '../../svg';
 import { UserMenu } from '../../components';
 import { Link } from 'react-router-dom';
+import { IUser } from '../../ts/interface/user';
 type Props = {
-  user: any;
+  user: IUser;
   usermenu: React.RefObject<HTMLDivElement>;
   showUserMenu: boolean;
   setShowUserMenu: (show: boolean) => void;

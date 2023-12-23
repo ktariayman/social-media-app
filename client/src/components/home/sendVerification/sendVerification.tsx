@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import './style.css';
 import axios from 'axios';
+import { IUser } from '../../../ts/interface/user';
 
-function SendVerification({ user }: any) {
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+function SendVerification({ user }: { user: IUser }) {
+  const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<string>('');
   const sendVerificationLink = async () => {
     try {
       const { data } = await axios.post(

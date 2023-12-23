@@ -1,9 +1,5 @@
 import { ProfileActionType } from "../ts/enums";
-import { IPost } from "../ts/interface/posts.interfaces";
 import { Profile } from "../ts/types";
-
-
-
 export interface ProfileAction {
   type: ProfileActionType;
   payload?: any;

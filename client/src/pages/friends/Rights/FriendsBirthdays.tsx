@@ -3,10 +3,11 @@ import getFriendBirthdays from '../../../functions/user/getFriendBirthdays';
 import { useSelector } from 'react-redux';
 import { BeatLoader } from "react-spinners";
 import BirthdayItem from '../components/BirthdayItem';
+import { IUser } from '../../../ts/interface/user';
 
 function FriendsBirthdays() {
   const [birthdays, setBirthdays] = useState<any>([])
-  const { user } = useSelector((state: any) => ({ ...state }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   useEffect(() => {
     getFriendsBirthdays()
   }, [])

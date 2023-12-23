@@ -7,6 +7,7 @@ import { createPostService, uploadImages } from "../../functions";
 import updateProfilePictureService from "../../functions/profile/updateProfilePicture";
 import Cookies from "js-cookie";
 import { UserActionType } from "../../ts/enums";
+import { IUser } from "../../ts/interface/user";
 function UpdateProfilePicture({
  setImage,
  image,
@@ -14,7 +15,7 @@ function UpdateProfilePicture({
  setError,
  setShow
 }: any) {
- const { user } = useSelector((user: any) => ({ ...user }));
+ const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
  const dispatch = useDispatch();
  const [description, setDescription] = useState("");
  const [crop, setCrop] = useState({ x: 0, y: 0 });

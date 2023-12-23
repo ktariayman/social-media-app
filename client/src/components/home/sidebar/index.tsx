@@ -5,10 +5,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowDown1 } from '../../../svg';
 import { useState } from 'react';
 import Shortcut from './Shortcut';
-import { ILeftItem } from '../../../ts/interface/user';
-function SideBar({ user, loading }: any) {
-  const [visible, setVisible] = useState(false);
-  const navigate = useNavigate();
+import { ILeftItem, IUser } from '../../../ts/interface/user';
+function SideBar({ user }: { user: IUser }) {
+  const [visible, setVisible] = useState<boolean>(false);
   return (
     <div className='left_home scrollbar'>
       <Link to='/profile' className='left_link hover2'>
@@ -19,7 +18,6 @@ function SideBar({ user, loading }: any) {
         </span>
       </Link>
       {left.slice(0, 8).map((leftItem: ILeftItem, i: number) => (
-
         <LeftLink key={i} img={leftItem.img} text={leftItem.text} notification={leftItem.notification} link={leftItem.to} />
       ))}
       {!visible && (

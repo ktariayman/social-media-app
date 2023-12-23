@@ -4,8 +4,9 @@ import "./style.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import EditDetails from "./editDetails";
+import { IUser } from "../../ts/interface/user";
 export default function ProfileDetails({ oldDetails, visitor, setOthername, showEdit, setShowEdit }: any) {
- const { user } = useSelector((state: any) => ({ ...state }));
+ const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
  const [details, setDetails] = useState<any>();
  useEffect(() => {
   setDetails(oldDetails);
@@ -24,8 +25,8 @@ export default function ProfileDetails({ oldDetails, visitor, setOthername, show
   instagram: details?.instagram ? details.instagram : "",
  };
  const [infos, setInfos] = useState(initial);
- const [showBio, setShowBio] = useState(false);
- const [max, setMax] = useState(infos?.bio ? 100 - infos?.bio.length : 100);
+ const [showBio, setShowBio] = useState<boolean>(false);
+ const [max, setMax] = useState<number>(infos?.bio ? 100 - infos?.bio.length : 100);
 
  const updateDetails = async () => {
   try {

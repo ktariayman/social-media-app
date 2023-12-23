@@ -4,10 +4,11 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import { loginFormData, loginValidation } from '../../../helper';
+import { LoginFormValues } from '../../../ts/interface/user';
 const useLoginForm = () => {
- const [login, setLogin] = useState(loginFormData);
- const [loading, setLoading] = useState(false);
- const [error, setError] = useState('');
+ const [login, setLogin] = useState<LoginFormValues>(loginFormData);
+ const [loading, setLoading] = useState<boolean>(false);
+ const [error, setError] = useState<string>('');
  const navigate = useNavigate();
  const dispatch = useDispatch();
 
@@ -16,7 +17,7 @@ const useLoginForm = () => {
   setLogin({ ...login, [name]: value.toString() });
  };
 
- const loginSubmit = async () => {
+ const loginSubmit: () => Promise<void> = async () => {
   try {
    setLoading(true);
    const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
@@ -32,7 +33,14 @@ const useLoginForm = () => {
   }
  };
 
- return { login, loading, error, handleLoginChange, loginSubmit, loginValidation };
+ return {
+  login,
+  loading,
+  error,
+  handleLoginChange,
+  loginSubmit,
+  loginValidation
+ };
 };
 
 export default useLoginForm

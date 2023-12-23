@@ -5,10 +5,10 @@ import { useSelector } from 'react-redux';
 import { getAllPostsService } from './functions';
 import { usePosts } from './hooks';
 import { useRoutes } from './routes/useRoutes';
+import { IUser } from './ts/interface/user';
 
 function AppRoutes() {
-  const { user } = useSelector((state: any) => ({ ...state }));
-  const { darkTheme } = useSelector((state: any) => ({ ...state }));
+  const { user, darkTheme }: { user: IUser, darkTheme: boolean } = useSelector((state: any) => ({ ...state }));
   const [visible, setVisible] = useState(false);
   const [showPrev, setShowPrev] = useState<boolean>(false);
   const { dispatch, postState } = usePosts({

@@ -4,7 +4,7 @@ import StoryItem from './StoryItem';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { IStory } from '../../../ts/interface/user';
+import { IStory, IUser } from '../../../ts/interface/user';
 import { getStories } from '../../../functions/post/getStories';
 import { useSelector } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
@@ -16,7 +16,7 @@ function Stories({ setStoryVisible }: Props) {
   const navigate = useNavigate()
   const [stories, setStories] = useState<IStory[][]>([])
   const [loading, setLoading] = useState(false)
-  const { user } = useSelector((state: any) => ({ ...state }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
 
   useEffect(() => {
     handleGetStories()

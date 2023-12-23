@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { SendEmail, CodeVerification, ChangePassword, SearchAccount } from '../../components';
 import { useLogout } from '../../hooks';
 import { ResetPassConfigurationContextProvider, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+import { IUser } from '../../ts/interface/user';
 
 function ResetPassword() {
   return (
@@ -16,7 +17,7 @@ function ResetPassword() {
 }
 
 function ResetPasswordContent() {
-  const { user } = useSelector((state: any) => ({ ...state }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   const navigate = useNavigate();
   const { visible, userInfos, setVisible, visiblePages } = useResetPassConfigurationContext()
   const logout = useLogout()

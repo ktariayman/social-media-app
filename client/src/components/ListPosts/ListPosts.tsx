@@ -2,10 +2,11 @@ import SendVerification from "../home/sendVerification/sendVerification";
 import Stories from "../home/stories";
 import CreatePost from "../createPost";
 import { BeatLoader } from "react-spinners";
+import { IUser } from "../../ts/interface/user";
 type Props = {
   render: (post: any, i: number) => React.ReactNode;
   middle: React.RefObject<HTMLDivElement>;
-  user: any;
+  user: IUser;
   posts: any[];
   setVisible: (visible: boolean) => void;
   showPrev: boolean;

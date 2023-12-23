@@ -7,11 +7,12 @@ import Cookies from 'js-cookie';
 
 import './style.css';
 import ActivateForm from './ActivateForm';
+import { IUser } from '../../ts/interface/user';
 function Activate({ setVisible, visible }: any) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const middle = useRef(null);
-  const { user } = useSelector((state: any) => ({ ...state }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);

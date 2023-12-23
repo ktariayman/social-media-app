@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { usersNotFriends } from "../functions";
 import { useSelector } from "react-redux";
+import { IUser } from "../ts/interface/user";
 
 const useNotFriends = () => {
- const { user } = useSelector((state: any) => ({ ...state }));
+ const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
  const [notFriends, setNotFriends] = useState([])
  useEffect(() => {
   handleNotFriends()
