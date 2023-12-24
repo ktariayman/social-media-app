@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { RegisterFormData } from '../../../helper';
+import register from '../../../functions/user/register';
+import { RegisterFormValues } from '../../../ts/interface/user';
 
 const useRegisterForm = (user: any) => {
  const dispatch = useDispatch();
@@ -21,12 +23,12 @@ const useRegisterForm = (user: any) => {
  };
  const days = Array.from(new Array(getDays()), (val, index) => 1 + index);
 
- const registerSubmit = async (values: any) => {
+ const registerSubmit = async (values: RegisterFormValues) => {
   try {
    setLoading(true);
-   const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, values);
-
+   const data = await register(values)
    setError('');
+
    setSuccess(data.message);
    const { message, ...rest } = data;
    setTimeout(() => {

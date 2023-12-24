@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { login as loginHandler } from '../../../functions/user/login'
 import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import { loginFormData, loginValidation } from '../../../helper';
@@ -20,10 +20,7 @@ const useLoginForm = () => {
  const loginSubmit: () => Promise<void> = async () => {
   try {
    setLoading(true);
-   const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
-    email: login.email,
-    password: login.password
-   });
+   const data = await loginHandler(login)
    dispatch({ type: 'LOGIN', payload: data });
    Cookies.set('user', JSON.stringify(data));
    navigate('/');

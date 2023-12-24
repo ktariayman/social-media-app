@@ -6,7 +6,8 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { validatePassword } from '../../helper';
 import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
-
+import changePassword from '../../functions/user/changePassword'
+import resetPassword from '../../functions/user/resetPassword';
 export default function ChangePassword({ user }: any) {
   const {
     password,
@@ -28,29 +29,15 @@ export default function ChangePassword({ user }: any) {
   }, []);
   console.log('email', email);
 
-  const changePassword = async () => {
+  const changePasswordHandler = async () => {
     try {
       setLoading(true);
 
       if (user) {
-        await axios.post(
-          `${process.env.REACT_APP_BACKEND_URL}/changePassword`,
-          {
-            email,
-            oldPassword,
-            newPassword: password
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${user.token}`
-            }
-          }
-        );
+        await changePassword(email, oldPassword, password, user.token)
       } else {
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/resetPassword`, {
-          email,
-          password
-        });
+        await resetPassword(email, password)
+
       }
       setError('');
       navigate('/');
@@ -72,7 +59,7 @@ export default function ChangePassword({ user }: any) {
           }}
           validationSchema={validatePassword}
           onSubmit={() => {
-            changePassword();
+            changePasswordHandler();
           }}
         >
           {(formik) => (
@@ -112,7 +99,7 @@ export default function ChangePassword({ user }: any) {
         enableReinitialize
         initialValues={{ oldPassword, password, conf_password }}
         validationSchema={validatePassword}
-        onSubmit={changePassword}
+        onSubmit={changePasswordHandler}
       >
         {(formik) => (
           <Form>

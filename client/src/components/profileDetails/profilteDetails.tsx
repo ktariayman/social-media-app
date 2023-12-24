@@ -5,6 +5,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import EditDetails from "./editDetails";
 import { IUser } from "../../ts/interface/user";
+import updateProfileDetails from "../../functions/user/updateProfileDetails";
 export default function ProfileDetails({ oldDetails, visitor, setOthername, showEdit, setShowEdit }: any) {
  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
  const [details, setDetails] = useState<any>();
@@ -24,23 +25,13 @@ export default function ProfileDetails({ oldDetails, visitor, setOthername, show
   relationship: details?.relationship ? details.relationship : "",
   instagram: details?.instagram ? details.instagram : "",
  };
- const [infos, setInfos] = useState(initial);
+ const [infos, setInfos] = useState<any>(initial);
  const [showBio, setShowBio] = useState<boolean>(false);
  const [max, setMax] = useState<number>(infos?.bio ? 100 - infos?.bio.length : 100);
 
  const updateDetails = async () => {
   try {
-   const { data } = await axios.put(
-    `${process.env.REACT_APP_BACKEND_URL}/updateDetails`,
-    {
-     infos,
-    },
-    {
-     headers: {
-      Authorization: `Bearer ${user.token}`,
-     },
-    }
-   );
+   const data = await updateProfileDetails(user.token, infos)
    setShowBio(false);
    setDetails(data);
    setOthername(data.otherName);

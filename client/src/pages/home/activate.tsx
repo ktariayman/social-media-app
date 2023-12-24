@@ -8,6 +8,7 @@ import Cookies from 'js-cookie';
 import './style.css';
 import ActivateForm from './ActivateForm';
 import { IUser } from '../../ts/interface/user';
+import activateAccount from '../../functions/user/activateAccount';
 function Activate({ setVisible, visible }: any) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,28 +20,19 @@ function Activate({ setVisible, visible }: any) {
   const [storyVisible, setStoryVisible] = useState(false);
   const { token } = useParams();
   useEffect(() => {
-    activateAccount();
+    activateAccountHandler();
   }, []);
 
-  const activateAccount = async () => {
+  const activateAccountHandler = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/activate`,
-        { token },
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`
-          }
-        }
-      );
+      const data = await activateAccount(user.token)
       setSuccess(data.message);
       Cookies.set('user', JSON.stringify({ ...user, verified: true }));
       dispatch({
         type: 'VERIFY',
         payload: true
       });
-
       setTimeout(() => {
         navigate('/');
       }, 3000);

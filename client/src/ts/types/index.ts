@@ -10,12 +10,17 @@ export type User = {
  username: string;
  verified: boolean;
 };
-type ProfileDetails = {
- relationship: string;
- instagram: string;
- bio: string;
- job: string;
+export type ProfileDetails = {
+ relationship?: string;
+ instagram?: string;
+ bio?: string;
+ job?: string;
  otherName?: string
+ workplace?: any;
+ highSchool?: any;
+ college?: any;
+ currentCity?: any;
+ hometown?: any;
 };
 
 

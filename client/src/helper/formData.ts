@@ -1,6 +1,6 @@
 import { LoginFormValues, RegisterFormValues } from '../ts/interface/user';
 
-const RegisterFormData = {
+const RegisterFormData: RegisterFormValues = {
   first_name: "",
   last_name: "",
   email: "",
