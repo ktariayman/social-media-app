@@ -54,7 +54,6 @@ function CreateStory({ setVisible, user, setShowPrev, showPrev }: Props) {
    });
    const responseBackground = await uploadImages(formData, path, user.token);
    const res = await createPostService('story', responseBackground, text, null, user.id, user.token);
-   console.log('resres', res);
 
    if (res.status === "ok") {
     setBackground('');

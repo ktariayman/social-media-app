@@ -4,7 +4,10 @@ import { getFriendsPageInfos } from "../functions/user";
 import { friendsReducer } from "../reducers/friendsReducer";
 import { FriendsActionType } from "../ts/enums";
 import { FriendsType } from "../ts/types";
-const useFriends = (user: any) => {
+import { useSelector } from "react-redux";
+import { IUser } from "../ts/interface/user";
+const useFriends = () => {
+ const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
 
 
  const [{ loading, error, data }, dispatch] = useReducer(friendsReducer, {

@@ -107,7 +107,6 @@ function SearchMenu({ color, setShowSearchMenu }: Props) {
               <div className="search_user_item hover1" key={user._id}>
                 <Link
                   className="flex"
-                  // to={`/profile/${user.user.username}`}
                   to={`/profile/${user.user.username}`}
                   onClick={() => addToSearchHistoryHandler(user.user._id)}
                 >

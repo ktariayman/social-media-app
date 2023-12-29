@@ -8,7 +8,7 @@ import { IUser } from "../../../ts/interface/user";
 const AllFriends = () => {
   const type = useParams()
   const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
-  const { data, getData } = useFriends(user)
+  const { data, getData } = useFriends()
   return (
     <div className="friends_right_wrap">
       <div className="friends_left_header">

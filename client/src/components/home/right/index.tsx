@@ -7,7 +7,7 @@ import './style.css';
 
 function RightHome({ user }: { user: IUser }) {
   const color = '#65676b';
-  const { data }: { data: FriendsType } = useFriends(user)
+  const { data }: { data: FriendsType } = useFriends()
   return (
     <div className='right_home'>
       <div className='heading'>Sponsored</div>

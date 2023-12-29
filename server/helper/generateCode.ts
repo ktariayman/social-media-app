@@ -1,4 +1,4 @@
-function generateCode(length: any) {
+function generateCode(length: number) {
   let code = '';
   let schema = '0123456789';
 
