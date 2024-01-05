@@ -7,8 +7,8 @@ function CreateStoriesLeft({ setVisible }: Props) {
 
  return (
   <div className="saved_left">
-   <div className="friends_left_header">
-    <h3>Stories</h3>
+   <div className="friends_left_header" style={{ padding: "12px" }}>
+    <h3>Votre Story</h3>
     <div className="small_circle">
      <i className="settings_filled_icon"></i>
     </div>

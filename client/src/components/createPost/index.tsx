@@ -46,11 +46,9 @@ function CreatePost({ user, setVisible, profile, setShowPrev, loading }: Props) 
           setVisible && setVisible(true);
           setShowPrev && setShowPrev(true)
         }}>
-          <div  >
-            <Photo color='#4bbf67' />
+          <Photo color='#4bbf67' />
 
-            Photo/Video
-          </div>
+          Photo/Video
         </CreatePostIcon>
 
         {profile ? (

@@ -43,9 +43,7 @@ function CreateStory({ setVisible, user, setShowPrev, showPrev }: Props) {
 
  const handleBackgroundPost = async (): Promise<void> => {
   try {
-   console.log('[background]', [background]);
    const postBg = [background].map(dataURItoBlob);
-   console.log('postBg', postBg);
    const path = `${user.username}/postImages`;
    const formData = new FormData();
    formData.append('path', path);

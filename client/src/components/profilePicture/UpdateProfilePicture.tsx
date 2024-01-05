@@ -6,7 +6,6 @@ import getCroppedImg from "../../helper/getCroppedImg"
 import { createPostService, uploadImages } from "../../functions";
 import updateProfilePictureService from "../../functions/profile/updateProfilePicture";
 import Cookies from "js-cookie";
-import { UserActionType } from "../../ts/enums";
 import { IUser } from "../../ts/interface/user";
 function UpdateProfilePicture({
  setImage,
