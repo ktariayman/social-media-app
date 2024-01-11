@@ -24,7 +24,7 @@ export default function PplYouMayKnow() {
         </div>
       </div>
       <div className="pplumayknow_list">
-        {notFriends !== (null || undefined) && notFriends.length !== 0 && notFriends?.slice(0, max).map((item: any, i: any) => (
+        {notFriends !== (null || undefined) && notFriends && notFriends.length !== 0 && notFriends?.slice(0, max).map((item: any, i: any) => (
           <>
             <AddFriendSmallCard item={item} key={i} />
           </>

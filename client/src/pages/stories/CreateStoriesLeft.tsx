@@ -13,14 +13,14 @@ function CreateStoriesLeft({ setVisible }: Props) {
      <i className="settings_filled_icon"></i>
     </div>
    </div>
-   <div className="friends_left_wrap" onClick={() => { setVisible(true) }}>
+   {/* <div className="friends_left_wrap" onClick={() => { setVisible(true) }}>
     <div className="mmenu_item hover3">
      <h4>create Story</h4>
      <div className="plus_story" >
       <Plus color='#fff' />
      </div>
     </div>
-   </div>
+   </div> */}
   </div>
  );
 }

@@ -15,6 +15,7 @@ function Saved() {
 
   const getData = async () => {
     const data = await getSavedPostsByUserId(user?.token)
+    if (!data) return
     setData(data)
   }
 

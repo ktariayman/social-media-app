@@ -1,9 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home, Login, Profile, Activate, ResetPassword, Friends, Saved } from '../pages';
 import CreateStories from '../pages/stories';
-import Birthdays from '../pages/friends/Rights/FriendsBirthdays';
 import NotFoundPage from '../pages/notFound/NotFound';
-import Download from '../pages/Download';
 import LoggedInRoutes from "./LoggedInRoutes";
 import NotLoggedInRoutes from "./NotLoggedInRoutes";
 type Props = {
@@ -53,10 +51,6 @@ export const useRoutes = ({ setVisible, showPrev, setShowPrev, postState }: Prop
         {
           path: '/stories/create',
           element: <CreateStories />
-        },
-        {
-          path: '/download',
-          element: <Download />
         }
       ]
     },

@@ -24,6 +24,7 @@ type Props = {
 function PostPopup({ dispatch, posts, setVisible, user, visible, setShowPrev, showPrev, profile }: Props) {
   const popup = useRef(null);
   const textRef = useRef<HTMLTextAreaElement>(null);
+  const imageInputRef = useRef<any>(null);
   const [picker, setPicker] = useState<boolean>(false);
   const { error,
     setError,
@@ -88,6 +89,10 @@ function PostPopup({ dispatch, posts, setVisible, user, visible, setShowPrev, sh
             textRef={textRef}
             setPicker={setPicker}
             picker={picker}
+            imageInputRef={imageInputRef}
+            openImagesHandler={() => {
+              imageInputRef?.current.click();
+            }}
           />
         )}
         <AddToYourPost setShowPrev={setShowPrev} setPicker={setPicker} />
