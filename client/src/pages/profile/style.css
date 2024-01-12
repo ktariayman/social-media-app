@@ -188,6 +188,12 @@
  height: 240px;
  flex-wrap: wrap;
 }
+@media (max-width: 600px) {
+  .pplumayknow_list{
+    overflow: scroll;
+    justify-content: center;
+  }
+}
 .pplumayknow {
  width: 100%;
  height: 100%;

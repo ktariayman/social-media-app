@@ -112,13 +112,17 @@ function RegisterForm({ }: Props) {
                 and <span>Cookie Policy.</span> You may receive SMS notifications from us and can
                 opt out at any time.
               </div>
-              <div className='reg_btn_wrapper'>
-                <button type={"submit"} className='blue_btn open_signup'>Sign Up</button>
-              </div>
-              <div className='reg_btn_wrapper'>
-                <button className='blue_btn haveAccount' onClick={() => setVisible(false)}>
-                  Already have an account ?
-                </button>
+              <div style={{ display: 'grid', gridTemplateColumns: "2fr 1fr", width: '100%' }}>
+
+                <div className='reg_btn_wrapper'>
+                  <button className='blue_btn haveAccount' onClick={() => setVisible(false)}>
+                    Already have an account ?
+                  </button>
+                </div>
+
+                <div className='reg_btn_wrapper'>
+                  <button type={"submit"} className='blue_btn open_signup'>Sign Up</button>
+                </div>
               </div>
               <DotLoader color='#1876f2' loading={loading} size={30} />
               {error && <div className='error_text'>{error}</div>}

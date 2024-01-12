@@ -37,7 +37,8 @@ const usePosts = ({ setVisible, visible, getData }: HomeProps) => {
     postState,
     setVisible,
     visible,
-    dispatch
+    dispatch,
+    handleGetData
   };
 };
 

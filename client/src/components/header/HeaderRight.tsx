@@ -6,12 +6,13 @@ import {
 import { UserMenu } from '../../components';
 import { Link } from 'react-router-dom';
 import { IUser } from '../../ts/interface/user';
+import { pagesType } from '../../ts/types';
 type Props = {
   user: IUser;
   usermenu: React.RefObject<HTMLDivElement>;
   showUserMenu: boolean;
   setShowUserMenu: (show: boolean) => void;
-  page: string
+  page: pagesType
 }
 function HeaderRight({ user, setShowUserMenu, showUserMenu, usermenu, page }: Props) {
   const handleUserMenuClick = () => {
@@ -21,8 +22,10 @@ function HeaderRight({ user, setShowUserMenu, showUserMenu, usermenu, page }: Pr
     <div className='header_right'>
       <Link
         to="/profile"
-        className={`profile_link profile_link_name hover1 ${page === "profile" ? "active_link" : ""
-          }`}
+        className={
+          `profile_link profile_link_name hover1 
+          ${page == "profile" ? "active_link" : ""}
+          `}
       >
         <img src={user?.picture} alt="" />
         <span>{user?.first_name}</span>

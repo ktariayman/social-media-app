@@ -70,8 +70,9 @@
  filter: invert(100%);
 }
 /*----profile---*/
-.dark .active_link:hover {
- background: var(--light-blue-color);
+.dark .active_link ,
+ .dark .active_link:hover {
+ background: var(--bg-third);
 }
 .dark .open_cover_menu i,
 .dark .open_cover_menu img {

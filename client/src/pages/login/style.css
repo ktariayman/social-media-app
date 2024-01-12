@@ -57,15 +57,14 @@
 }
 .open_signup {
   background: var(--green-color);
-  width: 70% !important;
   font-weight: 600 !important;
   font-size: 17px !important;
   margin-top: 1rem;
 }
 .haveAccount {
-  width: 70% !important;
+  width: 100% !important;
   font-weight: 600 !important;
-  font-size: 17px !important;
+  font-size: 16px !important;
   margin-top: 1rem;
 }
 .sign_extra {
@@ -87,7 +86,8 @@
   width: 350px;
   height: fit-content;
   color: var(--color-primary);
-  height: 100vh;
+  height: 90vh;
+  overflow: scroll;
 }
 .register_header {
   position: relative;

@@ -18,7 +18,7 @@ export const useRoutes = ({ setVisible, showPrev, setShowPrev, postState }: Prop
       children: [
         {
           path: '/',
-          element: <Home setVisible={setVisible} showPrev={showPrev} setShowPrev={setShowPrev} postState={postState} />
+          element: <Home setVisible={setVisible} showPrev={showPrev} setShowPrev={setShowPrev} />
         },
         {
           path: '/activate/:token',
