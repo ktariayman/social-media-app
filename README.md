@@ -27,7 +27,7 @@ I'm proud of this project because it highlights how I practice great technologie
 ## Profile Customization
 - Enabled users to update cover and profile pictures with advanced image manipulation options.
 - Leveraged Cloudinary for efficient and creative image upload processes.
-## User Profiles and Details
+## User Profiles Details & stories ( 24h only) 
 - Developed individual user profiles displaying cover pictures, profile pictures, and personal details.
 - Ensured live updates for any changes made to user details.
 ## Friendship System
@@ -46,6 +46,23 @@ I'm proud of this project because it highlights how I practice great technologie
 This self-initiated project underscores my ability to conceive, design, and implement a complex, feature-rich application independently.
 It showcases my technical proficiency and problem-solving and refactoring skills in the realm of modern web development.
 
+## Feature to-do
+
+- feature 1 : realtime chat app (messenger )
+- feature 2 :  video call app 
+- feature 3 : integrate spotify to listen to music from your spotify account where we will make this app all-in-one application for the user.
+- feature 4 : we will integrate your details from your github account & charts
+- feature 5 : add admin to the system with their dashboard 
+-  enhancement for create stories where we can add texts + music in background if possible 
+-  enhancement in posts to add pdf & pdfReader & video
+-  feature 6 : add devBook shorts like youtube shorts
+-  feature 7 : add groups with posts & members same to friendship system 
+-  feature 8 : add pages & the system behing 
+-  feature 9 : add RH user that he can recrute & filter users. RH will have special dashboard for dashboard based on users roles & what the RH is looking for. 
+- feature 10 : have all infos in one place for the user ( not his profile but like a custom portfolio or CV where he need to make sure to add everything in a form & then generate the portfolio or CV ) , we will use this to help RH search for users later-on
+- feature 11 : add youtube clone for the app from youtube videos api where we will have some videos related on the tags that user will enter from the register , also the user can modify the tags only from settings not from youtube clone page.
+- feature : notification system 
+- for code now : refactor as possible & add unit test & automated test using postman , build a pipeline for the app asap also
 
 # ENDPOINTS
 
