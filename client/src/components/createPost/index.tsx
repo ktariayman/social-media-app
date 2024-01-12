@@ -3,16 +3,17 @@ import './style.css';
 import { CreatePostIcon } from './createPostIcon';
 import { MoonLoader } from 'react-spinners';
 import { useNavigate } from 'react-router-dom';
+import { IUser } from '../../ts/interface/user';
 
 type Props = {
-  user: any
+  user: IUser
   setVisible: (visible: boolean) => void;
   showPrev?: boolean;
   setShowPrev?: (showPrev: boolean) => void;
-  profile?: any
+  profile?: boolean
   loading: boolean
 }
-function CreatePost({ user, setVisible, profile, showPrev, setShowPrev, loading }: Props) {
+function CreatePost({ user, setVisible, profile, setShowPrev, loading }: Props) {
   const navigate = useNavigate()
   return (
     <div className='createPost'>
@@ -45,11 +46,9 @@ function CreatePost({ user, setVisible, profile, showPrev, setShowPrev, loading 
           setVisible && setVisible(true);
           setShowPrev && setShowPrev(true)
         }}>
-          <div  >
-            <Photo color='#4bbf67' />
+          <Photo color='#4bbf67' />
 
-            Photo/Video
-          </div>
+          Photo/Video
         </CreatePostIcon>
 
         {profile ? (

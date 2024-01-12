@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useLogout } from '../../hooks';
 import { useSelector } from 'react-redux';
+import { IUser } from '../../ts/interface/user';
 type Props = {
   setVisible: (show: number) => void;
   handleUserMenuClick: () => void
@@ -8,7 +9,7 @@ type Props = {
 function DefaultMenu({ setVisible, handleUserMenuClick }: Props) {
   const navigate = useNavigate()
   const logout = useLogout()
-  const { user } = useSelector((user: any) => ({ ...user }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   return (
     <div>
 

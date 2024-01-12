@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+import { useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+import sendResetPasswordCode from '../../functions/user/sendVerification';
 export default function SendEmail() {
   const { userInfos,
     email,
@@ -13,7 +14,7 @@ export default function SendEmail() {
   const sendEmail = async () => {
     try {
       setLoading(true);
-      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/sendResetPasswordCode`, { email });
+      await sendResetPasswordCode(email)
       setError('');
       setVisible(visiblePages.code);
       setLoading(false);

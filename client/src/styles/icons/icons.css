@@ -774,3 +774,16 @@
   background-repeat: no-repeat;
   display: inline-block;
 }
+
+
+.create_story_bg {
+    background-image: url(../../../public/icons/stories.png);
+    background-position: 0px 0px;
+    background-size: 222px 690px;
+    width: 220px;
+    height: 300px;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

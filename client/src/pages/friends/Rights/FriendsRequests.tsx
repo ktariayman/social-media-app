@@ -4,11 +4,12 @@ import Card from "../components/Card";
 import { Link, useParams } from "react-router-dom";
 import { useFriends } from '../../../hooks';
 import { useSelector } from "react-redux";
+import { IUser } from "../../../ts/interface/user";
 
 const FriendsRequests = () => {
   const type = useParams()
-  const { user } = useSelector((state: any) => ({ ...state }));
-  const { data, getData } = useFriends(user)
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
+  const { data, getData } = useFriends()
 
   return (
     <div className="friends_right_wrap">

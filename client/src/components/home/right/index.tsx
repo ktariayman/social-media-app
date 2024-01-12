@@ -1,10 +1,13 @@
 import { useFriends } from '../../../hooks';
 import { Dots, NewRoom, Search } from '../../../svg';
+import { IUser } from '../../../ts/interface/user';
+import { Friend, FriendsType } from '../../../ts/types';
 import Contact from './Contact';
 import './style.css';
-function RightHome({ user }: any) {
-  const { data } = useFriends(user)
+
+function RightHome({ user }: { user: IUser }) {
   const color = '#65676b';
+  const { data }: { data: FriendsType } = useFriends()
   return (
     <div className='right_home'>
       <div className='heading'>Sponsored</div>
@@ -26,9 +29,9 @@ function RightHome({ user }: any) {
         </div>
         <div className='contacts_list'>
           {data.friends &&
-            data.friends.map((user: any) => (
+            data.friends.map((friend: Friend) => (
               <Contact
-                user={user}
+                friend={friend}
               />
             ))}
         </div>

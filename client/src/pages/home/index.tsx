@@ -8,13 +8,14 @@ import {
 import { useSelector } from 'react-redux';
 import './style.css';
 import ListPosts from '../../components/ListPosts/ListPosts';
+import { IUser } from '../../ts/interface/user';
 
 function Home({ setVisible, visible, showPrev, setShowPrev, postState }: any) {
   const middle = useRef<HTMLDivElement>(null);
 
   const [storyVisible, setStoryVisible] = useState(false);
 
-  const { user } = useSelector((state: any) => ({ ...state }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   return (
     <div className='home'>
       <Header page='home' />

@@ -2,6 +2,7 @@ import { useEffect, useReducer, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import postReducer from '../reducers/postReducer';
 import { PostActionType } from '../ts/enums';
+import { IUser } from '../ts/interface/user';
 
 interface HomeProps {
   setVisible: (visible: boolean) => void;
@@ -10,7 +11,7 @@ interface HomeProps {
 }
 
 const usePosts = ({ setVisible, visible, getData }: HomeProps) => {
-  const { user } = useSelector((state: any) => ({ ...state }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
 
   const [postState, dispatch] = useReducer(postReducer, {
     loading: false,

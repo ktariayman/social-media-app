@@ -4,21 +4,13 @@ import AddFriendSmallCard from "./AddFriendSmallCard";
 import { usersNotFriends } from '../../../functions';
 import { useSelector } from "react-redux";
 import MenuFriends from "../../../components/ppltYouMayKnow/MenuFriends";
+import useNotFriends from "../../../hooks/useNotFriends";
 
 export default function PplYouMayKnow() {
-  const [notFriends, setNotFriends] = useState([])
-  const { user } = useSelector((state: any) => ({ ...state }));
-  useEffect(() => {
-    handleNotFriends()
-  }, [])
-  const handleNotFriends = async () => {
-    const data = await usersNotFriends(user.token)
-    setNotFriends(data)
-  }
+  const { notFriends } = useNotFriends()
   const [isSuggesstion, setIsSuggestions] = useState(window.location.pathname === '/friends/suggestions')
   const [max, setMax] = useState(isSuggesstion ? 30 : 5)
   const [showMenu, setShowMenu] = useState(false);
-
   return (
     <div className="pplumayknow">
       <div className="pplumayknow_header">
@@ -32,7 +24,7 @@ export default function PplYouMayKnow() {
         </div>
       </div>
       <div className="pplumayknow_list">
-        {notFriends !== (null || undefined) && notFriends?.slice(0, max).map((item: any, i: any) => (
+        {notFriends !== (null || undefined) && notFriends && notFriends.length !== 0 && notFriends?.slice(0, max).map((item: any, i: any) => (
           <>
             <AddFriendSmallCard item={item} key={i} />
           </>

@@ -9,6 +9,8 @@ import { CreatePost, Post } from "../../../components";
 import GridPosts from "./gridPosts";
 import { ProfileState } from "../../../reducers/profileReducer";
 import { useSelector } from "react-redux";
+import useNotFriends from "../../../hooks/useNotFriends";
+import { IUser } from "../../../ts/interface/user";
 type Props = {
  visitor: boolean
  profileState: ProfileState
@@ -21,12 +23,13 @@ type Props = {
  setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 const ProfileBottom = ({ visitor, profileState, ref, photos, setOthername, setShowEdit, showEdit, setVisible, userName }: Props) => {
- const { user } = useSelector((state: any) => ({ ...state }));
+ const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
+ const { notFriends } = useNotFriends()
  return (
   <div className="profile_bottom">
    <div className="profile_container">
     <div className="bottom_container">
-     {!visitor &&
+     {!visitor && notFriends.length !== 0 &&
       <PplYouMayKnow />
      }
      <div

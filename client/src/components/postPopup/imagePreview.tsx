@@ -1,8 +1,7 @@
-import React, { useRef } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import EmojiPickerComponent from './emojiPicker/emojiPicker';
 
-function ImagePreview({ text, user, setText, images, setImages, setShowPrev, setError, textRef, setPicker, picker, backgroundImages }: any) {
-  const imageInputRef = useRef<any>(null);
+function ImagePreview({ openImages, imageInputRef, openImagesHandler, text, user, setText, images, setImages, setShowPrev, setError, textRef, setPicker, picker, backgroundImages, imageHandler }: any) {
   const handleImages = (e: any, backgroundImages?: string[]) => {
     console.log('e', e)
     let files = Array.from(e.target.files);
@@ -64,9 +63,7 @@ function ImagePreview({ text, user, setText, images, setImages, setShowPrev, set
               </button>
               <button
                 className='hover1'
-                onClick={() => {
-                  imageInputRef?.current.click();
-                }}
+                onClick={openImagesHandler}
               >
                 <i className='addPhoto_icon'></i>
                 Add Photos/Videos
@@ -114,9 +111,7 @@ function ImagePreview({ text, user, setText, images, setImages, setShowPrev, set
             </div>
             <div
               className='add_col'
-              onClick={() => {
-                imageInputRef?.current.click();
-              }}
+              onClick={() => { }}
             >
               <div className='add_circle'>
                 <i className='addPhoto_icon'></i>

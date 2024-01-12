@@ -20,8 +20,8 @@ const usersNotFriends = async (req: IRequest, res: Response) => {
     }
     const usersNotFriends =
       await User.find(query)
-        .select('first_name last_name username picture requests');
-
+        .select('first_name last_name username picture requests')
+        .limit(5);
     res.status(200).json(usersNotFriends);
   } catch (error) {
     const errorMessage: string = (error as Error).message;

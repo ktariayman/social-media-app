@@ -4,6 +4,7 @@ import axios from 'axios';
 import { InputLogin } from '../../components';
 import { validateEmail } from '../../helper';
 import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+import findUserByEmail from '../../functions/user/findUserByEmail';
 export default function SearchAccount() {
   const { email,
     setEmail,
@@ -18,9 +19,7 @@ export default function SearchAccount() {
     try {
       setLoading(true);
 
-      const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/findUserByEmail`, {
-        email
-      });
+      const data = await findUserByEmail(email)
       setUserInfos(data);
       setVisible(visiblePages.code);
       setError('');

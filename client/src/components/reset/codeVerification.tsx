@@ -3,16 +3,14 @@ import { Link } from 'react-router-dom';
 import { InputLogin } from '../../components';
 import axios from 'axios';
 import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+import { validateResetCode } from '../../functions/user/validateResetCode';
 function CodeVerification() {
   const { code, setCode, setLoading, setError, userInfos, setVisible, visiblePages } = useResetPassConfigurationContext()
   const { email } = userInfos;
   const verifyCode = async () => {
     try {
       setLoading(true);
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/validateResetCode`, {
-        email,
-        code
-      });
+      await validateResetCode(email, code)
       setVisible(visiblePages.changePass);
       setError('');
       setLoading(false);

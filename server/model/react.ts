@@ -1,9 +1,10 @@
-import mongoose, { Schema, Document, Types, model, models } from 'mongoose';
+import mongoose, { Document, Types, model, models } from 'mongoose';
 
+type ObjectId = typeof Types.ObjectId
 interface IReact extends Document {
- react: any;
- postRef: any;
- reactBy: any;
+ react: string;
+ postRef: ObjectId;
+ reactBy: ObjectId;
 
 }
 const reactSchema = new mongoose.Schema<IReact>({

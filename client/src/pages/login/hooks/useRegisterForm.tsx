@@ -3,18 +3,19 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { RegisterFormData } from '../../../helper';
+import register from '../../../functions/user/register';
+import { RegisterFormValues } from '../../../ts/interface/user';
 
 const useRegisterForm = (user: any) => {
  const dispatch = useDispatch();
- const [loading, setLoading] = useState(false);
- const [error, setError] = useState('');
- const [success, setSuccess] = useState('');
- const [dateError, setDateError] = useState('');
- const [genderError, setGenderError] = useState('');
+ const [loading, setLoading] = useState<boolean>(false);
+ const [error, setError] = useState<string>('');
+ const [success, setSuccess] = useState<string>('');
+ const [dateError, setDateError] = useState<string>('');
+ const [genderError, setGenderError] = useState<string>('');
 
 
  const yearTemp = new Date().getFullYear();
-
  const years = Array.from(new Array(108), (val, index) => yearTemp - index);
  const months = Array.from(new Array(12), (val, index) => 1 + index);
  const getDays = () => {
@@ -22,12 +23,12 @@ const useRegisterForm = (user: any) => {
  };
  const days = Array.from(new Array(getDays()), (val, index) => 1 + index);
 
- const registerSubmit = async (values: any) => {
+ const registerSubmit = async (values: RegisterFormValues) => {
   try {
    setLoading(true);
-   const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, values);
-
+   const data = await register(values)
    setError('');
+
    setSuccess(data.message);
    const { message, ...rest } = data;
    setTimeout(() => {

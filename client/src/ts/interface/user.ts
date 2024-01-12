@@ -29,3 +29,15 @@ interface ILeftItem {
   to?: string
 }
 export type { LoginFormValues, RegisterFormValues, IStory, ILeftItem };
+
+
+export interface IUser {
+  first_name: string;
+  id: string;
+  last_name: string;
+  picture: string;
+  token: string;
+  username: string;
+  verified: boolean;
+  email?: string;
+}

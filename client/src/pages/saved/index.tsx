@@ -5,8 +5,9 @@ import { Header, Post } from "../../components";
 import SavedLeft from "./SavedLeft";
 import SavedRight from "./SavedRight";
 import "./style.css"
+import { IUser } from "../../ts/interface/user";
 function Saved() {
-  const { user } = useSelector((user: any) => ({ ...user }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   const [data, setData] = useState<any>()
   useEffect(() => {
     getData()
@@ -14,6 +15,7 @@ function Saved() {
 
   const getData = async () => {
     const data = await getSavedPostsByUserId(user?.token)
+    if (!data) return
     setData(data)
   }
 

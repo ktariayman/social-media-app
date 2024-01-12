@@ -3,15 +3,18 @@ import "./style.css";
 import { useSelector } from "react-redux";
 import { useClickOutside } from "../../hooks"
 import UpdateProfilePicture from "./UpdateProfilePicture";
+import { IUser } from "../../ts/interface/user";
 export default function ProfilePicture({ username, setShow, pRef, photos }: any) {
   const popup = useRef(null);
-  const { user } = useSelector((state: any) => ({ ...state }));
+  const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   useClickOutside(popup, () => setShow(false));
   const refInput = useRef<HTMLInputElement | null>(null);
   const [image, setImage] = useState<string | ArrayBuffer | null>("");
   const [error, setError] = useState("");
-  const handleImage = (e: any) => {
-    let file = e.target.files[0];
+
+  const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let file = e.target.files?.[0];
+    if (!file) return
     if (
       file.type !== "image/jpeg" &&
       file.type !== "image/png" &&
@@ -24,7 +27,6 @@ export default function ProfilePicture({ username, setShow, pRef, photos }: any)
       setError(`${file.name} is too large max 5mb allowed.`);
       return;
     }
-
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (event) => {

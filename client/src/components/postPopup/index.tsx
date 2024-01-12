@@ -8,109 +8,42 @@ import ImagePreview from './imagePreview';
 import { createPostService, uploadImages } from '../../functions';
 import PostError from './postError';
 import dataURItoBlob from '../../helper/dataURItoBlob';
+import { IUser } from '../../ts/interface/user';
+import usePostPopup from './usePostPopup';
 type Props = {
   posts: any;
-  setVisible: any;
-  user: any;
-  visible: any;
-  setShowPrev: any;
-  showPrev: any;
+  user: IUser;
+  visible: boolean;
+  setVisible: (visible: boolean) => void
+  setShowPrev: (showPrev: boolean) => void;
+  showPrev: boolean;
   dispatch?: any;
   profile?: any;
 
 }
 function PostPopup({ dispatch, posts, setVisible, user, visible, setShowPrev, showPrev, profile }: Props) {
   const popup = useRef(null);
-  const [loading, setLoading] = useState(false);
-  const [text, setText] = useState('');
   const textRef = useRef<HTMLTextAreaElement>(null);
-  const [images, setImages] = useState([]);
-  const [error, setError] = useState('');
-  const [background, setBackground] = useState('');
-  const [picker, setPicker] = useState(false);
-
+  const imageInputRef = useRef<any>(null);
+  const [picker, setPicker] = useState<boolean>(false);
+  const { error,
+    setError,
+    text,
+    background,
+    setBackground,
+    setText,
+    loading,
+    images,
+    setImages,
+    postSubmit
+  } = usePostPopup({ dispatch, user, profile, setVisible, posts })
   useClickOutside(popup, () => {
     setVisible(false);
     setShowPrev(false)
   });
 
-  const postSubmit = async (): Promise<void> => {
-    if (background) {
-      await handleBackgroundPost();
-    } else if (images && images.length > 0) {
-      await handleImagePost();
-    } else if (text) {
-      await handletextPost()
-    }
-  };
 
-  const handleBackgroundPost = async (): Promise<void> => {
-    try {
-      const res = await createPostService(null, background, text, null, user.id, user.token);
-      console.log('res', res);
 
-      if (res.status === "ok") {
-        dispatch({ type: profile ? 'PROFILE_POSTS' : 'POST_SUCCESS', payload: [res.data, ...posts] })
-        setBackground('');
-        setText('');
-        setVisible(false);
-      } else {
-        setError(res);
-      }
-    } catch (error: any) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleImagePost = async (): Promise<void> => {
-    setLoading(true);
-    try {
-      const postImages = images.map(dataURItoBlob);
-      const path = `${user.username}/postImages`;
-      const formData = new FormData();
-      formData.append('path', path);
-      postImages.forEach((image) => {
-        formData.append('file', image);
-      });
-      const response = await uploadImages(formData, path, user.token);
-      const res = await createPostService(null, null, text, response, user.id, user.token);
-      if (res.status === "ok") {
-        dispatch({ type: profile ? 'PROFILE_POSTS' : 'POST_SUCCESS', payload: [res.data, ...posts] })
-        setText('');
-        setImages([]);
-        setVisible(false);
-      } else {
-        setError(res);
-      }
-    } catch (error: any) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handletextPost = async (): Promise<void> => {
-    setLoading(true);
-    const res = await createPostService(
-      null,
-      null,
-      text,
-      null,
-      user.id,
-      user.token
-    );
-    setLoading(false);
-    if (res.status === "ok") {
-      dispatch({ type: profile ? 'PROFILE_POSTS' : 'POST_SUCCESS', payload: [res.data, ...posts] })
-      setBackground("");
-      setText("");
-      setVisible(false);
-    } else {
-      setError(res);
-    }
-  }
   return (
     <div className='blur'>
       <div className='postBox' ref={popup}>
@@ -156,6 +89,10 @@ function PostPopup({ dispatch, posts, setVisible, user, visible, setShowPrev, sh
             textRef={textRef}
             setPicker={setPicker}
             picker={picker}
+            imageInputRef={imageInputRef}
+            openImagesHandler={() => {
+              imageInputRef?.current.click();
+            }}
           />
         )}
         <AddToYourPost setShowPrev={setShowPrev} setPicker={setPicker} />

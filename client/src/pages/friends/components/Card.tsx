@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { acceptRequest, cancelRequest, deleteRequest, unfollow, unfriend } from '../../../functions/profile/invitationSystem'
+import { IUser } from "../../../ts/interface/user";
 
 
 export default function Card({ userr, type, getData }: any) {
- const { user } = useSelector((state: any) => ({ ...state }));
+ const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
  const RequestHandler = async (cb: any) => {
   const res = await cb(userr._id, user.token);
   if (res == "ok") {

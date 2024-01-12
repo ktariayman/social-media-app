@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import listImages from '../functions/profile/Iistmages';
 import { useMediaQuery } from 'react-responsive';
 import { Profile } from '../ts/types';
+import { IUser } from '../ts/interface/user';
 
 type ProfileProps = {
  usernameParams: string | undefined;
@@ -14,7 +15,7 @@ type ProfileProps = {
 }
 
 const useProfile = ({ usernameParams, userName }: ProfileProps) => {
- const { user } = useSelector((user: any) => ({ ...user }));
+ const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
  var visitor = userName === user.username ? false : true;
  const navigate = useNavigate()
  const [profileState, dispatch] = useReducer(profileReducer, {

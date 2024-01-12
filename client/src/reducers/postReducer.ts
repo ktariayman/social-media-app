@@ -12,8 +12,8 @@ export interface PostState {
   error: string;
 }
 
+function postReducer(state: PostState | null = null, action: PostAction): any {
 
-function postReducer(state: any = null, action: PostAction): any {
   switch (action.type) {
     case PostActionType.POST_REQUEST:
       return {
