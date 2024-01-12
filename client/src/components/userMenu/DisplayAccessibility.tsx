@@ -79,7 +79,7 @@ const ThemeMode = () => {
         <div className='mmenu_col'>
           <span className='mmenu_span1'>{darkTheme ? 'Dark Mode' : 'Light Mode'}</span>
           <span className='mmenu_span2'>
-            Adjust the appearance of Facebook to reduce glare and give your eyes a break.
+            Adjust the appearance of Devbook to reduce glare and give your eyes a break.
           </span>
         </div>
       </div>

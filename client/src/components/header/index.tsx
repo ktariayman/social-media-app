@@ -22,11 +22,13 @@ function Header({ page = "home" }: Props) {
     setShowUserMenu(false);
   });
   return (
-    <header >
-      <HeaderLeft color={color} setShowSearchMenu={setShowSearchMenu} showSearchMenu={showSearchMenu} />
-      <HeaderMiddle page={page} color={color} />
-      <HeaderRight page={page} user={user} usermenu={usermenu} showUserMenu={showUserMenu} setShowUserMenu={setShowUserMenu} />
-    </header>
+    <div className='headerContainer'>
+      <header >
+        <HeaderLeft color={color} setShowSearchMenu={setShowSearchMenu} showSearchMenu={showSearchMenu} />
+        <HeaderMiddle page={page} color={color} />
+        <HeaderRight page={page} user={user} usermenu={usermenu} showUserMenu={showUserMenu} setShowUserMenu={setShowUserMenu} />
+      </header>
+    </div>
   );
 }
 

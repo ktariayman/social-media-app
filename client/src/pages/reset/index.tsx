@@ -30,7 +30,7 @@ function ResetPasswordContent() {
 
     <div className='reset'>
       <div className='reset_header'>
-        <img src='../../../icons/facebook.svg' alt='' onClick={() => { navigate('/') }} />
+        <img src='../../../icons/devBook.png' height={40} width={40} alt='' onClick={() => { navigate('/') }} />
         {user ? (
           <div className='right_reset'>
             <Link to='/profile'>

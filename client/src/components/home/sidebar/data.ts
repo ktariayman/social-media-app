@@ -75,7 +75,7 @@ export const left: ILeftItem[] = [
     img: 'emotional'
   },
   {
-    text: 'Facebook Pay',
+    text: 'Devbook Pay',
     img: 'pay'
   },
   {

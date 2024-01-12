@@ -26,7 +26,7 @@ function HeaderLeft({ setShowSearchMenu, showSearchMenu, color }: Props) {
           }}
         >
           <Search color={color} />
-          <input type='text' placeholder='Search Facebook' className='hide_input' />
+          <input type='text' placeholder='Search Devbook' className='hide_input' />
         </div>
       </div>
       {showSearchMenu && (

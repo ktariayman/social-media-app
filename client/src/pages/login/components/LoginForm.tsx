@@ -12,7 +12,7 @@ function LoginForm({ }: Props) {
   return (
     <div className='login_wrap'>
       <div className='login_1'>
-        <img src='../../icons/facebook.svg' alt='' />
+        <img src='../../icons/devBook.png' alt='' />
         <p style={{ fontWeight: "400", fontSize: "30px" }}>Recent Logins</p>
         <p>Click your picture or Add Account.</p>
       </div>

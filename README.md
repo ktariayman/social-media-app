@@ -2,7 +2,7 @@
 
 ##Project Overview
 
-advanced social media application, embodying the features and functionalities akin to Facebook. 
+DevBook is an advanced social media application , embodying the features and functionalities akin to Facebook. 
 I'm proud of this project because it highlights how I practice great technologies such as React.js, Node.js, Express.js, and MongoDB, coupled with a diverse toolset ensuring an optimal user experience.
 
 ## Key Features
