@@ -46,3 +46,54 @@ I'm proud of this project because it highlights how I practice great technologie
 This self-initiated project underscores my ability to conceive, design, and implement a complex, feature-rich application independently.
 It showcases my technical proficiency and problem-solving and refactoring skills in the realm of modern web development.
 
+
+# ENDPOINTS
+
+- [API AUTHENTIFICATION](https://www.github.com/ktariayman)
+
+  - - [Register](https://www.github.com/ktariayman)
+  - - [login](https://www.github.com/ktariayman)
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone
+```
+
+Install dependencies
+   npm or yarn
+```bash
+  cd server
+  npm install
+  cd ..
+  cd client
+  npm install
+```
+
+Start the project
+
+```bash
+  npm run start
+```
+
+
+## Environment Variables for the client (add /api at the end please ) (example : http://localhost:5000/api) 
+  
+  REACT_APP_BACKEND_URL= 
+
+## Environment Variables for server 
+all envFile that I Used :
+PORT= 
+MONGODB_URL=
+TOKEN_SECRET=
+BASE_URL=
+EMAIL=
+MAILING_ID=
+MAILING_SECRET=
+MAILING_REFRESH
+`MAILING_ACCESS`=
+`CLOUD_NAME`=
+`CLOUD_KEY`=
+`CLOUD_SECRET`=
