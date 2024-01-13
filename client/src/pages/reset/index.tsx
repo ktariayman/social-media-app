@@ -6,6 +6,7 @@ import { SendEmail, CodeVerification, ChangePassword, SearchAccount } from '../.
 import { useLogout } from '../../hooks';
 import { ResetPassConfigurationContextProvider, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
 import { IUser } from '../../ts/interface/user';
+import Notice from '../../components/notice/Notice';
 
 function ResetPassword() {
   return (
@@ -29,6 +30,7 @@ function ResetPasswordContent() {
   return (
 
     <div className='reset'>
+      <Notice />
       <div className='reset_header'>
         <img src='../../../icons/devBook.png' height={40} width={40} alt='' onClick={() => { navigate('/') }} />
         {user ? (

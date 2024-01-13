@@ -6,6 +6,7 @@ import { getAllPostsService } from './functions';
 import { usePosts } from './hooks';
 import { useRoutes } from './routes/useRoutes';
 import { IUser } from './ts/interface/user';
+import Notice from './components/notice/Notice';
 
 function AppRoutes() {
   const { user, darkTheme }: { user: IUser, darkTheme: boolean } = useSelector((state: any) => ({ ...state }));

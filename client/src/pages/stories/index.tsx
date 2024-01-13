@@ -6,6 +6,7 @@ import CreateStory from '../../components/createStory';
 import CreateStoriesLeft from './CreateStoriesLeft';
 import { IUser } from '../../ts/interface/user';
 import { Plus } from '../../svg';
+import Notice from '../../components/notice/Notice';
 function CreateStories() {
   const { user }: { user: IUser } = useSelector((state: any) => ({ ...state }));
   const [visible, setVisible] = useState(false);
@@ -17,7 +18,9 @@ function CreateStories() {
       <div className='friends'>
 
         <CreateStoriesLeft setVisible={setVisible} />
-        <div className='saved_right' style={{ flexDirection: 'row', justifyContent: 'center' }}>
+
+        <div className='saved_right' style={{ flexDirection: 'column', justifyContent: 'center' }}>
+          <Notice />
           <CreateStory user={user} setVisible={setVisible} setShowPrev={setShowPrev} showPrev={showPrev} />
         </div>
       </div>

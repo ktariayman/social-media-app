@@ -4,6 +4,7 @@ import FriendsSent from "./Rights/FriendsSent";
 import AllFriends from "./Rights/AllFriends";
 import FriendsSuggestions from "./Rights/FriendsSuggestions";
 import FriendsBirthdays from "./Rights/FriendsBirthdays";
+import Notice from "../../components/notice/Notice";
 
 type Type = 'suggestions' | 'birthdays' | "requests" | 'sent' | 'all'
 const MapFriendsRights = {
@@ -17,6 +18,7 @@ function FriendsRight({ data, getData }: any) {
   const type: Type | undefined = useParams().type as Type;
   return (
     <div className={"friends_right"}>
+      <Notice />
       {children(type)}
     </div>
   );

@@ -8,6 +8,7 @@ import Skeleton from 'react-loading-skeleton';
 import ProfileTop from './ProfileTop';
 import ProfileBottom from './ProfileBottom';
 import { IUser } from '../../ts/interface/user';
+import Notice from '../../components/notice/Notice';
 
 function Profile() {
   const [visible, setVisible] = useState(false)
@@ -40,7 +41,6 @@ function Profile() {
           dispatch={dispatch}
           profile={profileState.profile}
         />}
-
       <Header page="profile" />
       <ProfileTop
         photos={photos}
@@ -50,6 +50,7 @@ function Profile() {
         setShowEdit={setShowEdit}
         visitor={visitor}
       />
+      <Notice />
       <ProfileBottom
         profileState={profileState}
         ref={leftSide}

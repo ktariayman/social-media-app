@@ -3,6 +3,7 @@ import Stories from "../home/stories";
 import CreatePost from "../createPost";
 import { BeatLoader } from "react-spinners";
 import { IUser } from "../../ts/interface/user";
+import Notice from "../notice/Notice";
 type Props = {
   render: (post: any, i: number) => React.ReactNode;
   middle: React.RefObject<HTMLDivElement>;
@@ -17,6 +18,7 @@ type Props = {
 function ListPosts({ loading, middle, user, posts, setVisible, showPrev, setShowPrev, render, setStoryVisible }: Props) {
   return (
     <div className='home_middle' ref={middle}>
+      <Notice />
       {user.verified === false && <SendVerification user={user} />}
       <Stories setStoryVisible={setStoryVisible} />
       <CreatePost user={user} setVisible={setVisible} showPrev={showPrev} setShowPrev={setShowPrev} loading={loading} />

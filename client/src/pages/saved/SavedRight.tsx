@@ -1,9 +1,11 @@
 import { BeatLoader } from "react-spinners";
 import { Post } from "../../components";
+import Notice from "../../components/notice/Notice";
 
 function SavedRight({ data, token }: any) {
   return (
     <div className="saved_right">
+      <Notice />
       <h2>all saved Posts : {data?.length}   </h2>
       {data === undefined ?
         <div>
