@@ -236,7 +236,6 @@
   }
   .login_1 img {
     width: 250px;
-    margin-left: -1.7rem;
   }
   .login_1 span {
     font-size: 28px;
@@ -245,7 +244,10 @@
     width: 400px;
   }
   .input_wrap {
-    width: 360px !important;
+    gap: 10px;
+  }
+  .register_form + .reg_line {
+    flex-direction: row;
   }
 }
 /*----Media queries--------------*/
