@@ -2,7 +2,7 @@ import axios from "axios"
 
 const updateProfilePictureService = async (url: string, token: string) => {
  try {
-  const { data } = await axios.put(
+  await axios.put(
    `${process.env.REACT_APP_BACKEND_URL}/updateProfilePicture`,
    { url },
    {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useClickOutside } from "../../../hooks";
 import { useSelector } from "react-redux";
 import getCroppedImg from "../../../helper/getCroppedImg";

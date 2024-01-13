@@ -1,5 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
-import { ILeftItem } from "../../../ts/interface/user";
+import { useNavigate } from "react-router-dom";
 type Props = {
   text?: string
   img?: string

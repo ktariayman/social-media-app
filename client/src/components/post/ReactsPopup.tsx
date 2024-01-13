@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { reactPost } from "../../functions";
-import { useSelector } from "react-redux";
 const reactsArray = [
   {
     name: "like",
@@ -28,7 +25,7 @@ const reactsArray = [
   },
 ];
 
-export default function ReactsPopup({ visible, setVisible, reactHandler }:any) {
+export default function ReactsPopup({ visible, setVisible, reactHandler }: any) {
   return (
     <>
       {visible && (

@@ -1,13 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import './style.css';
-import { useClickOutside, usePosts } from '../../hooks';
+import { useClickOutside } from '../../hooks';
 import PulseLoader from 'react-spinners/PulseLoader';
 import EmojiPickerComponent from './emojiPicker/emojiPicker';
 import AddToYourPost from './AddToYourPost';
 import ImagePreview from './imagePreview';
-import { createPostService, uploadImages } from '../../functions';
 import PostError from './postError';
-import dataURItoBlob from '../../helper/dataURItoBlob';
 import { IUser } from '../../ts/interface/user';
 import usePostPopup from './usePostPopup';
 type Props = {

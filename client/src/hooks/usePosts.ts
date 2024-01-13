@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from 'react';
+import { useEffect, useReducer } from 'react';
 import { useSelector } from 'react-redux';
 import postReducer from '../reducers/postReducer';
 import { PostActionType } from '../ts/enums';

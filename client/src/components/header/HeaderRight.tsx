@@ -24,7 +24,7 @@ function HeaderRight({ user, setShowUserMenu, showUserMenu, usermenu, page }: Pr
         to="/profile"
         className={
           `profile_link profile_link_name hover1 
-          ${page == "profile" ? "active_link" : ""}
+          ${page === "profile" ? "active_link" : ""}
           `}
       >
         <img src={user?.picture} alt="" />

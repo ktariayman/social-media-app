@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import { createPostService, uploadImages } from "../../functions";
 import dataURItoBlob from "../../helper/dataURItoBlob";
 

@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Dots } from "../../../svg";
 import AddFriendSmallCard from "./AddFriendSmallCard";
-import { usersNotFriends } from '../../../functions';
-import { useSelector } from "react-redux";
 import MenuFriends from "../../../components/ppltYouMayKnow/MenuFriends";
 import useNotFriends from "../../../hooks/useNotFriends";
 

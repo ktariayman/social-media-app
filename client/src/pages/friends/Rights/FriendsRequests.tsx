@@ -1,4 +1,3 @@
-import React from "react";
 import { BeatLoader } from "react-spinners";
 import Card from "../components/Card";
 import { Link, useParams } from "react-router-dom";

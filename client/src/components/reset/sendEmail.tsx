@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
 import sendResetPasswordCode from '../../functions/user/sendVerification';

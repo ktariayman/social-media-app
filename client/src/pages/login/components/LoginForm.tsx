@@ -5,7 +5,7 @@ import DotLoader from 'react-spinners/DotLoader';
 import useLoginForm from '../hooks/useLoginForm';
 import { useAuthConfigurationContext } from '../../../contexts/AuthentificationContext';
 type Props = {}
-function LoginForm({ }: Props) {
+function LoginForm() {
   const { setVisible, setVisiblePage } = useAuthConfigurationContext()
   const { error, handleLoginChange, loading, login, loginSubmit, loginValidation } = useLoginForm()
   const { email, password } = login;

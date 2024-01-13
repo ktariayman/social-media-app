@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './style.css';
-import axios from 'axios';
 import { IUser } from '../../../ts/interface/user';
 import sendVerification from '../../../functions/user/sendVerification';
 

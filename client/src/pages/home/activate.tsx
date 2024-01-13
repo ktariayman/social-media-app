@@ -2,7 +2,6 @@ import { useRef, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Header, SideBar, RightHome, Stories, CreatePost } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
 import Cookies from 'js-cookie';
 
 import './style.css';

@@ -1,7 +1,7 @@
 import LeftLink from './leftLink';
 import './style.css';
 import { left } from './data';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowDown1 } from '../../../svg';
 import { useState } from 'react';
 import Shortcut from './Shortcut';

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { IStory, IUser } from "../../../ts/interface/user";
+import { IUser } from "../../../ts/interface/user";
 import { useState } from 'react'
 import { useSelector } from "react-redux";
 import { addFriend, cancelRequest } from "../../../functions/profile/invitationSystem";

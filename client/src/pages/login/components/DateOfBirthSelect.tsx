@@ -1,5 +1,4 @@
 import { useMediaQuery } from 'react-responsive';
-import useRegisterForm from '../hooks/useRegisterForm';
 type Props = {
   bDay: number;
   bMonth: number;

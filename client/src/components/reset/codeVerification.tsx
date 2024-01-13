@@ -1,8 +1,7 @@
 import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { InputLogin } from '../../components';
-import axios from 'axios';
-import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+import { useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
 import { validateResetCode } from '../../functions/user/validateResetCode';
 function CodeVerification() {
   const { code, setCode, setLoading, setError, userInfos, setVisible, visiblePages } = useResetPassConfigurationContext()

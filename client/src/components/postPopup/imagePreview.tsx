@@ -1,4 +1,3 @@
-import { useEffect, useLayoutEffect } from 'react';
 import EmojiPickerComponent from './emojiPicker/emojiPicker';
 
 function ImagePreview({ openImages, imageInputRef, openImagesHandler, text, user, setText, images, setImages, setShowPrev, setError, textRef, setPicker, picker, backgroundImages, imageHandler }: any) {

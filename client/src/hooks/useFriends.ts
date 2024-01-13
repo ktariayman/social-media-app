@@ -1,5 +1,5 @@
 
-import React, { useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { getFriendsPageInfos } from "../functions/user";
 import { friendsReducer } from "../reducers/friendsReducer";
 import { FriendsActionType } from "../ts/enums";

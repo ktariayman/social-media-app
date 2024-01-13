@@ -64,7 +64,7 @@ function EmojiPickerComponent({ picker, setPicker, text, setText, textRef, user,
             <Picker onEmojiClick={handleEmoji} />
           </div>
         )}
-        {!type2 && !showBgs && <img src='"../../../images/postbackgrounds/colorful.png'
+        {!type2 && !showBgs && <img alt='' src='"../../../images/postbackgrounds/colorful.png'
           onClick={() => { setShowBgs((prev) => !prev) }}
         />}
         {!type2 && showBgs && <div

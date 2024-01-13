@@ -1,9 +1,8 @@
 import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { InputLogin } from '../../components';
 import { validateEmail } from '../../helper';
-import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+import { useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
 import findUserByEmail from '../../functions/user/findUserByEmail';
 export default function SearchAccount() {
   const { email,

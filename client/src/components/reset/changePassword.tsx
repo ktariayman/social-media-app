@@ -1,11 +1,9 @@
 import { Form, Formik } from 'formik';
 import { useEffect, useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { InputLogin } from '../../components';
-import * as Yup from 'yup';
-import axios from 'axios';
 import { validatePassword } from '../../helper';
-import { usePasswordState, useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
+import { useResetPassConfigurationContext } from '../../contexts/ResetPasswordContext';
 import changePassword from '../../functions/user/changePassword'
 import resetPassword from '../../functions/user/resetPassword';
 export default function ChangePassword({ user }: any) {

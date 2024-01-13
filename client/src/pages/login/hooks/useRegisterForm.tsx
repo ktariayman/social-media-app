@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
 import Cookies from 'js-cookie';
 import { RegisterFormData } from '../../../helper';
 import register from '../../../functions/user/register';

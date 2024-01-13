@@ -10,7 +10,7 @@ import { InputRegister } from '../../../components';
 import useRegisterForm from '../hooks/useRegisterForm';
 
 type Props = {}
-function RegisterForm({ }: Props) {
+function RegisterForm() {
   const { setVisible } = useAuthConfigurationContext()
   const registerRef = useRef(null)
   useClickOutside(registerRef, () => {

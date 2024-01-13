@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuthConfigurationContext } from "../../contexts/AuthentificationContext";
 type Props = {}
-function CreatePage({ }: Props) {
+function CreatePage() {
   const { setVisiblePage } = useAuthConfigurationContext()
   return <div className="blur">
     <div>
