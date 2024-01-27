@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ProfilePicture from "../../../components/profilePicture";
 import Friendship from "./Friendship";
 import { BeatLoader, MoonLoader } from "react-spinners";
+import { useClickOutside } from "../../../hooks";
 type Props = {
   profile: any
   photos: any
@@ -10,6 +11,10 @@ type Props = {
   visitor: boolean
   loading: boolean
   setShowEdit: any
+  storyRef: React.RefObject<HTMLDivElement>
+  openStory: boolean
+  setOpenStory: (openStory: boolean) => void
+
 }
 export default function ProfielPictureInfos({
   profile,
@@ -17,11 +22,15 @@ export default function ProfielPictureInfos({
   photos,
   othername,
   loading,
-  setShowEdit
+  setShowEdit,
+  storyRef,
+  openStory,
+  setOpenStory
 }: Props) {
   const navigate = useNavigate()
   const [show, setShow] = useState(false);
   const pRef = useRef(null);
+
   return (
     <div className="profile_img_wrap">
 
@@ -38,10 +47,14 @@ export default function ProfielPictureInfos({
               </div> :
               <div
                 className="profile_w_bg"
+                onClick={() => {
+                  setOpenStory(true)
+                }}
                 ref={pRef}
                 style={{
                   backgroundSize: "cover",
                   backgroundImage: `url(${profile.picture})`,
+                  border: `${profile.lastStory == true ? '3px solid #1876f2' : '2px solid #fff'}`
                 }}
               ></div>
           }

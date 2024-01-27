@@ -54,6 +54,14 @@ export type Profile = {
  updatedAt: string;
  username: string;
  verified: boolean;
+ lastStory: boolean;
+ lastStories?: Story[];
+};
+type Story = {
+ _id: string;
+ image: string;
+ text: string;
+ createdAt: string;
 };
 export type appType = {
  darkTheme: boolean;

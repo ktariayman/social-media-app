@@ -37,7 +37,22 @@ const getProfile = async (req: IRequest, res: Response) => {
    )
    .sort({ createdAt: -1 });
   await profile.populate("friends", "first_name last_name username picture");
-  res.json({ ...profile.toObject(), posts, friendship });
+  const lastStories = await Post.find({
+   user: profile._id,
+   type: 'story',
+   createdAt: { $gte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
+  })
+   .select('_id images text createdAt')
+   .sort({ createdAt: -1 })
+  const formattedLastStories = lastStories.map((story) => ({
+   _id: story._id,
+   image: story.images.length > 0 ? story.images[0].url : '', // Extract the first image's URL or provide an empty string if no images
+   text: story.text || '',
+   createdAt: story.createdAt,
+  }));
+
+  res.json({ ...profile.toObject(), posts, friendship, lastStory: lastStories.length > 0 ? true : false, lastStories: formattedLastStories });
+
  } catch (error) {
   const errorMessage: string = (error as Error).message;
   res.status(500).json({ message: errorMessage });

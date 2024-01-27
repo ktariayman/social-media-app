@@ -15,6 +15,7 @@ function LoginForm() {
         <img src='../../icons/devbook-login-logo.png' width={400} alt='' />
         <p style={{ fontWeight: "400", fontSize: "30px" }}>Recent Logins</p>
         <p>Click your picture or Add Account.</p>
+        <p>demo account : user@gmail.com , mdps : user123456</p>
       </div>
       <div className='login_2'>
         <div className='login_2_wrap'>

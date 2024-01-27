@@ -12,8 +12,16 @@ type Props = {
   photos: any
   othername: string
   setShowEdit: React.Dispatch<React.SetStateAction<boolean>>
+  storyRef: React.RefObject<HTMLDivElement>
+  openStory: boolean
+  setOpenStory: (openStory: boolean) => void
+
 }
-const ProfileTop = ({ ref, visitor, profileState, photos, setShowEdit, othername }: Props) => {
+const ProfileTop = ({
+  storyRef,
+  openStory,
+  setOpenStory,
+  ref, visitor, profileState, photos, setShowEdit, othername }: Props) => {
   const { darkTheme } = useSelector((state: any) => ({ ...state }));
   return (
     <div className="profile_top" ref={ref} style={{ marginTop: darkTheme ? "2px" : '' }} >
@@ -38,6 +46,9 @@ const ProfileTop = ({ ref, visitor, profileState, photos, setShowEdit, othername
           othername={othername}
           photos={photos}
           setShowEdit={setShowEdit}
+          openStory={openStory}
+          setOpenStory={setOpenStory}
+          storyRef={storyRef}
         />
 
 
